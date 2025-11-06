@@ -385,6 +385,354 @@ def import_spell_damage(conn, damage_list: List[Dict], stats: ImportStats) -> No
             log_progress(i, len(damage_list), "spell damage")
 
 
+def import_item_to_item(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import item-to-item relationships."""
+    print(f"\n📥 Importing {len(refs)} item-to-item relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            from_item_id = lookup_item_by_name_source(conn, ref['from_item'], ref['from_source'])
+            if not from_item_id:
+                stats.record_skip(f"{ref['from_item']}: From item not found")
+                continue
+
+            to_item_id = lookup_item_by_name_source(conn, ref['to_item'], ref['to_source'])
+            if not to_item_id:
+                stats.record_skip(f"{ref['from_item']} -> {ref['to_item']}: To item not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO item_related_items (
+                        item_id, related_item_id, relationship_type, quantity
+                    )
+                    VALUES (%s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (
+                    from_item_id, to_item_id, ref.get('relationship_type', 'related'),
+                    ref.get('quantity')
+                ))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('from_item', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "item-to-item")
+
+
+def import_item_to_spell(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import item-to-spell relationships."""
+    print(f"\n📥 Importing {len(refs)} item-to-spell relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            item_id = lookup_item_by_name_source(conn, ref['item_name'], ref['item_source'])
+            if not item_id:
+                stats.record_skip(f"{ref['item_name']}: Item not found")
+                continue
+
+            # spell_source might be None, need to handle lookup differently
+            spell_id = None
+            if ref.get('spell_source'):
+                spell_id = lookup_spell_by_name_source(conn, ref['spell_name'], ref['spell_source'])
+            else:
+                # Try to find spell by name only (pick first match)
+                with conn.cursor() as cur:
+                    cur.execute("SELECT id FROM spells WHERE name = %s LIMIT 1", (ref['spell_name'],))
+                    result = cur.fetchone()
+                    spell_id = result[0] if result else None
+
+            if not spell_id:
+                stats.record_skip(f"{ref['item_name']} -> {ref['spell_name']}: Spell not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO item_spells (item_id, spell_id)
+                    VALUES (%s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (item_id, spell_id))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('item_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "item-to-spell")
+
+
+def import_item_to_creature(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import item-to-creature relationships."""
+    print(f"\n📥 Importing {len(refs)} item-to-creature relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            item_id = lookup_item_by_name_source(conn, ref['item_name'], ref['item_source'])
+            if not item_id:
+                stats.record_skip(f"{ref['item_name']}: Item not found")
+                continue
+
+            creature_id = lookup_monster_by_name_source(conn, ref['creature_name'], ref['creature_source'])
+            if not creature_id:
+                stats.record_skip(f"{ref['item_name']} -> {ref['creature_name']}: Creature not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO item_creatures (item_id, creature_id)
+                    VALUES (%s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (item_id, creature_id))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('item_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "item-to-creature")
+
+
+def import_monster_to_item(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import monster-to-item relationships."""
+    print(f"\n📥 Importing {len(refs)} monster-to-item relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            monster_id = lookup_monster_by_name_source(conn, ref['monster_name'], ref['monster_source'])
+            if not monster_id:
+                stats.record_skip(f"{ref['monster_name']}: Monster not found")
+                continue
+
+            item_id = lookup_item_by_name_source(conn, ref['item_name'], ref['item_source'])
+            if not item_id:
+                stats.record_skip(f"{ref['monster_name']} -> {ref['item_name']}: Item not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO monster_items (monster_id, item_id)
+                    VALUES (%s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (monster_id, item_id))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('monster_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "monster-to-item")
+
+
+def import_monster_to_spell(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import monster-to-spell relationships."""
+    print(f"\n📥 Importing {len(refs)} monster-to-spell relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            monster_id = lookup_monster_by_name_source(conn, ref['monster_name'], ref['monster_source'])
+            if not monster_id:
+                stats.record_skip(f"{ref['monster_name']}: Monster not found")
+                continue
+
+            # spell_source might be None
+            spell_id = None
+            if ref.get('spell_source'):
+                spell_id = lookup_spell_by_name_source(conn, ref['spell_name'], ref['spell_source'])
+            else:
+                with conn.cursor() as cur:
+                    cur.execute("SELECT id FROM spells WHERE name = %s LIMIT 1", (ref['spell_name'],))
+                    result = cur.fetchone()
+                    spell_id = result[0] if result else None
+
+            if not spell_id:
+                stats.record_skip(f"{ref['monster_name']} -> {ref['spell_name']}: Spell not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO monster_spells (
+                        monster_id, spell_id, frequency, spell_level
+                    )
+                    VALUES (%s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (
+                    monster_id, spell_id, ref.get('frequency'), ref.get('spell_level')
+                ))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('monster_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "monster-to-spell")
+
+
+def import_monster_to_creature(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import monster-to-creature relationships."""
+    print(f"\n📥 Importing {len(refs)} monster-to-creature relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            monster_id = lookup_monster_by_name_source(conn, ref['monster_name'], ref['monster_source'])
+            if not monster_id:
+                stats.record_skip(f"{ref['monster_name']}: Monster not found")
+                continue
+
+            creature_id = lookup_monster_by_name_source(conn, ref['creature_name'], ref['creature_source'])
+            if not creature_id:
+                stats.record_skip(f"{ref['monster_name']} -> {ref['creature_name']}: Creature not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO monster_creatures (monster_id, creature_id)
+                    VALUES (%s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (monster_id, creature_id))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('monster_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "monster-to-creature")
+
+
+def import_spell_to_item(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import spell-to-item relationships."""
+    print(f"\n📥 Importing {len(refs)} spell-to-item relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            spell_id = lookup_spell_by_name_source(conn, ref['spell_name'], ref['spell_source'])
+            if not spell_id:
+                stats.record_skip(f"{ref['spell_name']}: Spell not found")
+                continue
+
+            item_id = lookup_item_by_name_source(conn, ref['item_name'], ref['item_source'])
+            if not item_id:
+                stats.record_skip(f"{ref['spell_name']} -> {ref['item_name']}: Item not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO spell_items (spell_id, item_id)
+                    VALUES (%s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (spell_id, item_id))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('spell_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "spell-to-item")
+
+
+def import_spell_to_spell(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import spell-to-spell relationships."""
+    print(f"\n📥 Importing {len(refs)} spell-to-spell relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            from_spell_id = lookup_spell_by_name_source(conn, ref['from_spell'], ref['from_source'])
+            if not from_spell_id:
+                stats.record_skip(f"{ref['from_spell']}: From spell not found")
+                continue
+
+            # to_source might be None
+            to_spell_id = None
+            if ref.get('to_source'):
+                to_spell_id = lookup_spell_by_name_source(conn, ref['to_spell'], ref['to_source'])
+            else:
+                with conn.cursor() as cur:
+                    cur.execute("SELECT id FROM spells WHERE name = %s LIMIT 1", (ref['to_spell'],))
+                    result = cur.fetchone()
+                    to_spell_id = result[0] if result else None
+
+            if not to_spell_id:
+                stats.record_skip(f"{ref['from_spell']} -> {ref['to_spell']}: To spell not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO spell_related_spells (spell_id, related_spell_id)
+                    VALUES (%s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (from_spell_id, to_spell_id))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('from_spell', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "spell-to-spell")
+
+
+def import_spell_summons(conn, refs: List[Dict], stats: ImportStats) -> None:
+    """Import spell summons relationships."""
+    print(f"\n📥 Importing {len(refs)} spell summons relationships...")
+
+    for i, ref in enumerate(refs, 1):
+        try:
+            spell_id = lookup_spell_by_name_source(conn, ref['spell_name'], ref['spell_source'])
+            if not spell_id:
+                stats.record_skip(f"{ref['spell_name']}: Spell not found")
+                continue
+
+            creature_id = lookup_monster_by_name_source(conn, ref['creature_name'], ref['creature_source'])
+            if not creature_id:
+                stats.record_skip(f"{ref['spell_name']} -> {ref['creature_name']}: Creature not found")
+                continue
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO spell_summons (
+                        spell_id, creature_id, quantity_dice, quantity, is_summon
+                    )
+                    VALUES (%s, %s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (
+                    spell_id, creature_id, ref.get('quantity_dice'),
+                    ref.get('quantity'), ref.get('is_summon', True)
+                ))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{ref.get('spell_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(refs), "spell summons")
+
+
 def main():
     """Main import function."""
     print("=" * 80)
@@ -449,20 +797,81 @@ def main():
     print("\nSpell Damage:")
     stats_spells_dmg.print_summary()
 
+    # Import cross-references
+    print("\n" + "=" * 80)
+    print("PHASE 3: CROSS-REFERENCE RELATIONSHIPS")
+    print("=" * 80)
+
+    stats_item_to_item = ImportStats()
+    import_item_to_item(conn, cross_refs['item_to_item'], stats_item_to_item)
+
+    stats_item_to_spell = ImportStats()
+    import_item_to_spell(conn, cross_refs['item_to_spell'], stats_item_to_spell)
+
+    stats_item_to_creature = ImportStats()
+    import_item_to_creature(conn, cross_refs['item_to_creature'], stats_item_to_creature)
+
+    stats_monster_to_item = ImportStats()
+    import_monster_to_item(conn, cross_refs['monster_to_item'], stats_monster_to_item)
+
+    stats_monster_to_spell = ImportStats()
+    import_monster_to_spell(conn, cross_refs['monster_to_spell'], stats_monster_to_spell)
+
+    stats_monster_to_creature = ImportStats()
+    import_monster_to_creature(conn, cross_refs['monster_to_creature'], stats_monster_to_creature)
+
+    stats_spell_to_item = ImportStats()
+    import_spell_to_item(conn, cross_refs['spell_to_item'], stats_spell_to_item)
+
+    stats_spell_to_spell = ImportStats()
+    import_spell_to_spell(conn, cross_refs['spell_to_spell'], stats_spell_to_spell)
+
+    stats_spell_summons = ImportStats()
+    import_spell_summons(conn, cross_refs['spell_summons'], stats_spell_summons)
+
+    # Print cross-reference summaries
+    print("\n" + "=" * 80)
+    print("CROSS-REFERENCE IMPORT SUMMARY")
+    print("=" * 80)
+    print("\nItem to Item:")
+    stats_item_to_item.print_summary()
+    print("\nItem to Spell:")
+    stats_item_to_spell.print_summary()
+    print("\nItem to Creature:")
+    stats_item_to_creature.print_summary()
+    print("\nMonster to Item:")
+    stats_monster_to_item.print_summary()
+    print("\nMonster to Spell:")
+    stats_monster_to_spell.print_summary()
+    print("\nMonster to Creature:")
+    stats_monster_to_creature.print_summary()
+    print("\nSpell to Item:")
+    stats_spell_to_item.print_summary()
+    print("\nSpell to Spell:")
+    stats_spell_to_spell.print_summary()
+    print("\nSpell Summons:")
+    stats_spell_summons.print_summary()
+
     # Close connection
     conn.close()
     print("\n🔌 Database connection closed")
 
     # Exit with appropriate code
     total_failed = (stats_items_cond.failed + stats_monsters_cond.failed + stats_spells_cond.failed +
-                    stats_items_dmg.failed + stats_monsters_dmg.failed + stats_spells_dmg.failed)
+                    stats_items_dmg.failed + stats_monsters_dmg.failed + stats_spells_dmg.failed +
+                    stats_item_to_item.failed + stats_item_to_spell.failed + stats_item_to_creature.failed +
+                    stats_monster_to_item.failed + stats_monster_to_spell.failed + stats_monster_to_creature.failed +
+                    stats_spell_to_item.failed + stats_spell_to_spell.failed + stats_spell_summons.failed)
     if total_failed > 0:
         log_error(f"Import completed with {total_failed} failures")
         sys.exit(1)
     else:
         total_success = (stats_items_cond.succeeded + stats_monsters_cond.succeeded + stats_spells_cond.succeeded +
-                        stats_items_dmg.succeeded + stats_monsters_dmg.succeeded + stats_spells_dmg.succeeded)
-        log_success(f"Successfully imported {total_success} relationships (conditions + damage)")
+                        stats_items_dmg.succeeded + stats_monsters_dmg.succeeded + stats_spells_dmg.succeeded +
+                        stats_item_to_item.succeeded + stats_item_to_spell.succeeded + stats_item_to_creature.succeeded +
+                        stats_monster_to_item.succeeded + stats_monster_to_spell.succeeded + stats_monster_to_creature.succeeded +
+                        stats_spell_to_item.succeeded + stats_spell_to_spell.succeeded + stats_spell_summons.succeeded)
+        log_success(f"Successfully imported {total_success} relationships (conditions + damage + cross-refs)")
         sys.exit(0)
 
 
