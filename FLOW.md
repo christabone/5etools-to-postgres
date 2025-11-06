@@ -322,12 +322,20 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
    - Generates validation report
 
 ### Status
-🔄 **IN PROGRESS** - Phase 2.1 Complete:
-- ✅ Database schema created (38 tables, 77+ indexes)
-- ✅ Controlled vocabulary imported (223 records)
+🔄 **IN PROGRESS** - Phase 2.3 Partial:
+- ✅ Database schema created (38 tables, 141 indexes)
+- ✅ Controlled vocabulary imported (241 records - includes 18 missing sources)
 - ✅ INDEX_PLAN.md and IMPORT_PLAN.md created
-- 🔲 Core entities import (items, monsters, spells) - NEXT
-- 🔲 Relationship import
+- ✅ **Phase 2.2 Complete**: Core entities import (8,104 entities)
+  - ✅ Items: 2,722 (100% success)
+  - ✅ Monsters: 4,445 (100% success)
+  - ✅ Spells: 937 (100% success with ritual/concentration fixes)
+- ✅ **Phase 2.3 Partial**: Condition relationships (6,113 imported)
+  - ✅ Item conditions: 508
+  - ✅ Monster action conditions: 5,074
+  - ✅ Spell conditions: 531
+- 🔲 Damage relationships (5,618) - TODO
+- 🔲 Cross-reference relationships (14,769) - TODO
 - 🔲 Validation
 
 ---

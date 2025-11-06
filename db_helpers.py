@@ -146,7 +146,7 @@ def lookup_creature_size(conn, size_code: str) -> Optional[int]:
         Size ID or None if not found
     """
     cache = _load_lookup_cache(conn, 'creature_sizes', 'code')
-    return cache.get(size_code.upper())
+    return cache.get(size_code.lower())
 
 
 def lookup_spell_school(conn, school_code: str) -> Optional[int]:
@@ -161,7 +161,37 @@ def lookup_spell_school(conn, school_code: str) -> Optional[int]:
         School ID or None if not found
     """
     cache = _load_lookup_cache(conn, 'spell_schools', 'code')
-    return cache.get(school_code.upper())
+    return cache.get(school_code.lower())
+
+
+def lookup_alignment(conn, alignment_code: str) -> Optional[int]:
+    """
+    Lookup alignment value ID by code.
+
+    Args:
+        conn: Database connection
+        alignment_code: Alignment code (e.g., "L", "G", "E", "N", "C", "U", "A")
+
+    Returns:
+        Alignment ID or None if not found
+    """
+    cache = _load_lookup_cache(conn, 'alignment_values', 'code')
+    return cache.get(alignment_code.lower())
+
+
+def lookup_skill(conn, skill_name: str) -> Optional[int]:
+    """
+    Lookup skill ID by name.
+
+    Args:
+        conn: Database connection
+        skill_name: Skill name (e.g., "Perception", "Stealth")
+
+    Returns:
+        Skill ID or None if not found
+    """
+    cache = _load_lookup_cache(conn, 'skills', 'name')
+    return cache.get(skill_name.lower())
 
 
 def lookup_or_create_item_type(conn, type_code: str, type_name: str = None) -> int:
@@ -285,6 +315,99 @@ def lookup_or_create_item_property(conn, property_code: str, property_name: str 
         return prop_id
 
 
+def lookup_or_create_creature_type(conn, type_name: str) -> int:
+    """
+    Lookup or create creature type by name.
+
+    Args:
+        conn: Database connection
+        type_name: Creature type name (e.g., 'humanoid', 'beast', 'dragon')
+
+    Returns:
+        Creature type ID
+    """
+    if 'creature_types' not in _LOOKUP_CACHE:
+        _LOOKUP_CACHE['creature_types'] = {}
+
+    cache_key = type_name.lower()
+
+    # Check cache first
+    if cache_key in _LOOKUP_CACHE['creature_types']:
+        return _LOOKUP_CACHE['creature_types'][cache_key]
+
+    # Try to find in database
+    with conn.cursor() as cur:
+        cur.execute("SELECT id FROM creature_types WHERE name = %s", (type_name.lower(),))
+        result = cur.fetchone()
+        if result:
+            type_id = result[0]
+            _LOOKUP_CACHE['creature_types'][cache_key] = type_id
+            return type_id
+
+    # Create new creature type
+    with conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO creature_types (name) VALUES (%s) RETURNING id",
+            (type_name.lower(),)
+        )
+        type_id = cur.fetchone()[0]
+        conn.commit()
+        _LOOKUP_CACHE['creature_types'][cache_key] = type_id
+        return type_id
+
+
+def lookup_or_create_creature_size(conn, size_code: str) -> int:
+    """
+    Lookup or create creature size by code.
+
+    Args:
+        conn: Database connection
+        size_code: Size code (T, S, M, L, H, G)
+
+    Returns:
+        Creature size ID
+    """
+    if 'creature_sizes' not in _LOOKUP_CACHE:
+        _LOOKUP_CACHE['creature_sizes'] = {}
+
+    cache_key = size_code.lower()
+
+    # Check cache first
+    if cache_key in _LOOKUP_CACHE['creature_sizes']:
+        return _LOOKUP_CACHE['creature_sizes'][cache_key]
+
+    # Try to find in database
+    with conn.cursor() as cur:
+        cur.execute("SELECT id FROM creature_sizes WHERE code = %s", (size_code.upper(),))
+        result = cur.fetchone()
+        if result:
+            size_id = result[0]
+            _LOOKUP_CACHE['creature_sizes'][cache_key] = size_id
+            return size_id
+
+    # Create new size if not found (should not happen with controlled vocab)
+    # Map codes to names
+    size_names = {
+        'T': 'Tiny',
+        'S': 'Small',
+        'M': 'Medium',
+        'L': 'Large',
+        'H': 'Huge',
+        'G': 'Gargantuan'
+    }
+    size_name = size_names.get(size_code.upper(), size_code.upper())
+
+    with conn.cursor() as cur:
+        cur.execute(
+            "INSERT INTO creature_sizes (code, name) VALUES (%s, %s) RETURNING id",
+            (size_code.upper(), size_name)
+        )
+        size_id = cur.fetchone()[0]
+        conn.commit()
+        _LOOKUP_CACHE['creature_sizes'][cache_key] = size_id
+        return size_id
+
+
 def clean_type_code(type_code: str) -> str:
     """
     Clean item type code by removing source suffixes and $ prefix.
@@ -339,6 +462,130 @@ def expand_damage_type_code(damage_code: str) -> str:
         'Y': 'psychic',
     }
     return damage_type_map.get(damage_code.upper(), damage_code.lower())
+
+
+def parse_cr(cr_value) -> float:
+    """
+    Parse CR value to float.
+
+    Handles fractional CR like "1/4", "1/2", "1/8" and converts to decimal.
+
+    Args:
+        cr_value: CR as string, int, or float
+
+    Returns:
+        CR as float (e.g., 0.25 for "1/4")
+    """
+    if cr_value is None:
+        return 0.0
+
+    if isinstance(cr_value, (int, float)):
+        return float(cr_value)
+
+    if isinstance(cr_value, str):
+        # Handle fractional CR
+        if '/' in cr_value:
+            parts = cr_value.split('/')
+            return float(parts[0]) / float(parts[1])
+        return float(cr_value)
+
+    return 0.0
+
+
+def parse_hp(hp_data) -> tuple:
+    """
+    Parse HP data to extract average and formula.
+
+    Args:
+        hp_data: HP as dict {"average": 10, "formula": "2d8+2"} or int
+
+    Returns:
+        Tuple of (average: int, formula: str)
+    """
+    if isinstance(hp_data, int):
+        return hp_data, None
+
+    if isinstance(hp_data, dict):
+        average = hp_data.get('average', 0)
+        formula = hp_data.get('formula')
+        return average, formula
+
+    return 0, None
+
+
+def parse_ac(ac_data) -> int:
+    """
+    Parse AC data to extract primary AC value.
+
+    Args:
+        ac_data: AC as int or list [{"ac": 15, "from": ["natural armor"]}]
+
+    Returns:
+        Primary AC value as int
+    """
+    if isinstance(ac_data, int):
+        return ac_data
+
+    if isinstance(ac_data, list) and len(ac_data) > 0:
+        first_ac = ac_data[0]
+        if isinstance(first_ac, dict):
+            return first_ac.get('ac', 10)
+        if isinstance(first_ac, int):
+            return first_ac
+
+    return 10  # Default AC
+
+
+def parse_speed(speed_data) -> dict:
+    """
+    Parse speed data to extract individual movement types.
+
+    Args:
+        speed_data: Speed as dict {"walk": 30, "fly": 60, "swim": 30} or int
+
+    Returns:
+        Dict with keys: walk, fly, swim, climb, burrow (all as int)
+    """
+    speeds = {
+        'walk': 30,  # Default walking speed
+        'fly': 0,
+        'swim': 0,
+        'climb': 0,
+        'burrow': 0
+    }
+
+    if isinstance(speed_data, int):
+        speeds['walk'] = speed_data
+        return speeds
+
+    if isinstance(speed_data, dict):
+        speeds['walk'] = speed_data.get('walk', 30)
+        speeds['fly'] = speed_data.get('fly', 0)
+        speeds['swim'] = speed_data.get('swim', 0)
+        speeds['climb'] = speed_data.get('climb', 0)
+        speeds['burrow'] = speed_data.get('burrow', 0)
+
+    return speeds
+
+
+def parse_ability_scores(monster_data: dict) -> dict:
+    """
+    Extract ability scores from monster data.
+
+    Args:
+        monster_data: Monster dict with str, dex, con, int, wis, cha fields
+
+    Returns:
+        Dict with all 6 ability scores (default 10 if missing)
+    """
+    return {
+        'str': monster_data.get('str', 10),
+        'dex': monster_data.get('dex', 10),
+        'con': monster_data.get('con', 10),
+        'int': monster_data.get('int', 10),
+        'wis': monster_data.get('wis', 10),
+        'cha': monster_data.get('cha', 10),
+    }
 
 
 def generate_search_vector(name: str, description: str = None) -> str:
