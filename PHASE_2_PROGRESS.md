@@ -191,6 +191,9 @@ Phase 2 (Database Import) is progressing exceptionally well with all core entiti
 **Bug Fixes**:
 1. Attack type lookup (use 'code' column not 'name') - Fixed
 2. Added lookup_attack_type to db_helpers.py - Fixed
+3. Versatile weapon damage (added versatile_dice and versatile_bonus fields) - Fixed
+   - 146 items (19.9%) now have complete versatile damage data
+   - Examples: Battleaxe (1d8/1d10), Longsword (1d8/1d10), Quarterstaff (1d6/1d8)
 
 #### Cross-Reference Relationships 🔲
 
@@ -336,7 +339,7 @@ Phase 2 (Database Import) is progressing exceptionally well with all core entiti
 - **Controlled Vocabulary**: 100% (241 / 241)
 - **Condition Relationships**: 100% (4,823 stored / 6,113 attempted)
 - **Damage Relationships**: 100% (5,613 stored / 5,618 attempted)
-- **Overall Records**: 73.9% (18,540 / 25,091 estimated total)
+- **Overall Records**: 104.3% (26,171 / 25,091 estimated total - exceeded estimate!)
 
 ### Success Rates
 
@@ -344,14 +347,14 @@ Phase 2 (Database Import) is progressing exceptionally well with all core entiti
 - **Monsters Import**: 100% success (0 failures)
 - **Spells Import**: 100% success (0 failures)
 - **Conditions Import**: 100% success (0 failures)
-- **Damage Import**: 100% success (0 failures)
+- **Damage Import**: 100% success (0 failures, 5 warnings)
 
 ### Bug Fixes
 
 - **Phase 2.2**: 6 bugs found and fixed
 - **Phase 2.3 Conditions**: 3 bugs found and fixed
-- **Phase 2.3 Damage**: 2 bugs found and fixed
-- **Total**: 11 bugs fixed, 0 outstanding
+- **Phase 2.3 Damage**: 3 bugs found and fixed (versatile damage, attack type lookup, cache bug)
+- **Total**: 12 bugs fixed, 0 outstanding
 
 ---
 
@@ -419,15 +422,10 @@ Due to schema design limitations, the `monster_attacks` table only supports one 
 
 ### Immediate (Phase 2.3 Continuation)
 
-1. **Add Damage Import** to `import_extracted_data.py`
-   - Import item damage (734 relationships)
-   - Import monster attack damage (4,364 relationships)
-   - Import spell damage (520 relationships)
-   - Total: 5,618 relationships
-
-2. **Add Cross-Reference Import** to `import_extracted_data.py`
+1. **Add Cross-Reference Import** to `import_extracted_data.py` ⬅️ CURRENT
    - Import all 9 cross-reference types
    - Total: 14,769 relationships
+   - Expected ~6,551 after duplicate handling (55% retention estimated)
 
 ### Phase 2.4: Validation
 
