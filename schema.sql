@@ -559,3 +559,310 @@ COMMENT ON COLUMN monsters.hp_average IS 'Average hit points';
 COMMENT ON COLUMN monsters.hp_formula IS 'HP dice formula (e.g., "2d8+6")';
 
 COMMENT ON COLUMN spells.level IS 'Spell level: 0 (cantrip) through 9';
+
+-- =============================================================================
+-- PHASE 0.6 EXTRACTION TABLES
+-- =============================================================================
+-- These tables store structured data extracted from markup and text analysis
+-- Added based on review findings from REVIEW_FINDINGS.md
+
+-- -----------------------------------------------------------------------------
+-- CONDITION RELATIONSHIPS
+-- -----------------------------------------------------------------------------
+-- Store which items/monsters/spells inflict or grant immunity to conditions
+
+CREATE TABLE item_conditions (
+  id SERIAL PRIMARY KEY,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  condition_id INTEGER NOT NULL REFERENCES condition_types(id),
+  inflicts BOOLEAN DEFAULT true,  -- true = inflicts, false = grants immunity/resistance
+  save_dc INTEGER,
+  save_ability VARCHAR(15),  -- Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+  duration_text TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (item_id, condition_id)
+);
+
+CREATE INDEX idx_item_conditions_item ON item_conditions(item_id);
+CREATE INDEX idx_item_conditions_condition ON item_conditions(condition_id);
+CREATE INDEX idx_item_conditions_inflicts ON item_conditions(inflicts);
+
+CREATE TABLE monster_action_conditions (
+  id SERIAL PRIMARY KEY,
+  monster_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  action_name TEXT NOT NULL,
+  condition_id INTEGER NOT NULL REFERENCES condition_types(id),
+  inflicts BOOLEAN DEFAULT true,
+  save_dc INTEGER,
+  save_ability VARCHAR(15),
+  duration_text TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (monster_id, action_name, condition_id)
+);
+
+CREATE INDEX idx_monster_action_conditions_monster ON monster_action_conditions(monster_id);
+CREATE INDEX idx_monster_action_conditions_condition ON monster_action_conditions(condition_id);
+CREATE INDEX idx_monster_action_conditions_inflicts ON monster_action_conditions(inflicts);
+
+CREATE TABLE spell_conditions (
+  id SERIAL PRIMARY KEY,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  condition_id INTEGER NOT NULL REFERENCES condition_types(id),
+  inflicts BOOLEAN DEFAULT true,
+  save_type TEXT,  -- "negates", "half duration", etc.
+  duration_text TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (spell_id, condition_id)
+);
+
+CREATE INDEX idx_spell_conditions_spell ON spell_conditions(spell_id);
+CREATE INDEX idx_spell_conditions_condition ON spell_conditions(condition_id);
+
+-- -----------------------------------------------------------------------------
+-- DAMAGE RELATIONSHIPS
+-- -----------------------------------------------------------------------------
+-- Store structured damage information for attacks and spells
+
+-- Attack types lookup (for referential integrity)
+CREATE TABLE attack_types (
+  id SERIAL PRIMARY KEY,
+  code VARCHAR(30) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Populate attack types
+INSERT INTO attack_types (code, name) VALUES
+  ('melee weapon', 'Melee Weapon Attack'),
+  ('ranged weapon', 'Ranged Weapon Attack'),
+  ('melee or ranged weapon', 'Melee or Ranged Weapon Attack'),
+  ('melee spell', 'Melee Spell Attack'),
+  ('ranged spell', 'Ranged Spell Attack'),
+  ('melee or ranged spell', 'Melee or Ranged Spell Attack');
+
+CREATE TABLE monster_attacks (
+  id SERIAL PRIMARY KEY,
+  monster_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  action_name TEXT NOT NULL,
+  attack_type_id INTEGER REFERENCES attack_types(id),
+  to_hit_bonus INTEGER,
+  reach_ft INTEGER,
+  range_normal_ft INTEGER,
+  range_long_ft INTEGER,
+  target TEXT,
+
+  -- Primary damage
+  damage_dice TEXT,
+  damage_bonus INTEGER DEFAULT 0,
+  damage_type_id INTEGER REFERENCES damage_types(id),
+
+  -- Additional damage (e.g., "plus 2d6 fire damage")
+  extra_damage_dice TEXT,
+  extra_damage_bonus INTEGER DEFAULT 0,
+  extra_damage_type_id INTEGER REFERENCES damage_types(id),
+
+  -- Save information
+  save_dc INTEGER,
+  save_ability VARCHAR(15),
+
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (monster_id, action_name)
+);
+
+CREATE INDEX idx_monster_attacks_monster ON monster_attacks(monster_id);
+CREATE INDEX idx_monster_attacks_damage_type ON monster_attacks(damage_type_id);
+CREATE INDEX idx_monster_attacks_attack_type ON monster_attacks(attack_type_id);
+
+CREATE TABLE spell_damage (
+  id SERIAL PRIMARY KEY,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  spell_level INTEGER NOT NULL DEFAULT 0,  -- At which level this damage applies
+  damage_dice TEXT,
+  damage_bonus INTEGER DEFAULT 0,
+  damage_type_id INTEGER REFERENCES damage_types(id),
+  save_for_half BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX idx_spell_damage_spell ON spell_damage(spell_id);
+CREATE INDEX idx_spell_damage_type ON spell_damage(damage_type_id);
+CREATE INDEX idx_spell_damage_level ON spell_damage(spell_level);
+
+CREATE TABLE item_damage (
+  id SERIAL PRIMARY KEY,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  damage_dice TEXT,
+  damage_bonus INTEGER DEFAULT 0,
+  damage_type_id INTEGER REFERENCES damage_types(id),
+
+  -- Versatile weapon damage (e.g., longsword 1d8/1d10)
+  versatile_dice TEXT,
+  versatile_bonus INTEGER DEFAULT 0,
+
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX idx_item_damage_item ON item_damage(item_id);
+CREATE INDEX idx_item_damage_type ON item_damage(damage_type_id);
+
+-- -----------------------------------------------------------------------------
+-- CROSS-REFERENCE RELATIONSHIPS
+-- -----------------------------------------------------------------------------
+-- Store relationships between entities (item uses item, spell summons creature, etc.)
+
+CREATE TABLE item_related_items (
+  id SERIAL PRIMARY KEY,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  related_item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  relationship_type TEXT NOT NULL,  -- 'requires', 'contains', 'uses', 'references'
+  quantity INTEGER,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (item_id, related_item_id, relationship_type)
+);
+
+CREATE INDEX idx_item_related_items_item ON item_related_items(item_id);
+CREATE INDEX idx_item_related_items_related ON item_related_items(related_item_id);
+
+CREATE TABLE item_spells (
+  id SERIAL PRIMARY KEY,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (item_id, spell_id)
+);
+
+CREATE INDEX idx_item_spells_item ON item_spells(item_id);
+CREATE INDEX idx_item_spells_spell ON item_spells(spell_id);
+
+CREATE TABLE item_creatures (
+  id SERIAL PRIMARY KEY,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  creature_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (item_id, creature_id)
+);
+
+CREATE INDEX idx_item_creatures_item ON item_creatures(item_id);
+CREATE INDEX idx_item_creatures_creature ON item_creatures(creature_id);
+
+CREATE TABLE monster_items (
+  id SERIAL PRIMARY KEY,
+  monster_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (monster_id, item_id)
+);
+
+CREATE INDEX idx_monster_items_monster ON monster_items(monster_id);
+CREATE INDEX idx_monster_items_item ON monster_items(item_id);
+
+CREATE TABLE monster_spells (
+  id SERIAL PRIMARY KEY,
+  monster_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  frequency TEXT,  -- 'at will', '1/day', '3/day', etc.
+  spell_level INTEGER,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (monster_id, spell_id)
+);
+
+CREATE INDEX idx_monster_spells_monster ON monster_spells(monster_id);
+CREATE INDEX idx_monster_spells_spell ON monster_spells(spell_id);
+
+CREATE TABLE monster_creatures (
+  id SERIAL PRIMARY KEY,
+  monster_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  creature_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (monster_id, creature_id)
+);
+
+CREATE INDEX idx_monster_creatures_monster ON monster_creatures(monster_id);
+CREATE INDEX idx_monster_creatures_creature ON monster_creatures(creature_id);
+
+CREATE TABLE spell_items (
+  id SERIAL PRIMARY KEY,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (spell_id, item_id)
+);
+
+CREATE INDEX idx_spell_items_spell ON spell_items(spell_id);
+CREATE INDEX idx_spell_items_item ON spell_items(item_id);
+
+CREATE TABLE spell_related_spells (
+  id SERIAL PRIMARY KEY,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  related_spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (spell_id, related_spell_id)
+);
+
+CREATE INDEX idx_spell_related_spells_spell ON spell_related_spells(spell_id);
+CREATE INDEX idx_spell_related_spells_related ON spell_related_spells(related_spell_id);
+
+CREATE TABLE spell_summons (
+  id SERIAL PRIMARY KEY,
+  spell_id INTEGER NOT NULL REFERENCES spells(id) ON DELETE CASCADE,
+  creature_id INTEGER NOT NULL REFERENCES monsters(id) ON DELETE CASCADE,
+  quantity_dice TEXT,  -- e.g., "1d4+1"
+  quantity INTEGER,    -- Fixed quantity if not rolled
+  duration TEXT,
+  is_summon BOOLEAN DEFAULT true,  -- true = summons, false = just references
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE (spell_id, creature_id)
+);
+
+CREATE INDEX idx_spell_summons_spell ON spell_summons(spell_id);
+CREATE INDEX idx_spell_summons_creature ON spell_summons(creature_id);
+CREATE INDEX idx_spell_summons_is_summon ON spell_summons(is_summon);
+
+-- =============================================================================
+-- ADD EXTRACTED FIELDS TO CORE TABLES
+-- =============================================================================
+-- Fields added by extract_names.py that are missing from original schema
+
+-- Add extracted name fields to items table
+ALTER TABLE items ADD COLUMN base_name TEXT;
+ALTER TABLE items ADD COLUMN variant_name TEXT;
+ALTER TABLE items ADD COLUMN container_type TEXT;  -- 'vial', 'flask', 'bottle', etc.
+ALTER TABLE items ADD COLUMN default_quantity INTEGER;  -- For "Arrow (20)"
+ALTER TABLE items ADD COLUMN bonus_display TEXT;  -- For "+1 Longsword"
+ALTER TABLE items ADD COLUMN is_generic_variant BOOLEAN DEFAULT false;  -- For type codes starting with $
+
+-- Add extracted name fields to monsters table
+ALTER TABLE monsters ADD COLUMN base_name TEXT;
+ALTER TABLE monsters ADD COLUMN variant_name TEXT;
+ALTER TABLE monsters ADD COLUMN variant_notes TEXT;
+
+-- Create indexes on new searchable fields
+CREATE INDEX idx_items_base_name ON items USING gin(to_tsvector('english', base_name));
+CREATE INDEX idx_monsters_base_name ON monsters USING gin(to_tsvector('english', base_name));
+
+-- =============================================================================
+-- COMMENTS FOR NEW TABLES
+-- =============================================================================
+
+COMMENT ON TABLE item_conditions IS 'Tracks which items inflict or grant immunity to conditions';
+COMMENT ON TABLE monster_action_conditions IS 'Tracks which monster actions inflict conditions';
+COMMENT ON TABLE spell_conditions IS 'Tracks which spells inflict or prevent conditions';
+
+COMMENT ON TABLE attack_types IS 'Lookup table for attack types (melee weapon, ranged spell, etc.)';
+COMMENT ON TABLE monster_attacks IS 'Structured attack data for monsters (extracted from action text)';
+COMMENT ON TABLE spell_damage IS 'Damage dealt by spells at various levels';
+COMMENT ON TABLE item_damage IS 'Damage dealt by weapons and damaging items';
+
+COMMENT ON TABLE item_related_items IS 'Item dependencies (arrows require bow, etc.)';
+COMMENT ON TABLE spell_summons IS 'Creatures summoned by spells';
+COMMENT ON TABLE monster_spells IS 'Spells that monsters can cast';
+
+COMMENT ON COLUMN items.base_name IS 'Item name without parenthetical info (e.g., "Arrow" from "Arrow (20)")';
+COMMENT ON COLUMN items.variant_name IS 'Variant info from parentheses (e.g., "20" from "Arrow (20)")';
+COMMENT ON COLUMN items.container_type IS 'Container type (vial, flask, bottle, pouch)';
+COMMENT ON COLUMN items.default_quantity IS 'Default quantity for bundled items';
+COMMENT ON COLUMN items.bonus_display IS 'Bonus text from name (e.g., "+1" from "+1 Longsword")';
+COMMENT ON COLUMN items.is_generic_variant IS 'True if type code started with $ (generic variant)';
+
+COMMENT ON COLUMN monsters.base_name IS 'Monster name without variant (e.g., "Goblin" from "Goblin Boss")';
+COMMENT ON COLUMN monsters.variant_name IS 'Variant name from parentheses or suffix';
