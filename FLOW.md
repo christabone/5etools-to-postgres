@@ -175,15 +175,22 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
    - New Fields:
      - Items: `is_generic_variant`
 
-#### 4. **`extract_conditions.py`** (TODO)
+#### 4. **`extract_conditions.py`** ✅
    - Input: `cleaned_data/*_extracted.json`
    - Output: `extraction_data/conditions_extracted.json`
    - Purpose:
      - Parse `{@condition name|source}` tags from all text fields
      - Extract save DC and ability from surrounding context
+     - Distinguish between inflicting conditions vs immunity/resistance
+     - Extract duration information
      - Build relationship data for junction tables
+   - Results:
+     - 6,113 total condition references (508 items, 5,074 monsters, 531 spells)
+     - 15 unique conditions identified
+     - 5,654 inflict conditions, 459 immunity/resistance references
+     - 2,949 references with save DC extracted
    - Example: "must succeed on a DC 15 Constitution save or be {@condition poisoned|XPHB}"
-     → Extract: condition=poisoned, save_dc=15, save_ability=Constitution
+     → Extract: condition=poisoned, save_dc=15, save_ability=Constitution, inflicts=true
 
 #### 5. **`extract_damage.py`** (TODO)
    - Input: `cleaned_data/*_extracted.json`
@@ -227,9 +234,9 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
 - ✅ extract_names.py (2,722 items, 4,445 monsters, 937 spells)
 - ✅ normalize_bonuses.py (438 bonus fields normalized)
 - ✅ normalize_type_codes.py (271 type codes normalized)
+- ✅ extract_conditions.py (6,113 condition references extracted)
 
 **Pending:**
-- ⏭️ extract_conditions.py
 - ⏭️ extract_damage.py
 - ⏭️ extract_cross_refs.py
 - ⏭️ validate_extraction.py
