@@ -1,0 +1,1982 @@
+[
+  {
+    "name": "Heralds of Dust Exorcist",
+    "source": "AATM",
+    "size": [
+      "S",
+      "M"
+    ],
+    "type": "humanoid",
+    "alignment": [
+      "A"
+    ],
+    "ac": [
+      13,
+      {
+        "ac": 16,
+        "condition": "with {@spell mage armor}",
+        "braces": true
+      }
+    ],
+    "hp": {
+      "average": 112,
+      "formula": "15d8 + 45"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 8,
+    "dex": 16,
+    "con": 16,
+    "int": 17,
+    "wis": 14,
+    "cha": 11,
+    "save": {
+      "int": "+6",
+      "wis": "+5",
+      "cha": "+3"
+    },
+    "skill": {
+      "arcana": "+6",
+      "perception": "+5",
+      "religion": "+6"
+    },
+    "senses": [
+      "truesight 60 ft."
+    ],
+    "passive": 15,
+    "resist": [
+      "necrotic"
+    ],
+    "conditionImmune": [
+      "charmed",
+      "frightened"
+    ],
+    "languages": [
+      "Common plus three more languages"
+    ],
+    "cr": "6",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "The exorcist casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 14}, {@hit 6} to hit with spell attacks):"
+        ],
+        "will": [
+          "{@spell detect evil and good}",
+          "{@spell mage armor} (self only)",
+          "{@spell mage hand}"
+        ],
+        "daily": {
+          "2e": [
+            "{@spell protection from evil and good}",
+            "{@spell remove curse}",
+            "{@spell speak with dead}"
+          ],
+          "1e": [
+            "{@spell banishment}",
+            "{@spell dispel evil and good}"
+          ]
+        },
+        "ability": "int",
+        "displayAs": "action"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Incorruptible Vessel",
+        "entries": [
+          "The exorcist can't be possessed by Celestials, Fiends, or Undead."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The exorcist makes two Grave Burst attacks."
+        ]
+      },
+      {
+        "name": "Grave Burst",
+        "entries": [
+          "{@atk ms,rs} {@hit 6} to hit, reach 5 ft. or range 120 ft., one target. {@h}19 ({@damage 3d10 + 3}) necrotic or radiant damage (exorcist's choice)."
+        ]
+      },
+      {
+        "name": "Admit Entity {@recharge 5}",
+        "entries": [
+          "The exorcist thins the veil of death for a creature it can see within 60 feet of itself, exposing the target to malevolent entities. The target must make a {@dc 14} Charisma saving throw. On a failed save, the target takes 36 ({@damage 8d8}) psychic damage and has the {@condition incapacitated} condition for 1 minute, during which time it retches and babbles incoherently in a voice that is not its own. On a successful save, the target takes half as much damage only. An {@condition incapacitated} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+        ]
+      }
+    ],
+    "senseTags": [
+      "U"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C"
+    ],
+    "damageTags": [
+      "N",
+      "R",
+      "Y"
+    ],
+    "spellcastingTags": [
+      "O"
+    ],
+    "conditionInflict": [
+      "incapacitated"
+    ],
+    "conditionInflictSpell": [
+      "incapacitated"
+    ],
+    "savingThrowForced": [
+      "charisma"
+    ],
+    "savingThrowForcedSpell": [
+      "charisma"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Ancient Deep Crow",
+    "source": "AI",
+    "page": 211,
+    "size": [
+      "H"
+    ],
+    "type": "monstrosity",
+    "alignment": [
+      "U"
+    ],
+    "ac": [
+      {
+        "ac": 18,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 187,
+      "formula": "15d12 + 90"
+    },
+    "speed": {
+      "walk": 20,
+      "fly": 80
+    },
+    "str": 23,
+    "dex": 16,
+    "con": 23,
+    "int": 10,
+    "wis": 15,
+    "cha": 19,
+    "save": {
+      "con": "+11",
+      "wis": "+7"
+    },
+    "skill": {
+      "perception": "+7",
+      "stealth": "+13"
+    },
+    "senses": [
+      "blindsight 60 ft.",
+      "darkvision 120 ft."
+    ],
+    "passive": 17,
+    "resist": [
+      {
+        "resist": [
+          "bludgeoning",
+          "piercing",
+          "slashing"
+        ],
+        "note": "from nonmagical attacks",
+        "cond": true
+      }
+    ],
+    "languages": [
+      "Deep Crow"
+    ],
+    "cr": "15",
+    "trait": [
+      {
+        "name": "Magic Resistance",
+        "entries": [
+          "The ancient deep crow has advantage on saving throws against spells and other magical effects."
+        ]
+      },
+      {
+        "name": "Shadow Stealth",
+        "entries": [
+          "While in dim light or darkness, the ancient deep crow can take the Hide action as a bonus action."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The ancient deep crow makes three attacks: one with its mandibles and two with its claws."
+        ]
+      },
+      {
+        "name": "Mandibles",
+        "entries": [
+          "{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}17 ({@damage 2d10 + 6}) piercing damage, and the target is {@condition grappled} (escape {@dc 19}). Until this grapple ends, the target is {@condition restrained}, and the ancient deep crow can't use its mandibles on another target."
+        ]
+      },
+      {
+        "name": "Claw",
+        "entries": [
+          "{@atk mw} {@hit 11} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d6 + 6}) slashing damage."
+        ]
+      },
+      {
+        "name": "Shadow Caw",
+        "entries": [
+          "The ancient deep crow releases an ear-splitting caw. Each creature within 60 feet of the crow and able to hear it must make a {@dc 17} Constitution saving throw. On a failure, a creature takes 10 ({@damage 3d6}) psychic damage."
+        ]
+      }
+    ],
+    "legendary": [
+      {
+        "name": "Detect",
+        "entries": [
+          "The deep crow makes a Wisdom ({@skill Perception}) check."
+        ]
+      },
+      {
+        "name": "Shadow Caw (Costs 2 Actions)",
+        "entries": [
+          "The ancient deep crow uses Shadow Caw."
+        ]
+      },
+      {
+        "name": "Wing Attack (Costs 2 Actions)",
+        "entries": [
+          "The ancient deep crow beats its wings. Each creature within 10 feet of the deep crow must succeed on a {@dc 19} Dexterity saving throw or take 13 ({@damage 2d6 + 6}) bludgeoning damage and be knocked {@condition prone}. The ancient deep crow can then fly up to half its flying speed."
+        ]
+      }
+    ],
+    "legendaryGroup": {
+      "name": "Ancient Deep Crow",
+      "source": "AI"
+    },
+    "traitTags": [
+      "Magic Resistance"
+    ],
+    "senseTags": [
+      "B",
+      "SD"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "OTH"
+    ],
+    "damageTags": [
+      "B",
+      "P",
+      "S",
+      "Y"
+    ],
+    "miscTags": [
+      "MW",
+      "RCH"
+    ],
+    "conditionInflict": [
+      "grappled",
+      "prone",
+      "restrained"
+    ],
+    "savingThrowForced": [
+      "constitution",
+      "dexterity"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Donaar Blit'zen",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 201,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "dragonborn"
+      ]
+    },
+    "alignment": [
+      "C",
+      "G"
+    ],
+    "ac": [
+      {
+        "ac": 18,
+        "from": [
+          "{@item plate armor|phb}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 45,
+      "formula": "7d8 + 14"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 17,
+    "dex": 8,
+    "con": 14,
+    "int": 10,
+    "wis": 10,
+    "cha": 16,
+    "save": {
+      "wis": "+2",
+      "cha": "+5"
+    },
+    "skill": {
+      "history": "+2",
+      "insight": "+2",
+      "intimidation": "+5",
+      "persuasion": "+5"
+    },
+    "passive": 10,
+    "resist": [
+      "acid"
+    ],
+    "languages": [
+      "Common",
+      "Draconic",
+      "Orc"
+    ],
+    "cr": "3",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Donaar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He has the following paladin spells prepared:"
+        ],
+        "spells": {
+          "1": {
+            "slots": 4,
+            "spells": [
+              "{@spell command}",
+              "{@spell compelled duel}",
+              "{@spell cure wounds}",
+              "{@spell wrathful smite}"
+            ]
+          },
+          "2": {
+            "slots": 2,
+            "spells": [
+              "{@spell aid}",
+              "{@spell branding smite}",
+              "{@spell lesser restoration}",
+              "{@spell warding bond}",
+              "{@spell zone of truth}"
+            ]
+          }
+        },
+        "ability": "cha"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Champion Challenge (Recharges after a Short or Long Rest)",
+        "entries": [
+          "As a bonus action, Donaar causes each creature of his choice that he can see within 30 feet of him to make a {@dc 13} Wisdom saving throw. On a failure, a creature can't willingly move more than 30 feet away from Donaar. This effect ends on the creature if Donaar is {@condition incapacitated} or dies, or if the creature is moved more than 30 feet away from him."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Donaar makes two attacks with his greatsword or his whip."
+        ]
+      },
+      {
+        "name": "Greatsword",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage. Whenever Donaar rolls a 1 or 2 on a damage die, he can reroll the die and must use the new roll."
+        ]
+      },
+      {
+        "name": "Whip",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}5 ({@damage 1d4 + 3}) slashing damage."
+        ]
+      },
+      {
+        "name": "Acid Vomit",
+        "entries": [
+          "Donaar regurgitates acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a {@dc 12} Dexterity saving throw, taking 7 ({@damage 2d6}) acid damage on a failed save, or half as much damage on a successful one."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "greatsword|phb",
+      "whip|phb"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "DR",
+      "O"
+    ],
+    "damageTags": [
+      "A",
+      "S"
+    ],
+    "damageTagsSpell": [
+      "R",
+      "Y"
+    ],
+    "spellcastingTags": [
+      "CP"
+    ],
+    "miscTags": [
+      "AOE",
+      "MLW",
+      "MW",
+      "RCH"
+    ],
+    "conditionInflictSpell": [
+      "frightened",
+      "prone"
+    ],
+    "savingThrowForced": [
+      "dexterity",
+      "wisdom"
+    ],
+    "savingThrowForcedSpell": [
+      "charisma",
+      "wisdom"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "K'thriss Drow'b",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 202,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "elf"
+      ]
+    },
+    "alignment": [
+      "C",
+      "N"
+    ],
+    "ac": [
+      {
+        "ac": 14,
+        "from": [
+          "{@item studded leather armor|phb|studded leather}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 44,
+      "formula": "8d8 + 8"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 8,
+    "dex": 14,
+    "con": 12,
+    "int": 14,
+    "wis": 11,
+    "cha": 18,
+    "save": {
+      "str": "+0",
+      "dex": "+3",
+      "con": "+2",
+      "int": "+3",
+      "wis": "+3",
+      "cha": "+7"
+    },
+    "skill": {
+      "arcana": "+4",
+      "insight": "+2",
+      "investigation": "+4",
+      "perception": "+2",
+      "religion": "+4"
+    },
+    "senses": [
+      "darkvision 120 ft."
+    ],
+    "passive": 12,
+    "languages": [
+      "Celestial",
+      "Common",
+      "Elvish",
+      "Undercommon; can read all writing"
+    ],
+    "cr": "3",
+    "spellcasting": [
+      {
+        "name": "Innate Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "K'thriss's innate spellcasting ability is Charisma (spell save {@dc 14}). He can innately cast the following spells, requiring no material components:"
+        ],
+        "will": [
+          "{@spell dancing lights}",
+          "{@spell disguise self}"
+        ],
+        "daily": {
+          "1e": [
+            "{@spell darkness}",
+            "{@spell faerie fire}"
+          ]
+        },
+        "ability": "cha"
+      },
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "K'thriss is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). He regains his expended spell slots when he finishes a short or long rest, and knows the following warlock spells:"
+        ],
+        "spells": {
+          "0": {
+            "spells": [
+              "{@spell chill touch}",
+              "{@spell eldritch blast}",
+              "{@spell mending}",
+              "{@spell prestidigitation}",
+              "{@spell thorn whip}",
+              "{@spell vicious mockery}"
+            ]
+          },
+          "3": {
+            "lower": 1,
+            "slots": 2,
+            "spells": [
+              "{@spell dissonant whispers}",
+              "{@spell fly}",
+              "{@spell hex}",
+              "{@spell misty step}",
+              "{@spell sending}",
+              "{@spell shatter}"
+            ]
+          }
+        },
+        "ability": "cha"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Special Equipment",
+        "entries": [
+          "K'thriss wears a {@item robe of stars} (accounted for in his statistics). The robe allows him to cast the following spells: 6/day: {@spell magic missile} (7 missiles)"
+        ]
+      },
+      {
+        "name": "Awakened Mind",
+        "entries": [
+          "K'thriss can telepathically speak to any creature he can see within 30 feet of him, provided the creature can understand at least one language."
+        ]
+      },
+      {
+        "name": "Fey Ancestry",
+        "entries": [
+          "K'thriss has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep. Sunlight Sensitivity. While in sunlight, K'thriss has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "K'thriss makes two attacks with his sickle."
+        ]
+      },
+      {
+        "name": "Sickle",
+        "entries": [
+          "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "sickle|phb"
+    ],
+    "traitTags": [
+      "Fey Ancestry"
+    ],
+    "senseTags": [
+      "SD"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "CE",
+      "E",
+      "U",
+      "XX"
+    ],
+    "damageTags": [
+      "S"
+    ],
+    "damageTagsSpell": [
+      "N",
+      "O",
+      "P",
+      "T",
+      "Y"
+    ],
+    "spellcastingTags": [
+      "CL",
+      "I"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW"
+    ],
+    "savingThrowForcedSpell": [
+      "constitution",
+      "dexterity",
+      "wisdom"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "M\u00f4rg\u00e6n",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 199,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "elf"
+      ]
+    },
+    "alignment": [
+      "C",
+      "N"
+    ],
+    "ac": [
+      {
+        "ac": 16,
+        "from": [
+          "{@item studded leather armor|phb|studded leather}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 66,
+      "formula": "12d8 + 12"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 12,
+    "dex": 18,
+    "con": 12,
+    "int": 12,
+    "wis": 14,
+    "cha": 10,
+    "save": {
+      "str": "+3",
+      "dex": "+6"
+    },
+    "skill": {
+      "athletics": "+3",
+      "insight": "+4",
+      "nature": "+3",
+      "perception": "+4",
+      "stealth": "+6",
+      "survival": "+4"
+    },
+    "senses": [
+      "darkvision 60 ft."
+    ],
+    "passive": 14,
+    "languages": [
+      "Common",
+      "Draconic",
+      "Dwarvish",
+      "Giant",
+      "Goblin"
+    ],
+    "cr": "4",
+    "spellcasting": [
+      {
+        "name": "Innate Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "M\u00f4rg\u00e6n's spellcasting ability is Intelligence. She can innately cast the following spells, requiring no material components:"
+        ],
+        "will": [
+          "{@spell mage hand}"
+        ],
+        "ability": "int"
+      },
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "M\u00f4rg\u00e6n is a 9th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). She has the following ranger spells prepared:"
+        ],
+        "spells": {
+          "1": {
+            "slots": 4,
+            "spells": [
+              "{@spell alarm}",
+              "{@spell animal friendship}",
+              "{@spell hunter's mark}"
+            ]
+          },
+          "2": {
+            "slots": 3,
+            "spells": [
+              "{@spell pass without trace}",
+              "{@spell spike growth}"
+            ]
+          },
+          "3": {
+            "slots": 2,
+            "spells": [
+              "{@spell conjure animals}"
+            ]
+          }
+        },
+        "ability": "wis"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Fey Ancestry",
+        "entries": [
+          "M\u00f4rg\u00e6n has advantage on saving throws against being {@condition charmed}, and magic can't put her to sleep."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "M\u00f4rg\u00e6n makes three attacks with her scimitars or her longbow."
+        ]
+      },
+      {
+        "name": "Scimitars",
+        "entries": [
+          "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) slashing damage."
+        ]
+      },
+      {
+        "name": "Longbow",
+        "entries": [
+          "{@atk rw} {@hit 6} to hit, range 150/600 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "longbow|phb"
+    ],
+    "traitTags": [
+      "Fey Ancestry"
+    ],
+    "senseTags": [
+      "D"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "D",
+      "DR",
+      "GI",
+      "GO"
+    ],
+    "damageTags": [
+      "P",
+      "S"
+    ],
+    "damageTagsSpell": [
+      "P"
+    ],
+    "spellcastingTags": [
+      "CR",
+      "I"
+    ],
+    "miscTags": [
+      "MW",
+      "RNG",
+      "RW"
+    ],
+    "conditionInflictSpell": [
+      "charmed"
+    ],
+    "savingThrowForcedSpell": [
+      "wisdom"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Tyreus, Illusionist",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AitFR-FCD",
+    "page": 11,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "human"
+      ]
+    },
+    "alignment": [
+      "N",
+      "E"
+    ],
+    "ac": [
+      13
+    ],
+    "hp": {
+      "average": 156,
+      "formula": "24d8 + 48"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 10,
+    "dex": 16,
+    "con": 14,
+    "int": 20,
+    "wis": 15,
+    "cha": 16,
+    "save": {
+      "int": "+10",
+      "wis": "+7"
+    },
+    "skill": {
+      "arcana": "+12",
+      "deception": "+8",
+      "history": "+10",
+      "perception": "+7"
+    },
+    "passive": 17,
+    "resist": [
+      {
+        "special": "damage from spells"
+      },
+      {
+        "resist": [
+          "bludgeoning",
+          "piercing",
+          "slashing"
+        ],
+        "note": "(from stoneskin)",
+        "preNote": "nonmagical",
+        "cond": true
+      }
+    ],
+    "languages": [
+      "Common",
+      "Deep Speech",
+      "Draconic",
+      "Primordial",
+      "Sylvan"
+    ],
+    "cr": "13",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Tyreus is a 16th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 18}, {@hit 10} to hit with spell attacks). He has the following wizard spells prepared."
+        ],
+        "spells": {
+          "0": {
+            "spells": [
+              "{@spell fire bolt}",
+              "{@spell light}",
+              "{@spell mage hand}",
+              "{@spell minor illusion}",
+              "{@spell shocking grasp}"
+            ]
+          },
+          "1": {
+            "slots": 4,
+            "spells": [
+              "{@spell mage armor}",
+              "{@spell magic missile}",
+              "{@spell shield}",
+              "{@spell thunderwave}"
+            ]
+          },
+          "2": {
+            "slots": 3,
+            "spells": [
+              "{@spell invisibility}*",
+              "{@spell mirror image}*",
+              "{@spell phantasmal force}*"
+            ]
+          },
+          "3": {
+            "slots": 3,
+            "spells": [
+              "{@spell counterspell}",
+              "{@spell fly}",
+              "{@spell lightning bolt}",
+              "{@spell major image}*"
+            ]
+          },
+          "4": {
+            "slots": 3,
+            "spells": [
+              "{@spell banishment}",
+              "{@spell hallucinatory terrain}*",
+              "{@spell phantasmal killer}*",
+              "{@spell stoneskin}"
+            ]
+          },
+          "5": {
+            "slots": 2,
+            "spells": [
+              "{@spell conjure elemental}",
+              "{@spell mislead}*",
+              "{@spell telekinesis}"
+            ]
+          },
+          "6": {
+            "slots": 1,
+            "spells": [
+              "{@spell disintegrate}"
+            ]
+          },
+          "7": {
+            "slots": 1,
+            "spells": [
+              "{@spell plane shift}"
+            ]
+          },
+          "8": {
+            "slots": 1,
+            "spells": [
+              "{@spell maze}"
+            ]
+          }
+        },
+        "footerEntries": [
+          "*(Illusion spell of 1st level or higher)"
+        ],
+        "ability": "int"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Legendary Resistance (3/Day)",
+        "entries": [
+          "If Tyreus fails a saving throw, he can choose to succeed instead."
+        ]
+      },
+      {
+        "name": "Illusory Reality",
+        "entries": [
+          "When Tyreus casts an illusion spell of 1st level or higher, he can choose one inanimate, nonmagical object that is part of the illusion and make that object real. He can do this on his turn as a bonus action while the spell is ongoing.",
+          "The object remains real for 1 minute. The object can't deal damage or otherwise directly harm anyone."
+        ]
+      },
+      {
+        "name": "Displacement (Recharges after Tyreus Casts an Illusion Spell of 1st Level or Higher)",
+        "entries": [
+          "As a bonus action, Tyreus projects an illusion that makes him appear to be standing a few inches from his actual location, causing any creature to have disadvantage on attack rolls against Tyreus. The effect ends if Tyreus takes damage, he is {@condition incapacitated}, or his speed becomes 0."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Dagger",
+        "entries": [
+          "{@atk mw,rw} {@hit 8} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+        ]
+      },
+      {
+        "name": "Modify Illusion",
+        "entries": [
+          "When Tyreus casts an illusion spell that has a duration of 1 minute or longer, he can use his action to change the nature of that illusion (using the spell's normal parameters for the illusion), provided that he can see the illusion."
+        ]
+      }
+    ],
+    "legendary": [
+      {
+        "name": "Scrutinize",
+        "entries": [
+          "Tyreus makes an Intelligence ({@skill Investigation}) or Wisdom ({@skill Perception}) check."
+        ]
+      },
+      {
+        "name": "Cast Cantrip",
+        "entries": [
+          "Tyreus casts a cantrip from his spell list."
+        ]
+      },
+      {
+        "name": "Cast Spell (Costs 1-3 Actions)",
+        "entries": [
+          "Tyreus uses a spell slot to cast a 1st-, 2nd-, or 3rd-level spell that he has prepared. Doing so costs 1 legendary action per level of the spell."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "dagger|phb"
+    ],
+    "traitTags": [
+      "Legendary Resistances"
+    ],
+    "languageTags": [
+      "C",
+      "DR",
+      "DS",
+      "P",
+      "S"
+    ],
+    "damageTags": [
+      "P"
+    ],
+    "damageTagsSpell": [
+      "F",
+      "L",
+      "O",
+      "T",
+      "Y"
+    ],
+    "spellcastingTags": [
+      "CW"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW",
+      "RW",
+      "THW"
+    ],
+    "conditionInflictSpell": [
+      "blinded",
+      "deafened",
+      "frightened",
+      "incapacitated",
+      "invisible",
+      "restrained"
+    ],
+    "savingThrowForcedSpell": [
+      "charisma",
+      "constitution",
+      "dexterity",
+      "intelligence",
+      "wisdom"
+    ],
+    "hasToken": true,
+    "hasFluff": true
+  },
+  {
+    "name": "Walnut Dankgrass",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 204,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "elf"
+      ]
+    },
+    "alignment": [
+      "L",
+      "N"
+    ],
+    "ac": [
+      {
+        "ac": 14,
+        "from": [
+          "{@item leather armor|phb}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 52,
+      "formula": "8d8 + 16"
+    },
+    "speed": {
+      "walk": 35
+    },
+    "str": 8,
+    "dex": 16,
+    "con": 14,
+    "int": 10,
+    "wis": 18,
+    "cha": 10,
+    "save": {
+      "int": "+2",
+      "wis": "+6"
+    },
+    "skill": {
+      "athletics": "+1",
+      "insight": "+6",
+      "perception": "+6",
+      "stealth": "+5",
+      "survival": "+6"
+    },
+    "senses": [
+      "darkvision 60 ft."
+    ],
+    "passive": 16,
+    "languages": [
+      "Common",
+      "Druidic",
+      "Elvish",
+      "Sylvan"
+    ],
+    "cr": "3",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Walnut is a 7th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 14}, {@hit 6} to hit with spell attacks). She has the following druid spells prepared:"
+        ],
+        "spells": {
+          "0": {
+            "spells": [
+              "{@spell druidcraft}",
+              "{@spell produce flame}",
+              "{@spell thorn whip}"
+            ]
+          },
+          "1": {
+            "slots": 4,
+            "spells": [
+              "{@spell cure wounds}",
+              "{@spell entangle}",
+              "{@spell thunderwave}"
+            ]
+          },
+          "2": {
+            "slots": 3,
+            "spells": [
+              "{@spell flame blade}",
+              "{@spell moonbeam}",
+              "{@spell pass without trace}"
+            ]
+          },
+          "3": {
+            "slots": 3,
+            "spells": [
+              "{@spell call lightning}",
+              "{@spell dispel magic}",
+              "{@spell plant growth}"
+            ]
+          },
+          "4": {
+            "slots": 1,
+            "spells": [
+              "{@spell blight}",
+              "{@spell freedom of movement}"
+            ]
+          }
+        },
+        "ability": "wis"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Fey Ancestry",
+        "entries": [
+          "Walnut has advantage on saving throws against being {@condition charmed}, and magic can't put her to sleep."
+        ]
+      },
+      {
+        "name": "Mask of the Wild",
+        "entries": [
+          "Walnut can attempt to hide even when she is only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+        ]
+      },
+      {
+        "name": "Wild Shape (Recharges after a Short or Long rest)",
+        "entries": [
+          "As a bonus action, Walnut can assume the shape of a dire wolf. She can stay in this form for 3 hours or until she reverts to her normal form as a bonus action. She automatically reverts if she falls {@condition unconscious}, drops to 0 hit points, or dies.",
+          "While transformed, Walnut's game statistics are replaced by the statistics of the dire wolf, except she retains her alignment, personality, and Intelligence, Wisdom, and Charisma scores.",
+          "Her attacks in beast form are magical. While in beast form, Walnut can use a bonus action to expend one spell slot and regain {@dice 1d8} hit points per level of the spell slot expended."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Walnut makes two attacks with Foremother or her longbow."
+        ]
+      },
+      {
+        "name": "Foremother (+1 Scimitar)",
+        "entries": [
+          "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) slashing damage."
+        ]
+      },
+      {
+        "name": "Longbow",
+        "entries": [
+          "{@atk rw} {@hit 5} to hit, range 150/600 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "longbow|phb"
+    ],
+    "traitTags": [
+      "Fey Ancestry"
+    ],
+    "senseTags": [
+      "D"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "DU",
+      "E",
+      "S"
+    ],
+    "damageTags": [
+      "P",
+      "S"
+    ],
+    "damageTagsSpell": [
+      "F",
+      "L",
+      "N",
+      "P",
+      "R",
+      "T"
+    ],
+    "spellcastingTags": [
+      "CD"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW",
+      "RNG",
+      "RW"
+    ],
+    "conditionInflictSpell": [
+      "restrained"
+    ],
+    "savingThrowForcedSpell": [
+      "constitution",
+      "dexterity",
+      "strength"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Omin Dran",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 196,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "half-elf"
+      ]
+    },
+    "alignment": [
+      "L",
+      "N"
+    ],
+    "ac": [
+      {
+        "ac": 18,
+        "from": [
+          "{@item plate armor|phb}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 65,
+      "formula": "10d8 + 20"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 16,
+    "dex": 8,
+    "con": 14,
+    "int": 11,
+    "wis": 18,
+    "cha": 12,
+    "save": {
+      "wis": "+7",
+      "cha": "+4"
+    },
+    "skill": {
+      "deception": "+4",
+      "insight": "+7",
+      "intimidation": "+4",
+      "medicine": "+7",
+      "perception": "+7",
+      "persuasion": "+4"
+    },
+    "senses": [
+      "darkvision 60 ft."
+    ],
+    "passive": 17,
+    "languages": [
+      "Common",
+      "Dwarvish",
+      "Elvish",
+      "Goblin"
+    ],
+    "cr": "5",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Omin is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). He has the following cleric spells prepared:"
+        ],
+        "spells": {
+          "0": {
+            "spells": [
+              "{@spell guidance}",
+              "{@spell sacred flame}",
+              "{@spell spare the dying}",
+              "{@spell thaumaturgy}"
+            ]
+          },
+          "1": {
+            "slots": 4,
+            "spells": [
+              "{@spell bless}",
+              "{@spell command}",
+              "{@spell divine favor}",
+              "{@spell shield of faith}"
+            ]
+          },
+          "2": {
+            "slots": 3,
+            "spells": [
+              "{@spell enhance ability}",
+              "{@spell hold person}",
+              "{@spell magic weapon}",
+              "{@spell silence}",
+              "{@spell spiritual weapon}"
+            ]
+          },
+          "3": {
+            "slots": 3,
+            "spells": [
+              "{@spell beacon of hope}",
+              "{@spell crusader's mantle}",
+              "{@spell dispel magic}",
+              "{@spell mass healing word}",
+              "{@spell spirit guardians}"
+            ]
+          },
+          "4": {
+            "slots": 3,
+            "spells": [
+              "{@spell death ward}",
+              "{@spell freedom of movement}",
+              "{@spell locate creature}",
+              "{@spell stoneskin}"
+            ]
+          },
+          "5": {
+            "slots": 1,
+            "spells": [
+              "{@spell dispel evil and good}",
+              "{@spell flame strike}",
+              "{@spell hold monster}",
+              "{@spell greater restoration}",
+              "{@spell legend lore}"
+            ]
+          }
+        },
+        "ability": "wis"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Divine Strike",
+        "entries": [
+          "Once on each of his turns when he hits a creature with a weapon attack, Omin can cause the attack to deal an extra 4 ({@damage 1d8}) damage of the same type dealt by the weapon."
+        ]
+      },
+      {
+        "name": "Fey Ancestry",
+        "entries": [
+          "Omin has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Omin makes two attacks with his maul."
+        ]
+      },
+      {
+        "name": "Maul",
+        "entries": [
+          "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage."
+        ]
+      }
+    ],
+    "reaction": [
+      {
+        "name": "War God's Blessing (Recharges after a Short or Long Rest)",
+        "entries": [
+          "When a creature within 30 feet of Omin makes an attack roll, but before learning whether it hits or misses, Omin can grant the creature a +10 bonus to that roll."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "maul|phb"
+    ],
+    "traitTags": [
+      "Fey Ancestry"
+    ],
+    "senseTags": [
+      "D"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "D",
+      "E",
+      "GO"
+    ],
+    "damageTags": [
+      "B"
+    ],
+    "damageTagsSpell": [
+      "F",
+      "N",
+      "O",
+      "R"
+    ],
+    "spellcastingTags": [
+      "CC"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW"
+    ],
+    "conditionInflictSpell": [
+      "deafened",
+      "paralyzed",
+      "prone"
+    ],
+    "savingThrowForcedSpell": [
+      "charisma",
+      "dexterity",
+      "wisdom"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Kyrilla, Accursed Gorgon",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AitFR-DN",
+    "page": 12,
+    "size": [
+      "L"
+    ],
+    "type": "monstrosity",
+    "alignment": [
+      "L",
+      "E"
+    ],
+    "ac": [
+      {
+        "ac": 15,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 127,
+      "formula": "15d10 + 45"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 11,
+    "dex": 16,
+    "con": 16,
+    "int": 14,
+    "wis": 14,
+    "cha": 15,
+    "save": {
+      "wis": "+6",
+      "cha": "+6"
+    },
+    "skill": {
+      "deception": "+6",
+      "insight": "+6",
+      "perception": "+6",
+      "stealth": "+7"
+    },
+    "senses": [
+      "darkvision 60 ft."
+    ],
+    "passive": 16,
+    "resist": [
+      {
+        "resist": [
+          "bludgeoning",
+          "piercing",
+          "slashing"
+        ],
+        "note": "from nonmagical attacks",
+        "cond": true
+      }
+    ],
+    "immune": [
+      "poison"
+    ],
+    "conditionImmune": [
+      "charmed"
+    ],
+    "languages": [
+      "Common",
+      "Draconic",
+      "Primordial"
+    ],
+    "cr": "10",
+    "trait": [
+      {
+        "name": "Feed on Pain (2/Day)",
+        "entries": [
+          "The first time she hits with a weapon attack on her turn, Kyrilla can deal an extra 16 ({@damage 3d10}) poison damage to the target and regains a number of hit points equal to half the damage dealt."
+        ]
+      },
+      {
+        "name": "Legendary Resistance (2/Day)",
+        "entries": [
+          "If she fails a saving throw, Kyrilla can choose to succeed instead."
+        ]
+      },
+      {
+        "name": "Petrifying Gaze",
+        "entries": [
+          "When a creature that can see Kyrilla's eyes starts its turn within 30 feet of her, Kyrilla can force it to make a {@dc 14} Constitution saving throw if Kyrilla isn't {@condition incapacitated} and can see the creature. If the saving throw fails by 5 or more, the creature is instantly {@condition petrified}. Otherwise, a creature that fails the save begins to turn to stone and is {@condition restrained}. The {@condition restrained} creature must repeat the saving throw at the end of its next turn, becoming {@condition petrified} on a failure or ending the effect on a success. The petrification lasts until the creature is freed by the {@spell greater restoration} spell or other magic.",
+          "Unless {@status surprised}, a creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it can't see Kyrilla until the start of its next turn, when it can avert its eyes again. If the creature looks at Kyrilla in the meantime, it must immediately make the save.",
+          "Kyrilla's accursed gaze does not affect undead or constructs. If Kyrilla sees herself reflected on a polished surface within 30 feet of her and in an area of bright light, she is, due to her curse, affected by her own gaze."
+        ]
+      },
+      {
+        "name": "Sunlight Sensitivity",
+        "entries": [
+          "While in sunlight, Kyrilla has disadvantage on attack rolls and on Wisdom ({@skill Perception}) checks that rely on sight."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Kyrilla makes one attack to constrict and two attacks with her claws, or she makes three attacks with her longbow."
+        ]
+      },
+      {
+        "name": "Claw",
+        "entries": [
+          "{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 3d6 + 3}) slashing damage."
+        ]
+      },
+      {
+        "name": "Constrict",
+        "entries": [
+          "{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}10 ({@damage 3d6}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 13}) if it is a Large or smaller creature. Until this grapple ends, the target is {@condition restrained}, and Kyrilla can't constrict another target."
+        ]
+      },
+      {
+        "name": "Longbow",
+        "entries": [
+          "{@atk rw} {@hit 7} to hit, range 150/600 ft., one target. {@h}16 ({@damage 3d8 + 3}) piercing damage."
+        ]
+      },
+      {
+        "name": "Summon Swarm of Poisonous Snakes {@recharge 5}",
+        "entries": [
+          "Kyrilla conjures a swarm of poisonous snakes into an empty space within 10 feet of her. The swarm is under Kyrilla's control and acts on her turn, immediately after her in the initiative order.",
+          "It remains in existence for up to 1 hour. She can summon no more than three swarms per day. Kyrilla can banish any or all of her summoned swarms with a bonus action."
+        ]
+      }
+    ],
+    "legendary": [
+      {
+        "name": "Claw",
+        "entries": [
+          "Kyrilla or a swarm of poisonous snakes makes a weapon attack."
+        ]
+      },
+      {
+        "name": "Detect",
+        "entries": [
+          "Kyrilla makes a Wisdom ({@skill Perception}) check."
+        ]
+      },
+      {
+        "name": "Slither",
+        "entries": [
+          "Kyrilla moves up to her speed without provoking opportunity attacks."
+        ]
+      }
+    ],
+    "legendaryGroup": {
+      "name": "Kyrilla, Accursed Gorgon",
+      "source": "AitFR-DN"
+    },
+    "attachedItems": [
+      "longbow|phb"
+    ],
+    "traitTags": [
+      "Legendary Resistances",
+      "Sunlight Sensitivity"
+    ],
+    "senseTags": [
+      "D"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "DR",
+      "P"
+    ],
+    "damageTags": [
+      "B",
+      "I",
+      "P",
+      "S"
+    ],
+    "damageTagsLegendary": [
+      "R",
+      "S"
+    ],
+    "miscTags": [
+      "MW",
+      "RCH",
+      "RNG",
+      "RW"
+    ],
+    "conditionInflict": [
+      "grappled",
+      "petrified",
+      "restrained"
+    ],
+    "conditionInflictLegendary": [
+      "poisoned"
+    ],
+    "savingThrowForced": [
+      "constitution"
+    ],
+    "savingThrowForcedLegendary": [
+      "constitution",
+      "dexterity"
+    ],
+    "hasToken": true,
+    "hasFluff": true
+  },
+  {
+    "name": "Factol Skall",
+    "source": "AATM",
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "undead",
+      "tags": [
+        "wizard"
+      ]
+    },
+    "alignment": [
+      "N",
+      "E"
+    ],
+    "ac": [
+      {
+        "ac": 17,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 210,
+      "formula": "28d8 + 84"
+    },
+    "speed": {
+      "walk": 30,
+      "fly": {
+        "number": 30,
+        "condition": "(hover)"
+      },
+      "canHover": true
+    },
+    "str": 11,
+    "dex": 16,
+    "con": 16,
+    "int": 20,
+    "wis": 14,
+    "cha": 16,
+    "save": {
+      "con": "+9",
+      "int": "+11",
+      "wis": "+8"
+    },
+    "skill": {
+      "arcana": "+17",
+      "history": "+11",
+      "medicine": "+8",
+      "perception": "+8"
+    },
+    "senses": [
+      "truesight 120 ft."
+    ],
+    "passive": 18,
+    "resist": [
+      "cold",
+      {
+        "resist": [
+          "bludgeoning",
+          "piercing",
+          "slashing"
+        ],
+        "note": "from nonmagical attacks",
+        "cond": true
+      }
+    ],
+    "immune": [
+      "necrotic",
+      "poison"
+    ],
+    "conditionImmune": [
+      "charmed",
+      "exhaustion",
+      "frightened",
+      "paralyzed",
+      "poisoned",
+      "stunned"
+    ],
+    "languages": [
+      "all"
+    ],
+    "cr": "17",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Skall casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 19}):"
+        ],
+        "will": [
+          "{@spell detect magic}",
+          "{@spell mage hand}",
+          "{@spell prestidigitation}"
+        ],
+        "daily": {
+          "2e": [
+            "{@spell animate dead} (as an action)",
+            "{@spell dispel magic}",
+            "{@spell speak with dead}"
+          ],
+          "1e": [
+            "{@spell finger of death}",
+            "{@spell plane shift} (self only)",
+            "{@spell project image}"
+          ]
+        },
+        "ability": "int",
+        "displayAs": "action"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Aura of Death",
+        "entries": [
+          "Creatures within 30 feet of Skall have disadvantage on death saving throws."
+        ]
+      },
+      {
+        "name": "Cosmic Annihilation",
+        "entries": [
+          "A creature killed by Skall can be restored to life only by means of a true resurrection or {@spell wish} spell."
+        ]
+      },
+      {
+        "name": "Legendary Resistance (4/Day)",
+        "entries": [
+          "If Skall fails a saving throw, he can choose to succeed instead."
+        ]
+      },
+      {
+        "name": "Rejuvenation",
+        "entries": [
+          "If Skall dies, he turns to dust. If his orrery of souls hasn't been destroyed, Skall re-forms within the Mortuary in {@dice 1d10} days. He appears within 5 feet of the orrery."
+        ]
+      },
+      {
+        "name": "Turn Resistance",
+        "entries": [
+          "Skall has advantage on saving throws against any effect that turns Undead."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Skall makes one Withering Touch attack or uses Spellcasting. He also uses Death Knell twice."
+        ]
+      },
+      {
+        "name": "Withering Touch",
+        "entries": [
+          "{@atk ms} {@hit 11} to hit, reach 5 ft., one target. {@h}32 ({@damage 6d8 + 5}) cold damage plus 31 ({@damage 7d8}) necrotic damage, and if the target is a creature, it can't regain hit points until the start of Skall's next turn."
+        ]
+      },
+      {
+        "name": "Death Knell",
+        "entries": [
+          "Skall points his finger at a creature he can see within 120 feet of himself, filling the target's mind with visions of death and the plangent toll of an iron bell. The target must succeed on a {@dc 19} Wisdom saving throw or take 14 ({@damage 4d6}) psychic damage and have the {@condition frightened} condition until the start of Skall's next turn."
+        ]
+      },
+      {
+        "name": "Fog of Death (1/Day)",
+        "entries": [
+          "Skall exudes a killing fog in a 30-foot-radius sphere centered on himself. The sphere spreads around corners, and its area is heavily obscured. The fog lasts until the start of Skall's next turn, and it can't be dispersed by wind. It does not move with him.",
+          "Each creature that enters the fog for the first time on a turn or starts its turn there must make a {@dc 19} Constitution saving throw, taking 28 ({@damage 8d6}) necrotic damage and 28 ({@damage 8d6}) poison damage on a failed save, or half as much damage on a successful one. A Medium or smaller Humanoid killed by this damage becomes a zombie under Skall's control. The zombie acts on Skall's initiative but immediately after his turn. Absent any other command, the zombie tries to kill any non-Undead creature it encounters."
+        ]
+      }
+    ],
+    "reactionHeader": [
+      "Skall can take up to three reactions per round but only one per turn."
+    ],
+    "reaction": [
+      {
+        "name": "Baleful Counterspell",
+        "entries": [
+          "Skall chatters his teeth to interrupt a creature he can see within 60 feet of himself that is casting a spell. If the spell is 4th level or lower, it fails and has no effect. If the spell is 5th level or higher, Skall makes an Intelligence check ({@dc 10} + the spell's level). On a successful check, the spell fails and has no effect. Whatever the spell's level, the caster takes 10 ({@damage 3d6}) necrotic damage if the spell fails."
+        ]
+      },
+      {
+        "name": "Near-Death Experience",
+        "entries": [
+          "In response to being hit by an attack, Skall teleports, along with any equipment he is wearing or carrying, up to 30 feet to an unoccupied space he can see."
+        ]
+      }
+    ],
+    "traitTags": [
+      "Legendary Resistances",
+      "Rejuvenation",
+      "Turn Resistance"
+    ],
+    "senseTags": [
+      "U"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "XX"
+    ],
+    "damageTags": [
+      "C",
+      "I",
+      "N",
+      "Y"
+    ],
+    "damageTagsSpell": [
+      "N"
+    ],
+    "spellcastingTags": [
+      "O"
+    ],
+    "miscTags": [
+      "AOE"
+    ],
+    "conditionInflict": [
+      "frightened"
+    ],
+    "conditionInflictSpell": [
+      "blinded",
+      "deafened"
+    ],
+    "savingThrowForced": [
+      "constitution",
+      "wisdom"
+    ],
+    "savingThrowForcedSpell": [
+      "charisma",
+      "constitution"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  }
+]

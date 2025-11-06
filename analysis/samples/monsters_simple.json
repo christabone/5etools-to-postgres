@@ -1,0 +1,1120 @@
+[
+  {
+    "name": "Mercenary Envoy",
+    "source": "AitFR-FCD",
+    "page": 10,
+    "size": [
+      "M"
+    ],
+    "type": "humanoid",
+    "ac": [
+      {
+        "ac": 15,
+        "from": [
+          "{@item chain shirt|phb}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 26,
+      "formula": "4d8 + 8"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 15,
+    "dex": 15,
+    "con": 15,
+    "int": 10,
+    "wis": 12,
+    "cha": 9,
+    "save": {
+      "str": "+4",
+      "con": "+4"
+    },
+    "skill": {
+      "athletics": "+4",
+      "perception": "+3"
+    },
+    "passive": 13,
+    "languages": [
+      "Common"
+    ],
+    "cr": "1",
+    "trait": [
+      {
+        "name": "Inspired Courage",
+        "entries": [
+          "The mercenary has advantage on savings throws against being {@condition charmed}, {@condition frightened}, {@condition grappled}, or {@condition restrained} while within 5 feet of at least one ally."
+        ]
+      },
+      {
+        "name": "Martial Advantage",
+        "entries": [
+          "Once per turn, the mercenary can deal an extra 7 ({@damage 2d6}) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the mercenary that isn't {@condition incapacitated}."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The mercenary makes two longsword attacks."
+        ]
+      },
+      {
+        "name": "Longsword",
+        "entries": [
+          "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage."
+        ]
+      },
+      {
+        "name": "Heavy Crossbow",
+        "entries": [
+          "{@atk rw} {@hit 4} to hit, range",
+          "100/400 ft., one target. {@h}7 ({@damage 1d10 + 2}) piercing damage."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "heavy crossbow|phb",
+      "longsword|phb"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C"
+    ],
+    "damageTags": [
+      "P",
+      "S"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW",
+      "RNG",
+      "RW"
+    ],
+    "hasToken": true,
+    "hasFluff": true
+  },
+  {
+    "name": "Hamish Hewland",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AitFR-DN",
+    "page": 11,
+    "size": [
+      "H"
+    ],
+    "type": "giant",
+    "alignment": [
+      "N",
+      "G"
+    ],
+    "ac": [
+      13
+    ],
+    "hp": {
+      "average": 85,
+      "formula": "10d12 + 20"
+    },
+    "speed": {
+      "walk": 40
+    },
+    "str": 23,
+    "dex": 11,
+    "con": 15,
+    "int": 10,
+    "wis": 14,
+    "cha": 10,
+    "save": {
+      "str": "+9",
+      "wis": "+5"
+    },
+    "skill": {
+      "athletics": "+9",
+      "history": "+3",
+      "insight": "+5",
+      "perception": "+5"
+    },
+    "passive": 15,
+    "languages": [
+      "Common",
+      "Dwarvish",
+      "Giant"
+    ],
+    "cr": "5",
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Hamish makes two attacks with his axe or throws two rocks."
+        ]
+      },
+      {
+        "name": "Axe",
+        "entries": [
+          "{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}17 ({@damage 2d10 + 6}) slashing damage."
+        ]
+      },
+      {
+        "name": "Rock",
+        "entries": [
+          "{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. {@h}17 ({@damage 2d10 + 6}) bludgeoning damage."
+        ]
+      }
+    ],
+    "reaction": [
+      {
+        "name": "Parry",
+        "entries": [
+          "Hamish adds 2 to his AC against one melee attack that would hit him. To do so, he must see the attacker and be wielding a melee weapon or a shield."
+        ]
+      }
+    ],
+    "actionTags": [
+      "Multiattack",
+      "Parry"
+    ],
+    "languageTags": [
+      "C",
+      "D",
+      "GI"
+    ],
+    "damageTags": [
+      "B",
+      "S"
+    ],
+    "miscTags": [
+      "MW",
+      "RW"
+    ],
+    "hasToken": true,
+    "hasFluff": true
+  },
+  {
+    "name": "Skeletal Horror",
+    "source": "AitFR-DN",
+    "page": 13,
+    "size": [
+      "L"
+    ],
+    "type": "undead",
+    "alignment": [
+      "N",
+      "E"
+    ],
+    "ac": [
+      13
+    ],
+    "hp": {
+      "average": 150,
+      "formula": "20d10 + 40"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 16,
+    "dex": 14,
+    "con": 15,
+    "int": 6,
+    "wis": 10,
+    "cha": 5,
+    "skill": {
+      "perception": "+3"
+    },
+    "senses": [
+      "darkvision 60 ft."
+    ],
+    "passive": 16,
+    "immune": [
+      "poison"
+    ],
+    "vulnerable": [
+      "bludgeoning"
+    ],
+    "conditionImmune": [
+      "exhaustion",
+      "poisoned"
+    ],
+    "cr": "6",
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The horror makes two attacks with its claws."
+        ]
+      },
+      {
+        "name": "Claw",
+        "entries": [
+          "{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d10 + 3}) slashing damage."
+        ]
+      },
+      {
+        "name": "Wave of Bones {@recharge 5}",
+        "entries": [
+          "The horror crashes into foes like a wave before quickly reforming. Each creature within 10 feet of the horror must make a {@dc 15} Dexterity saving throw, taking 18 ({@damage 4d8}) bludgeoning damage on a failed save, or half as much damage on a successful one. A creature that fails this saving throw is also knocked {@condition prone}."
+        ]
+      }
+    ],
+    "senseTags": [
+      "D"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "damageTags": [
+      "B",
+      "S"
+    ],
+    "miscTags": [
+      "AOE",
+      "MW"
+    ],
+    "savingThrowForced": [
+      "dexterity"
+    ],
+    "hasToken": true,
+    "hasFluff": true
+  },
+  {
+    "name": "Chaos Quadrapod",
+    "source": "AI",
+    "page": 209,
+    "size": [
+      "L"
+    ],
+    "type": "aberration",
+    "alignment": [
+      "C",
+      "E"
+    ],
+    "ac": [
+      {
+        "ac": 14,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 52,
+      "formula": "7d10 + 14"
+    },
+    "speed": {
+      "walk": 40,
+      "climb": 40
+    },
+    "str": 18,
+    "dex": 13,
+    "con": 15,
+    "int": 6,
+    "wis": 10,
+    "cha": 4,
+    "skill": {
+      "acrobatics": "+5",
+      "perception": "+4"
+    },
+    "senses": [
+      "blindsight 120 ft. (blind beyond this radius)"
+    ],
+    "passive": 14,
+    "cr": "4",
+    "trait": [
+      {
+        "name": "Magic Resistance",
+        "entries": [
+          "The chaos quadrapod has advantage on saving throws against spells and other magical effects."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The chaos quadrapod makes up to two tentacle attacks."
+        ]
+      },
+      {
+        "name": "Tentacle",
+        "entries": [
+          "{@atk mw} {@hit 6} to hit, reach 15 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. If the target is a creature, it is {@condition grappled} (escape {@dc 14}). Until this grapple ends, the target is {@condition restrained}. The chaos quadrapod can grapple no more than two targets at a time."
+        ]
+      },
+      {
+        "name": "Chaos Cloud (Recharges after a Short or Long Rest)",
+        "entries": [
+          "The chaos quadrapod shoots forth a knot of roiling ethereal light that explodes at a point it can see within 60 feet of it. Each creature in a 20-foot-radius sphere centered on that point must succeed on a {@dc 14} Charisma saving throw or be {@condition stunned} until the end of its next turn."
+        ]
+      }
+    ],
+    "traitTags": [
+      "Magic Resistance"
+    ],
+    "senseTags": [
+      "B"
+    ],
+    "actionTags": [
+      "Multiattack",
+      "Tentacles"
+    ],
+    "damageTags": [
+      "B"
+    ],
+    "miscTags": [
+      "AOE",
+      "MW",
+      "RCH"
+    ],
+    "conditionInflict": [
+      "grappled",
+      "restrained",
+      "stunned"
+    ],
+    "savingThrowForced": [
+      "charisma"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Animated Coffin",
+    "source": "AATM",
+    "size": [
+      "L"
+    ],
+    "type": "construct",
+    "alignment": [
+      "U"
+    ],
+    "ac": [
+      {
+        "ac": 16,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 60,
+      "formula": "8d10 + 16"
+    },
+    "speed": {
+      "walk": 30,
+      "climb": 30
+    },
+    "str": 16,
+    "dex": 12,
+    "con": 15,
+    "int": 3,
+    "wis": 11,
+    "cha": 3,
+    "senses": [
+      "blindsight 60 ft. (can't see beyond this radius)"
+    ],
+    "passive": 10,
+    "immune": [
+      "poison",
+      "psychic"
+    ],
+    "conditionImmune": [
+      "blinded",
+      "charmed",
+      "deafened",
+      "exhaustion",
+      "frightened",
+      "paralyzed",
+      "petrified",
+      "poisoned"
+    ],
+    "languages": [
+      "understands the languages of its creator but can't speak"
+    ],
+    "cr": "3",
+    "trait": [
+      {
+        "name": "False Appearance",
+        "entries": [
+          "If the animated coffin is motionless at the start of combat, it has advantage on its initiative roll. Moreover, if a creature hasn't observed the coffin move or act, that creature must succeed on a {@dc 18} Intelligence ({@skill Investigation}) check to discern that the coffin is animate."
+        ]
+      },
+      {
+        "name": "Spider Climb",
+        "entries": [
+          "The animated coffin can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The animated coffin makes two Slam attacks."
+        ]
+      },
+      {
+        "name": "Slam",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d8 + 3}) bludgeoning damage."
+        ]
+      },
+      {
+        "name": "Entrap",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one Large or smaller creature. {@h}The target has the {@condition grappled} condition (escape {@dc 13}). Until this grapple ends, if the target is not an Undead, the target has the {@condition restrained} condition and takes 14 ({@damage 4d6}) piercing damage at the start of each of its turns. The animated coffin can grapple only one creature at a time."
+        ]
+      }
+    ],
+    "traitTags": [
+      "False Appearance",
+      "Spider Climb"
+    ],
+    "senseTags": [
+      "B"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "CS"
+    ],
+    "damageTags": [
+      "B",
+      "P"
+    ],
+    "miscTags": [
+      "MW"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Giant Zombie Constrictor Snake",
+    "source": "AitFR-DN",
+    "page": 11,
+    "size": [
+      "H"
+    ],
+    "type": "undead",
+    "alignment": [
+      "N",
+      "E"
+    ],
+    "ac": [
+      {
+        "ac": 15,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 187,
+      "formula": "22d12 + 44"
+    },
+    "speed": {
+      "walk": 30,
+      "climb": 20,
+      "swim": 30
+    },
+    "str": 19,
+    "dex": 16,
+    "con": 14,
+    "int": 1,
+    "wis": 15,
+    "cha": 4,
+    "skill": {
+      "perception": "+5",
+      "stealth": "+6"
+    },
+    "senses": [
+      "blindsight 15 ft.",
+      "darkvision 60 ft."
+    ],
+    "passive": 15,
+    "vulnerable": [
+      "poison"
+    ],
+    "cr": "8",
+    "trait": [
+      {
+        "name": "Sunlight Vulnerability",
+        "entries": [
+          "While in sunlight, the snake has disadvantage on attack rolls and on Wisdom ({@skill Perception}) checks that rely on sight. When the snake begins its turn in sunlight, it immediately suffers 10 radiant damage."
+        ]
+      },
+      {
+        "name": "Undead Fortitude",
+        "entries": [
+          "If damage reduces the snake to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the snake drops to 1 hit point instead."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The snake makes two attacks: one with its bite and one with a constrict attack."
+        ]
+      },
+      {
+        "name": "Bite",
+        "entries": [
+          "{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}17 ({@damage 3d8 + 4}) piercing damage, and the target must make a {@dc 15} Constitution saving throw, taking 17 ({@damage 5d6}) poison damage on a failed save, or half as much damage on a successful one."
+        ]
+      },
+      {
+        "name": "Constrict",
+        "entries": [
+          "{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}17 ({@damage 3d8 + 4}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 16}). Until this grapple ends, the creature is {@condition restrained} and the snake cannot constrict another target."
+        ]
+      }
+    ],
+    "traitTags": [
+      "Undead Fortitude"
+    ],
+    "senseTags": [
+      "B",
+      "D"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "damageTags": [
+      "B",
+      "I",
+      "P",
+      "R"
+    ],
+    "miscTags": [
+      "MW",
+      "RCH"
+    ],
+    "conditionInflict": [
+      "grappled",
+      "restrained"
+    ],
+    "savingThrowForced": [
+      "constitution"
+    ],
+    "hasToken": true,
+    "hasFluff": true
+  },
+  {
+    "name": "Oak Truestrike",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 205,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "elf"
+      ]
+    },
+    "alignment": [
+      {
+        "alignment": [
+          "N",
+          "G"
+        ]
+      },
+      {
+        "alignment": [
+          "N",
+          "E"
+        ]
+      }
+    ],
+    "ac": [
+      {
+        "ac": 15,
+        "from": [
+          "{@item studded leather armor|phb|studded leather}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 32,
+      "formula": "5d8 + 10"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 13,
+    "dex": 16,
+    "con": 14,
+    "int": 10,
+    "wis": 13,
+    "cha": 11,
+    "skill": {
+      "nature": "+4",
+      "perception": "+3",
+      "performance": "+2",
+      "stealth": "+5",
+      "survival": "+3"
+    },
+    "passive": 13,
+    "languages": [
+      "Common"
+    ],
+    "cr": "2",
+    "trait": [
+      {
+        "name": "Fey Ancestry",
+        "entries": [
+          "Oak has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
+        ]
+      },
+      {
+        "name": "Keen Hearing and Sight",
+        "entries": [
+          "Oak has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or sight."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Oak makes three attacks with his hooked daggers or his hand crossbow."
+        ]
+      },
+      {
+        "name": "Hooked Dagger",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+        ]
+      },
+      {
+        "name": "Hand Crossbow",
+        "entries": [
+          "{@atk rw} {@hit 5} to hit, range 30/120 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
+        ]
+      }
+    ],
+    "reaction": [
+      {
+        "name": "Return the Favor (3/Day)",
+        "entries": [
+          "When Oak takes damage from a melee weapon attack, he can make a hooked dagger attack."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "hand crossbow|phb"
+    ],
+    "traitTags": [
+      "Fey Ancestry",
+      "Keen Senses"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C"
+    ],
+    "damageTags": [
+      "P"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW",
+      "RNG",
+      "RW"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Auspicia Dran",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 208,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "half-elf"
+      ]
+    },
+    "alignment": [
+      "N",
+      "G"
+    ],
+    "ac": [
+      {
+        "ac": 15,
+        "from": [
+          "{@item chain shirt|phb}"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 52,
+      "formula": "8d8 + 16"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 16,
+    "dex": 14,
+    "con": 14,
+    "int": 15,
+    "wis": 12,
+    "cha": 10,
+    "skill": {
+      "athletics": "+5",
+      "perception": "+3"
+    },
+    "passive": 13,
+    "languages": [
+      "Common",
+      "Elvish"
+    ],
+    "cr": "2",
+    "spellcasting": [
+      {
+        "name": "Innate Spellcasting (Psionics)",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Auspicia's innate spellcasting ability is Intelligence. She can innately cast the following spells, requiring no components:"
+        ],
+        "will": [
+          "{@spell detect thoughts}"
+        ],
+        "daily": {
+          "1e": [
+            "{@spell augury}"
+          ]
+        },
+        "ability": "int"
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "Auspicia makes two attacks."
+        ]
+      },
+      {
+        "name": "Longsword",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
+        ]
+      },
+      {
+        "name": "Light Crossbow",
+        "entries": [
+          "{@atk rw} {@hit 4} to hit, range 80/320 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "light crossbow|phb",
+      "longsword|phb"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "C",
+      "E"
+    ],
+    "damageTags": [
+      "P",
+      "S"
+    ],
+    "spellcastingTags": [
+      "I",
+      "P"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW",
+      "RNG",
+      "RW"
+    ],
+    "savingThrowForcedSpell": [
+      "wisdom"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Deep Crow",
+    "source": "AI",
+    "page": 210,
+    "size": [
+      "L"
+    ],
+    "type": "monstrosity",
+    "alignment": [
+      "U"
+    ],
+    "ac": [
+      {
+        "ac": 17,
+        "from": [
+          "natural armor"
+        ]
+      }
+    ],
+    "hp": {
+      "average": 133,
+      "formula": "14d10 + 56"
+    },
+    "speed": {
+      "walk": 20,
+      "fly": 80
+    },
+    "str": 20,
+    "dex": 16,
+    "con": 18,
+    "int": 8,
+    "wis": 15,
+    "cha": 14,
+    "save": {
+      "con": "+8",
+      "wis": "+6"
+    },
+    "skill": {
+      "perception": "+6",
+      "stealth": "+11"
+    },
+    "senses": [
+      "blindsight 30 ft.",
+      "darkvision 120 ft."
+    ],
+    "passive": 16,
+    "languages": [
+      "Deep Crow"
+    ],
+    "cr": "9",
+    "trait": [
+      {
+        "name": "Magic Resistance",
+        "entries": [
+          "The deep crow has advantage on saving throws against spells and other magical effects."
+        ]
+      },
+      {
+        "name": "Shadow Stealth",
+        "entries": [
+          "While in dim light or darkness, the deep crow can take the Hide action as a bonus action."
+        ]
+      },
+      {
+        "name": "Sunlight Sensitivity",
+        "entries": [
+          "While in sunlight, the deep crow has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The deep crow makes three attacks: one with its mandibles and two with its claws."
+        ]
+      },
+      {
+        "name": "Mandibles",
+        "entries": [
+          "{@atk mw} {@hit 9} to hit, reach 10 ft., one target. {@h}16 ({@damage 2d10 + 5}) piercing damage, and the target is {@condition grappled} (escape {@dc 17}). Until this grapple ends, the target is {@condition restrained}, and the deep crow can't use its mandibles on another target."
+        ]
+      },
+      {
+        "name": "Claw",
+        "entries": [
+          "{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) slashing damage."
+        ]
+      }
+    ],
+    "traitTags": [
+      "Magic Resistance",
+      "Sunlight Sensitivity"
+    ],
+    "senseTags": [
+      "B",
+      "SD"
+    ],
+    "actionTags": [
+      "Multiattack"
+    ],
+    "languageTags": [
+      "OTH"
+    ],
+    "damageTags": [
+      "P",
+      "S"
+    ],
+    "miscTags": [
+      "MW",
+      "RCH"
+    ],
+    "conditionInflict": [
+      "grappled",
+      "restrained"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Pendragon Beestinger",
+    "isNpc": true,
+    "isNamedCreature": true,
+    "source": "AI",
+    "page": 206,
+    "size": [
+      "M"
+    ],
+    "type": {
+      "type": "humanoid",
+      "tags": [
+        "human"
+      ]
+    },
+    "alignment": [
+      "N",
+      "E"
+    ],
+    "ac": [
+      12,
+      {
+        "ac": 15,
+        "condition": "with {@spell mage armor}",
+        "braces": true
+      }
+    ],
+    "hp": {
+      "average": 27,
+      "formula": "5d8 + 5"
+    },
+    "speed": {
+      "walk": 30
+    },
+    "str": 10,
+    "dex": 14,
+    "con": 12,
+    "int": 17,
+    "wis": 10,
+    "cha": 11,
+    "skill": {
+      "arcana": "+5",
+      "investigation": "+5",
+      "performance": "+2"
+    },
+    "passive": 10,
+    "languages": [
+      "Common",
+      "Draconic",
+      "Elvish",
+      "Halfling"
+    ],
+    "cr": "2",
+    "spellcasting": [
+      {
+        "name": "Spellcasting",
+        "type": "spellcasting",
+        "headerEntries": [
+          "Pendragon is a 4th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He has the following wizard spells prepared:"
+        ],
+        "spells": {
+          "0": {
+            "spells": [
+              "{@spell acid splash}",
+              "{@spell light}",
+              "{@spell mage hand}",
+              "{@spell poison spray}",
+              "{@spell shocking grasp}"
+            ]
+          },
+          "1": {
+            "slots": 4,
+            "spells": [
+              "{@spell detect magic}",
+              "{@spell mage armor}",
+              "{@spell magic missile}",
+              "{@spell sleep}"
+            ]
+          },
+          "2": {
+            "slots": 3,
+            "spells": [
+              "{@spell blindness/deafness}",
+              "{@spell cloud of daggers}",
+              "{@spell scorching ray}"
+            ]
+          }
+        },
+        "ability": "int"
+      }
+    ],
+    "trait": [
+      {
+        "name": "Echo Spell (1/Day)",
+        "entries": [
+          "Pendragon can cast the spell he cast on his last turn, whose casting time becomes 1 bonus action. This bonus casting uses a spell slot as normal."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Shortsword",
+        "entries": [
+          "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+        ]
+      }
+    ],
+    "attachedItems": [
+      "shortsword|phb"
+    ],
+    "languageTags": [
+      "C",
+      "DR",
+      "E",
+      "H"
+    ],
+    "damageTags": [
+      "P"
+    ],
+    "damageTagsSpell": [
+      "A",
+      "F",
+      "I",
+      "L",
+      "O",
+      "S"
+    ],
+    "spellcastingTags": [
+      "CW"
+    ],
+    "miscTags": [
+      "MLW",
+      "MW"
+    ],
+    "savingThrowForcedSpell": [
+      "constitution",
+      "dexterity"
+    ],
+    "hasToken": true,
+    "hasFluff": true,
+    "hasFluffImages": true
+  }
+]

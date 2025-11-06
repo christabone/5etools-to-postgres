@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Bandore",
+    "source": "FRHoF",
+    "page": 132,
+    "type": "INS|XPHB",
+    "rarity": "none",
+    "weight": 3,
+    "value": 6500,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Cittern",
+    "source": "FRHoF",
+    "page": 132,
+    "type": "T|XPHB",
+    "rarity": "none",
+    "weight": 2,
+    "value": 6500,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Yarting",
+    "source": "FRHoF",
+    "page": 132,
+    "type": "INS|XPHB",
+    "rarity": "none",
+    "weight": 2,
+    "value": 4000,
+    "hasFluff": true,
+    "hasFluffImages": true
+  },
+  {
+    "name": "Birdpipes",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "Pan pipes or satyr pipes, also known as the shalm, these are sacred to {@deity Lliira|Faer\u00fbnian|scag} and popular with wood elf and wild elf bards."
+    ]
+  },
+  {
+    "name": "Glaur",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "Short, curved horns like a cornucopia. Played with valves, glaur sound like trumpets, while those without valves, known as gloon, have a more mournful sound."
+    ]
+  },
+  {
+    "name": "Hand Drum",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "A double-headed skin drum fitted with handles along its side."
+    ]
+  },
+  {
+    "name": "Longhorn",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "A Faer\u00fbnian flute of sophisticated make, found only in areas with skilled artisans, as in great cities or elven enclaves."
+    ]
+  },
+  {
+    "name": "Songhorn",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "A recorder, a simple type of flute, usually carved from wood."
+    ]
+  },
+  {
+    "name": "Tantan",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "A tambourine, a popular instrument with halflings and humans south of the Dalelands."
+    ]
+  },
+  {
+    "name": "Tocken",
+    "source": "SCAG",
+    "page": 124,
+    "type": "INS",
+    "rarity": "none",
+    "entries": [
+      "A hanging set of carved oval bells, usually played with a pair of light wooden hammers (or open handed). They are most common in underground cultures, where the resonant tones can carry."
+    ]
+  }
+]

@@ -2,7 +2,35 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+⚠️ **WORK IN PROGRESS** - Currently in development, not ready for use yet!
+
 Import D&D 5th Edition data from [5etools](https://5e.tools/) JSON files into a structured PostgreSQL database for use in your own applications, campaigns, or tools.
+
+## Current Status
+
+**Phase 0: Data Analysis** ✅ COMPLETE
+- Analyzed 741 unique JSON field paths
+- Identified 10 polymorphic fields requiring normalization
+- Discovered 4,841 controlled vocabulary candidates
+
+**Phase 0.5: Data Cleaning** ✅ COMPLETE
+- Normalized ALL polymorphic fields (100% validation pass)
+- Cleaned 2,722 items, 4,445 monsters, 937 spells
+- Created reproducible cleaning pipeline
+
+**Phase 1: Schema Design** ✅ COMPLETE
+- Designed hybrid normalized + JSONB schema
+- Created 22 tables (12 CV, 3 core, 7 junction)
+- Added full-text search and fuzzy matching support
+
+**Phase 0.6: Markup Extraction** 🚧 IN PROGRESS
+- Investigating 189,000+ instances of 5etools markup
+- Identifying structured data to extract from text
+- Planning relationship tables for conditions, damage, cross-references
+
+**Phase 2: Import Implementation** ⏭️ PENDING
+
+See [PLAN.md](PLAN.md) for detailed roadmap.
 
 ## What is this?
 

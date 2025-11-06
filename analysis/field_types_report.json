@@ -1,0 +1,6438 @@
+{
+  "summary": {
+    "total_fields": 346,
+    "polymorphic_fields": 10
+  },
+  "fields": {
+    "baseitem": {
+      "total_count": 196,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "page",
+              "reprintedAs",
+              "edition",
+              "type",
+              "rarity",
+              "weight",
+              "weaponCategory",
+              "age"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "page",
+              "edition",
+              "type",
+              "rarity",
+              "weight",
+              "valueRarity",
+              "weaponCategory",
+              "age"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "page",
+              "srd",
+              "basicRules",
+              "reprintedAs",
+              "edition",
+              "type",
+              "rarity",
+              "weight"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.ac": {
+      "total_count": 27,
+      "type_examples": {
+        "int": [
+          14,
+          14,
+          16
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.age": {
+      "total_count": 24,
+      "type_examples": {
+        "str": [
+          "futuristic",
+          "futuristic",
+          "modern"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.alias": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "baseitem.alias[]": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "Whistlecane"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.ammoType": {
+      "total_count": 36,
+      "type_examples": {
+        "str": [
+          "energy cell",
+          "energy cell|xdmg",
+          "modern bullet"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.armor": {
+      "total_count": 25,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.arrow": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.axe": {
+      "total_count": 6,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.basicRules": {
+      "total_count": 74,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.basicRules2024": {
+      "total_count": 61,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.bolt": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.bow": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.bulletFirearm": {
+      "total_count": 6,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.bulletSling": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.cellEnergy": {
+      "total_count": 2,
+      "type_examples": {
+        "bool": [
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.club": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.crossbow": {
+      "total_count": 7,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.dagger": {
+      "total_count": 2,
+      "type_examples": {
+        "bool": [
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.dmg1": {
+      "total_count": 101,
+      "type_examples": {
+        "str": [
+          "6d8",
+          "6d8",
+          "2d6"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.dmg2": {
+      "total_count": 17,
+      "type_examples": {
+        "str": [
+          "1d10",
+          "1d10",
+          "1d10"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.dmgType": {
+      "total_count": 101,
+      "type_examples": {
+        "str": [
+          "N",
+          "N",
+          "P"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.edition": {
+      "total_count": 176,
+      "type_examples": {
+        "str": [
+          "classic",
+          "one",
+          "classic"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries": {
+      "total_count": 54,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str",
+        "dict"
+      ]
+    },
+    "baseitem.entries[]": {
+      "total_count": 65,
+      "type_examples": {
+        "str": [
+          "Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+          "Arrows are typically stored in a {@item Quiver|XPHB} (bought separately).",
+          "Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield."
+        ],
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "style",
+              "items"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "style",
+              "items"
+            ]
+          }
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "baseitem.entries[].entries": {
+      "total_count": 4,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "baseitem.entries[].entries[]": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "If you attack with a double-bladed scimitar as part of the {@action Attack} action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals {@damage 1d4} slashing damage on a hit, instead of {@damage 2d4}.",
+          "When you make a melee attack with this weapon, you ignore its ammunition property. You can use the hoopak as a martial ranged weapon. If you do, it uses the ammunition property, uses sling bullets, and deals {@damage 1d4} bludgeoning damage on a hit.",
+          "You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].items": {
+      "total_count": 10,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "baseitem.entries[].items[]": {
+      "total_count": 20,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "type",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "type",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "type",
+              "entries"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].items[].entries": {
+      "total_count": 20,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "baseitem.entries[].items[].entries[]": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "Charisma",
+          "Play a known tune ({@dc 10}), or improvise a song ({@dc 15})",
+          "Charisma"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].items[].name": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "Ability:",
+          "Utilize:",
+          "Ability:"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].items[].type": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "item",
+          "item",
+          "item"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].name": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "Special",
+          "Special",
+          "Special"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].style": {
+      "total_count": 10,
+      "type_examples": {
+        "str": [
+          "list-hang-notitle",
+          "list-hang-notitle",
+          "list-hang-notitle"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.entries[].type": {
+      "total_count": 14,
+      "type_examples": {
+        "str": [
+          "list",
+          "entries",
+          "list"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.firearm": {
+      "total_count": 20,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.group": {
+      "total_count": 12,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "baseitem.group[]": {
+      "total_count": 12,
+      "type_examples": {
+        "str": [
+          "Arcane Focus",
+          "Arcane Focus",
+          "Arcane Focus"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.hammer": {
+      "total_count": 6,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.hasFluff": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.hasFluffImages": {
+      "total_count": 55,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.lance": {
+      "total_count": 2,
+      "type_examples": {
+        "bool": [
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.mace": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.mastery": {
+      "total_count": 48,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "baseitem.mastery[]": {
+      "total_count": 48,
+      "type_examples": {
+        "str": [
+          "Sap|XPHB",
+          "Slow|XPHB",
+          "Topple|XPHB"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.miscTags": {
+      "total_count": 8,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "baseitem.miscTags[]": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "CNS",
+          "CNS",
+          "CNS"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.name": {
+      "total_count": 196,
+      "type_examples": {
+        "str": [
+          "Antimatter Rifle",
+          "Antimatter Rifle",
+          "Arrow"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.needleBlowgun": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.net": {
+      "total_count": 1,
+      "type_examples": {
+        "bool": [
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.packContents": {
+      "total_count": 11,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "baseitem.packContents[]": {
+      "total_count": 11,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "item",
+              "quantity"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "item",
+              "quantity"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "item",
+              "quantity"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.packContents[].item": {
+      "total_count": 11,
+      "type_examples": {
+        "str": [
+          "arrow|phb",
+          "arrow|xphb",
+          "blowgun needle|phb"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.packContents[].quantity": {
+      "total_count": 11,
+      "type_examples": {
+        "int": [
+          20,
+          20,
+          50
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.page": {
+      "total_count": 196,
+      "type_examples": {
+        "int": [
+          268,
+          73,
+          150
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.polearm": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.property": {
+      "total_count": 95,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str",
+        "dict"
+      ]
+    },
+    "baseitem.property[]": {
+      "total_count": 198,
+      "type_examples": {
+        "str": [
+          "AF|DMG",
+          "RLD",
+          "2H"
+        ],
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "uid",
+              "note"
+            ]
+          }
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "baseitem.property[].note": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "unless mounted"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.property[].uid": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "2H|XPHB"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.range": {
+      "total_count": 52,
+      "type_examples": {
+        "str": [
+          "120/360",
+          "120/360",
+          "50/150"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.rapier": {
+      "total_count": 2,
+      "type_examples": {
+        "bool": [
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.rarity": {
+      "total_count": 196,
+      "type_examples": {
+        "str": [
+          "none",
+          "none",
+          "none"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.reload": {
+      "total_count": 16,
+      "type_examples": {
+        "int": [
+          2,
+          2,
+          15
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.reprintedAs": {
+      "total_count": 89,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str",
+        "dict"
+      ]
+    },
+    "baseitem.reprintedAs[]": {
+      "total_count": 89,
+      "type_examples": {
+        "str": [
+          "Antimatter Rifle|XDMG",
+          "Arrow|XPHB",
+          "Arrows (20)|XPHB"
+        ],
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "uid",
+              "tag"
+            ]
+          }
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "baseitem.reprintedAs[].tag": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "item"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.reprintedAs[].uid": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "Net|XPHB"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.scfType": {
+      "total_count": 12,
+      "type_examples": {
+        "str": [
+          "arcane",
+          "arcane",
+          "arcane"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.source": {
+      "total_count": 196,
+      "type_examples": {
+        "str": [
+          "DMG",
+          "XDMG",
+          "PHB"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.spear": {
+      "total_count": 4,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.srd": {
+      "total_count": 74,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.srd52": {
+      "total_count": 75,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.staff": {
+      "total_count": 2,
+      "type_examples": {
+        "bool": [
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.stealth": {
+      "total_count": 15,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.strength": {
+      "total_count": 6,
+      "type_examples": {
+        "str": [
+          "13",
+          "13",
+          "15"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.sword": {
+      "total_count": 11,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.type": {
+      "total_count": 196,
+      "type_examples": {
+        "str": [
+          "R",
+          "R|XPHB",
+          "A"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.value": {
+      "total_count": 162,
+      "type_examples": {
+        "int": [
+          5,
+          5,
+          100
+        ],
+        "float": [
+          0.2,
+          0.2
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "baseitem.valueRarity": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "very rare",
+          "rare",
+          "rare"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.weapon": {
+      "total_count": 98,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.weaponCategory": {
+      "total_count": 102,
+      "type_examples": {
+        "str": [
+          "martial",
+          "martial",
+          "martial"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "baseitem.weight": {
+      "total_count": 182,
+      "type_examples": {
+        "int": [
+          10,
+          10,
+          1
+        ],
+        "float": [
+          0.05,
+          0.05,
+          0.02
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "fluff-index": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "AAG",
+              "EGW",
+              "FTD",
+              "FRHoF",
+              "GGR",
+              "PHB",
+              "TCE",
+              "XGE",
+              "XPHB"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.AAG": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-aag.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.EGW": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-egw.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.FRHoF": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-frhof.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.FTD": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-ftd.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.GGR": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-ggr.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.PHB": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-phb.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.TCE": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-tce.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.XGE": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-xge.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-index.XPHB": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "fluff-spells-xphb.json"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spellFluff"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-aag.spellFluff[]": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].images": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-aag.spellFluff[].images[]": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].images[].credit": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "Nikki Dawes"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].images[].href": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].images[].href.path": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "spells/AAG/Air Bubble.webp"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].images[].href.type": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "internal"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].images[].type": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "image"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].name": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "Air Bubble"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-aag.spellFluff[].source": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "AAG"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spellFluff"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-egw.spellFluff[]": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].images": {
+      "total_count": 2,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-egw.spellFluff[].images[]": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].images[].credit": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "Axel Defois",
+          "Brian Valeza"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].images[].href": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].images[].href.path": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "spells/EGW/Dark Star.webp",
+          "spells/EGW/Reality Break.webp"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].images[].href.type": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "internal",
+          "internal"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].images[].type": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "image",
+          "image"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].name": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "Dark Star",
+          "Reality Break"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-egw.spellFluff[].source": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "EGW",
+          "EGW"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spellFluff"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 4,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-frhof.spellFluff[]": {
+      "total_count": 4,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images": {
+      "total_count": 4,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-frhof.spellFluff[].images[]": {
+      "total_count": 4,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit",
+              "title"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit",
+              "title"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit",
+              "title"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images[].credit": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "Irina Nordsol",
+          "Swatches Studio",
+          "Borja Pindado"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images[].href": {
+      "total_count": 4,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images[].href.path": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "spells/FRHoF/Alustriel's Mooncloak.webp",
+          "spells/FRHoF/Blade of Disaster.webp",
+          "spells/FRHoF/Elminster's Effulgent Spheres.webp"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images[].href.type": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "internal",
+          "internal",
+          "internal"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images[].title": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "Alustriel Silverhand uses her mooncloak to protect her allies.",
+          "Presto casts the Blade of Disaster spell to fight off Venger.",
+          "Elminster's Effulgent Spheres can be used to both attack and defend."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].images[].type": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "image",
+          "image",
+          "image"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].name": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "Alustriel's Mooncloak",
+          "Blade of Disaster",
+          "Elminster's Effulgent Spheres"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-frhof.spellFluff[].source": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "FRHoF",
+          "FRHoF",
+          "FRHoF"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spellFluff"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-ftd.spellFluff[]": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "images"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images": {
+      "total_count": 2,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "fluff-spells-ftd.spellFluff[].images[]": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit",
+              "title"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "href",
+              "credit",
+              "title"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images[].credit": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "Rudy Siswanto",
+          "Billy Christian"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images[].href": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "path"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images[].href.path": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "spells/FTD/Ashardalon's Stride.webp",
+          "spells/FTD/Rime's Binding Ice.webp"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images[].href.type": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "internal",
+          "internal"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images[].title": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "Fire follows in the footsteps of a red dragon who has cast Ashardalon's stride.",
+          "Rime's binding ice adds insult to injury in the hands of a spellcasting white dragon."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].images[].type": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "image",
+          "image"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].name": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "Ashardalon's Stride",
+          "Rime's Binding Ice"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "fluff-spells-ftd.spellFluff[].source": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "FTD",
+          "FTD"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster": {
+      "total_count": 33,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "size",
+              "type",
+              "alignment",
+              "ac",
+              "hp",
+              "speed",
+              "str",
+              "dex"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "size",
+              "type",
+              "alignment",
+              "ac",
+              "hp",
+              "speed",
+              "str",
+              "dex"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source",
+              "size",
+              "type",
+              "alignment",
+              "ac",
+              "hp",
+              "speed",
+              "str",
+              "dex"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.ac": {
+      "total_count": 33,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict",
+              "int"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict",
+        "int"
+      ]
+    },
+    "monster.ac[]": {
+      "total_count": 38,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "ac",
+              "from"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "ac",
+              "from"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "ac",
+              "condition",
+              "braces"
+            ]
+          }
+        ],
+        "int": [
+          13,
+          12,
+          12
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "monster.ac[].ac": {
+      "total_count": 29,
+      "type_examples": {
+        "int": [
+          16,
+          17,
+          16
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.ac[].braces": {
+      "total_count": 5,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.ac[].condition": {
+      "total_count": 5,
+      "type_examples": {
+        "str": [
+          "with {@spell mage armor}",
+          "with {@spell mage armor}",
+          "with {@spell mage armor}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.ac[].from": {
+      "total_count": 24,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.ac[].from[]": {
+      "total_count": 25,
+      "type_examples": {
+        "str": [
+          "natural armor",
+          "natural armor",
+          "natural armor"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.action": {
+      "total_count": 33,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 4,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "monster.actionTags": {
+      "total_count": 25,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.actionTags[]": {
+      "total_count": 28,
+      "type_examples": {
+        "str": [
+          "Multiattack",
+          "Multiattack",
+          "Multiattack"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.action[]": {
+      "total_count": 91,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.action[].entries": {
+      "total_count": 91,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.action[].entries[]": {
+      "total_count": 97,
+      "type_examples": {
+        "str": [
+          "The animated coffin makes two Slam attacks.",
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d8 + 3}) bludgeoning damage.",
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one Large or smaller creature. {@h}The target has the {@condition grappled} condition (escape {@dc 13}). Until this grapple ends, if the target is not an Undead, the target has the {@condition restrained} condition and takes 14 ({@damage 4d6}) piercing damage at the start of each of its turns. The animated coffin can grapple only one creature at a time."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.action[].name": {
+      "total_count": 91,
+      "type_examples": {
+        "str": [
+          "Multiattack",
+          "Slam",
+          "Entrap"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.alignment": {
+      "total_count": 32,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str",
+        "dict"
+      ]
+    },
+    "monster.alignment[]": {
+      "total_count": 57,
+      "type_examples": {
+        "str": [
+          "U",
+          "N",
+          "E"
+        ],
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "alignment"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "alignment"
+            ]
+          }
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "monster.alignment[].alignment": {
+      "total_count": 2,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.alignment[].alignment[]": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "N",
+          "G",
+          "N"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.attachedItems": {
+      "total_count": 20,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.attachedItems[]": {
+      "total_count": 25,
+      "type_examples": {
+        "str": [
+          "light crossbow|phb",
+          "longsword|phb",
+          "greatsword|phb"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.cha": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          3,
+          16,
+          11
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.con": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          15,
+          16,
+          16
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.conditionImmune": {
+      "total_count": 8,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 8,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 6,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.conditionImmune[]": {
+      "total_count": 34,
+      "type_examples": {
+        "str": [
+          "blinded",
+          "charmed",
+          "deafened"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.conditionInflict": {
+      "total_count": 11,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.conditionInflictLegendary": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.conditionInflictLegendary[]": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "poisoned"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.conditionInflictSpell": {
+      "total_count": 12,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.conditionInflictSpell[]": {
+      "total_count": 24,
+      "type_examples": {
+        "str": [
+          "blinded",
+          "deafened",
+          "incapacitated"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.conditionInflict[]": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "frightened",
+          "incapacitated",
+          "grappled"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.cr": {
+      "total_count": 33,
+      "type_examples": {
+        "str": [
+          "3",
+          "17",
+          "6"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.damageTags": {
+      "total_count": 32,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 4,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.damageTagsLegendary": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.damageTagsLegendary[]": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "R",
+          "S"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.damageTagsSpell": {
+      "total_count": 16,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.damageTagsSpell[]": {
+      "total_count": 52,
+      "type_examples": {
+        "str": [
+          "N",
+          "S",
+          "Y"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.damageTags[]": {
+      "total_count": 59,
+      "type_examples": {
+        "str": [
+          "B",
+          "P",
+          "C"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.dex": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          12,
+          16,
+          16
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.hasFluff": {
+      "total_count": 32,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.hasFluffImages": {
+      "total_count": 23,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.hasToken": {
+      "total_count": 33,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.hp": {
+      "total_count": 33,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "average",
+              "formula"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "average",
+              "formula"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "average",
+              "formula"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.hp.average": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          60,
+          210,
+          112
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.hp.formula": {
+      "total_count": 33,
+      "type_examples": {
+        "str": [
+          "8d10 + 16",
+          "28d8 + 84",
+          "15d8 + 45"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.immune": {
+      "total_count": 7,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.immune[]": {
+      "total_count": 11,
+      "type_examples": {
+        "str": [
+          "poison",
+          "psychic",
+          "necrotic"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.int": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          3,
+          20,
+          17
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.isNamedCreature": {
+      "total_count": 20,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.isNpc": {
+      "total_count": 20,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.languageTags": {
+      "total_count": 30,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.languageTags[]": {
+      "total_count": 80,
+      "type_examples": {
+        "str": [
+          "CS",
+          "XX",
+          "C"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.languages": {
+      "total_count": 30,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.languages[]": {
+      "total_count": 78,
+      "type_examples": {
+        "str": [
+          "understands the languages of its creator but can't speak",
+          "all",
+          "Common plus three more languages"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.legendary": {
+      "total_count": 3,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "monster.legendaryGroup": {
+      "total_count": 2,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "source"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.legendaryGroup.name": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "Ancient Deep Crow",
+          "Kyrilla, Accursed Gorgon"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.legendaryGroup.source": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "AI",
+          "AitFR-DN"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.legendary[]": {
+      "total_count": 9,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.legendary[].entries": {
+      "total_count": 9,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.legendary[].entries[]": {
+      "total_count": 9,
+      "type_examples": {
+        "str": [
+          "The deep crow makes a Wisdom ({@skill Perception}) check.",
+          "The ancient deep crow uses Shadow Caw.",
+          "The ancient deep crow beats its wings. Each creature within 10 feet of the deep crow must succeed on a {@dc 19} Dexterity saving throw or take 13 ({@damage 2d6 + 6}) bludgeoning damage and be knocked {@condition prone}. The ancient deep crow can then fly up to half its flying speed."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.legendary[].name": {
+      "total_count": 9,
+      "type_examples": {
+        "str": [
+          "Detect",
+          "Shadow Caw (Costs 2 Actions)",
+          "Wing Attack (Costs 2 Actions)"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.miscTags": {
+      "total_count": 32,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.miscTags[]": {
+      "total_count": 86,
+      "type_examples": {
+        "str": [
+          "MW",
+          "AOE",
+          "MW"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.name": {
+      "total_count": 33,
+      "type_examples": {
+        "str": [
+          "Animated Coffin",
+          "Factol Skall",
+          "Heralds of Dust Exorcist"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.page": {
+      "total_count": 30,
+      "type_examples": {
+        "int": [
+          211,
+          208,
+          205
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.passive": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          10,
+          18,
+          15
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.reaction": {
+      "total_count": 7,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "monster.reactionHeader": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.reactionHeader[]": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "Skall can take up to three reactions per round but only one per turn."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.reaction[]": {
+      "total_count": 8,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.reaction[].entries": {
+      "total_count": 8,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.reaction[].entries[]": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "Skall chatters his teeth to interrupt a creature he can see within 60 feet of himself that is casting a spell. If the spell is 4th level or lower, it fails and has no effect. If the spell is 5th level or higher, Skall makes an Intelligence check ({@dc 10} + the spell's level). On a successful check, the spell fails and has no effect. Whatever the spell's level, the caster takes 10 ({@damage 3d6}) necrotic damage if the spell fails.",
+          "In response to being hit by an attack, Skall teleports, along with any equipment he is wearing or carrying, up to 30 feet to an unoccupied space he can see.",
+          "When Oak takes damage from a melee weapon attack, he can make a hooked dagger attack."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.reaction[].name": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "Baleful Counterspell",
+          "Near-Death Experience",
+          "Return the Favor (3/Day)"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.resist": {
+      "total_count": 7,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str",
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str",
+        "dict"
+      ]
+    },
+    "monster.resist[]": {
+      "total_count": 9,
+      "type_examples": {
+        "str": [
+          "cold",
+          "necrotic",
+          "acid"
+        ],
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "resist",
+              "note",
+              "cond"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "resist",
+              "note",
+              "cond"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "resist",
+              "note",
+              "cond"
+            ]
+          }
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "monster.resist[].cond": {
+      "total_count": 5,
+      "type_examples": {
+        "bool": [
+          true,
+          true,
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.resist[].note": {
+      "total_count": 5,
+      "type_examples": {
+        "str": [
+          "from nonmagical attacks",
+          "from nonmagical attacks",
+          "from nonmagical attacks"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.resist[].preNote": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "nonmagical"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.resist[].resist": {
+      "total_count": 5,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.resist[].resist[]": {
+      "total_count": 15,
+      "type_examples": {
+        "str": [
+          "bludgeoning",
+          "piercing",
+          "slashing"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.resist[].special": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "damage from spells"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save": {
+      "total_count": 20,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "con",
+              "int",
+              "wis"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "int",
+              "wis",
+              "cha"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "con",
+              "wis"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save.cha": {
+      "total_count": 6,
+      "type_examples": {
+        "str": [
+          "+3",
+          "+5",
+          "+7"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save.con": {
+      "total_count": 5,
+      "type_examples": {
+        "str": [
+          "+9",
+          "+11",
+          "+8"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save.dex": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "+3",
+          "+6",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save.int": {
+      "total_count": 11,
+      "type_examples": {
+        "str": [
+          "+11",
+          "+6",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save.str": {
+      "total_count": 5,
+      "type_examples": {
+        "str": [
+          "+0",
+          "+3",
+          "+1"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.save.wis": {
+      "total_count": 15,
+      "type_examples": {
+        "str": [
+          "+8",
+          "+5",
+          "+7"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.savingThrowForced": {
+      "total_count": 13,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.savingThrowForcedLegendary": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.savingThrowForcedLegendary[]": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "constitution",
+          "dexterity"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.savingThrowForcedSpell": {
+      "total_count": 18,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.savingThrowForcedSpell[]": {
+      "total_count": 40,
+      "type_examples": {
+        "str": [
+          "charisma",
+          "constitution",
+          "charisma"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.savingThrowForced[]": {
+      "total_count": 19,
+      "type_examples": {
+        "str": [
+          "constitution",
+          "wisdom",
+          "charisma"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.senseTags": {
+      "total_count": 19,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.senseTags[]": {
+      "total_count": 23,
+      "type_examples": {
+        "str": [
+          "B",
+          "U",
+          "U"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.senses": {
+      "total_count": 19,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.senses[]": {
+      "total_count": 23,
+      "type_examples": {
+        "str": [
+          "blindsight 60 ft. (can't see beyond this radius)",
+          "truesight 120 ft.",
+          "truesight 60 ft."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.size": {
+      "total_count": 33,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.size[]": {
+      "total_count": 34,
+      "type_examples": {
+        "str": [
+          "L",
+          "M",
+          "S"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill": {
+      "total_count": 31,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "arcana",
+              "history",
+              "medicine",
+              "perception"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "arcana",
+              "perception",
+              "religion"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "perception",
+              "stealth"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.acrobatics": {
+      "total_count": 5,
+      "type_examples": {
+        "str": [
+          "+5",
+          "+2",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.animal handling": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "+4"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.arcana": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "+17",
+          "+6",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.athletics": {
+      "total_count": 7,
+      "type_examples": {
+        "str": [
+          "+5",
+          "+3",
+          "+4"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.deception": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "+4",
+          "+6",
+          "+6"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.history": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "+11",
+          "+2",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.insight": {
+      "total_count": 8,
+      "type_examples": {
+        "str": [
+          "+2",
+          "+2",
+          "+4"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.intimidation": {
+      "total_count": 3,
+      "type_examples": {
+        "str": [
+          "+5",
+          "+4",
+          "+4"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.investigation": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "+4",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.medicine": {
+      "total_count": 3,
+      "type_examples": {
+        "str": [
+          "+8",
+          "+7",
+          "+5"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.nature": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "+3",
+          "+4"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.perception": {
+      "total_count": 23,
+      "type_examples": {
+        "str": [
+          "+8",
+          "+5",
+          "+7"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.performance": {
+      "total_count": 6,
+      "type_examples": {
+        "str": [
+          "+5",
+          "+5",
+          "+2"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.persuasion": {
+      "total_count": 7,
+      "type_examples": {
+        "str": [
+          "+5",
+          "+5",
+          "+3"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.religion": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "+6",
+          "+4",
+          "+3"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.sleight of hand": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "+11"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.stealth": {
+      "total_count": 10,
+      "type_examples": {
+        "str": [
+          "+13",
+          "+11",
+          "+6"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.skill.survival": {
+      "total_count": 3,
+      "type_examples": {
+        "str": [
+          "+4",
+          "+3",
+          "+6"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.source": {
+      "total_count": 33,
+      "type_examples": {
+        "str": [
+          "AATM",
+          "AATM",
+          "AATM"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed": {
+      "total_count": 33,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "walk",
+              "climb"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "walk",
+              "fly",
+              "canHover"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "walk"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed.canHover": {
+      "total_count": 1,
+      "type_examples": {
+        "bool": [
+          true
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed.climb": {
+      "total_count": 3,
+      "type_examples": {
+        "int": [
+          30,
+          40,
+          20
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed.fly": {
+      "total_count": 5,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "number",
+              "condition"
+            ]
+          }
+        ],
+        "int": [
+          80,
+          60,
+          80
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "monster.speed.fly.condition": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "(hover)"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed.fly.number": {
+      "total_count": 1,
+      "type_examples": {
+        "int": [
+          30
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed.swim": {
+      "total_count": 1,
+      "type_examples": {
+        "int": [
+          30
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.speed.walk": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          30,
+          30,
+          30
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting": {
+      "total_count": 18,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "monster.spellcastingTags": {
+      "total_count": 18,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcastingTags[]": {
+      "total_count": 21,
+      "type_examples": {
+        "str": [
+          "O",
+          "O",
+          "I"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[]": {
+      "total_count": 20,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "type",
+              "headerEntries",
+              "will",
+              "daily",
+              "ability",
+              "displayAs"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "type",
+              "headerEntries",
+              "will",
+              "daily",
+              "ability",
+              "displayAs"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "type",
+              "headerEntries",
+              "will",
+              "daily",
+              "ability"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].ability": {
+      "total_count": 19,
+      "type_examples": {
+        "str": [
+          "int",
+          "int",
+          "int"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].daily": {
+      "total_count": 6,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "2e",
+              "1e"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "2e",
+              "1e"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "1e"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].daily.1e": {
+      "total_count": 6,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].daily.1e[]": {
+      "total_count": 18,
+      "type_examples": {
+        "str": [
+          "{@spell finger of death}",
+          "{@spell plane shift} (self only)",
+          "{@spell project image}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].daily.2e": {
+      "total_count": 2,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].daily.2e[]": {
+      "total_count": 6,
+      "type_examples": {
+        "str": [
+          "{@spell animate dead} (as an action)",
+          "{@spell dispel magic}",
+          "{@spell speak with dead}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].daily.3e": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].daily.3e[]": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "{@spell comprehend languages}",
+          "{@spell tongues}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].displayAs": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "action",
+          "action"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].footerEntries": {
+      "total_count": 4,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].footerEntries[]": {
+      "total_count": 4,
+      "type_examples": {
+        "str": [
+          "*New spell introduced in chapter 3",
+          "*New spell introduced in chapter 3",
+          "*(Illusion spell of 1st level or higher)"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].headerEntries": {
+      "total_count": 20,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].headerEntries[]": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "Skall casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 19}):",
+          "The exorcist casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 14}, {@hit 6} to hit with spell attacks):",
+          "Auspicia's innate spellcasting ability is Intelligence. She can innately cast the following spells, requiring no components:"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].name": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "Spellcasting",
+          "Spellcasting",
+          "Innate Spellcasting (Psionics)"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells": {
+      "total_count": 13,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "0",
+              "1",
+              "2"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "1",
+              "2"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.0": {
+      "total_count": 11,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.0.spells": {
+      "total_count": 11,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 4,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 5,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.0.spells[]": {
+      "total_count": 46,
+      "type_examples": {
+        "str": [
+          "{@spell mage hand}",
+          "{@spell message}",
+          "{@spell vicious mockery}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.1": {
+      "total_count": 12,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.1.slots": {
+      "total_count": 12,
+      "type_examples": {
+        "int": [
+          4,
+          4,
+          4
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.1.spells": {
+      "total_count": 12,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 5,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 4,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.1.spells[]": {
+      "total_count": 42,
+      "type_examples": {
+        "str": [
+          "{@spell charm person}",
+          "{@spell heroism}",
+          "{@spell illusory script}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.2": {
+      "total_count": 12,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.2.slots": {
+      "total_count": 12,
+      "type_examples": {
+        "int": [
+          3,
+          2,
+          3
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.2.spells": {
+      "total_count": 12,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 5,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.2.spells[]": {
+      "total_count": 34,
+      "type_examples": {
+        "str": [
+          "{@spell cloud of daggers}",
+          "{@spell invisibility}",
+          "{@spell aid}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.3": {
+      "total_count": 9,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "lower",
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.3.lower": {
+      "total_count": 1,
+      "type_examples": {
+        "int": [
+          1
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.3.slots": {
+      "total_count": 9,
+      "type_examples": {
+        "int": [
+          3,
+          3,
+          2
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.3.spells": {
+      "total_count": 9,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 6,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.3.spells[]": {
+      "total_count": 27,
+      "type_examples": {
+        "str": [
+          "{@spell fast friends|AI}*",
+          "{@spell lightning bolt}",
+          "{@spell incite greed|AI}*"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.4": {
+      "total_count": 6,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.4.slots": {
+      "total_count": 6,
+      "type_examples": {
+        "int": [
+          3,
+          3,
+          3
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.4.spells": {
+      "total_count": 6,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 4,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.4.spells[]": {
+      "total_count": 15,
+      "type_examples": {
+        "str": [
+          "{@spell greater invisibility}",
+          "{@spell conjure minor elementals}",
+          "{@spell polymorph}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.5": {
+      "total_count": 5,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.5.slots": {
+      "total_count": 5,
+      "type_examples": {
+        "int": [
+          1,
+          1,
+          1
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.5.spells": {
+      "total_count": 5,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 5,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.5.spells[]": {
+      "total_count": 12,
+      "type_examples": {
+        "str": [
+          "{@spell cone of cold}",
+          "{@spell mislead}",
+          "{@spell dispel evil and good}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.6": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.6.slots": {
+      "total_count": 1,
+      "type_examples": {
+        "int": [
+          1
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.6.spells": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.6.spells[]": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "{@spell disintegrate}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.7": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.7.slots": {
+      "total_count": 1,
+      "type_examples": {
+        "int": [
+          1
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.7.spells": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.7.spells[]": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "{@spell plane shift}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.8": {
+      "total_count": 1,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "slots",
+              "spells"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.8.slots": {
+      "total_count": 1,
+      "type_examples": {
+        "int": [
+          1
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].spells.8.spells": {
+      "total_count": 1,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].spells.8.spells[]": {
+      "total_count": 1,
+      "type_examples": {
+        "str": [
+          "{@spell maze}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].type": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "spellcasting",
+          "spellcasting",
+          "spellcasting"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.spellcasting[].will": {
+      "total_count": 7,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.spellcasting[].will[]": {
+      "total_count": 14,
+      "type_examples": {
+        "str": [
+          "{@spell detect magic}",
+          "{@spell mage hand}",
+          "{@spell prestidigitation}"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.str": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          16,
+          11,
+          8
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.trait": {
+      "total_count": 29,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 5,
+            "element_types": [
+              "dict"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "dict"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "dict"
+      ]
+    },
+    "monster.traitTags": {
+      "total_count": 18,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 2,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 3,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.traitTags[]": {
+      "total_count": 24,
+      "type_examples": {
+        "str": [
+          "False Appearance",
+          "Spider Climb",
+          "Legendary Resistances"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.trait[]": {
+      "total_count": 60,
+      "type_examples": {
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "name",
+              "entries"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.trait[].entries": {
+      "total_count": 60,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.trait[].entries[]": {
+      "total_count": 66,
+      "type_examples": {
+        "str": [
+          "If the animated coffin is motionless at the start of combat, it has advantage on its initiative roll. Moreover, if a creature hasn't observed the coffin move or act, that creature must succeed on a {@dc 18} Intelligence ({@skill Investigation}) check to discern that the coffin is animate.",
+          "The animated coffin can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.",
+          "Creatures within 30 feet of Skall have disadvantage on death saving throws."
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.trait[].name": {
+      "total_count": 60,
+      "type_examples": {
+        "str": [
+          "False Appearance",
+          "Spider Climb",
+          "Aura of Death"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.type": {
+      "total_count": 33,
+      "type_examples": {
+        "str": [
+          "construct",
+          "humanoid",
+          "monstrosity"
+        ],
+        "dict": [
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "tags"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "tags"
+            ]
+          },
+          {
+            "__sample__": "dict",
+            "keys": [
+              "type",
+              "tags"
+            ]
+          }
+        ]
+      },
+      "polymorphic": true,
+      "num_types": 2,
+      "array_element_types": null
+    },
+    "monster.type.tags": {
+      "total_count": 20,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.type.tags[]": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "wizard",
+          "half-elf",
+          "elf"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.type.type": {
+      "total_count": 20,
+      "type_examples": {
+        "str": [
+          "undead",
+          "humanoid",
+          "humanoid"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.vulnerable": {
+      "total_count": 2,
+      "type_examples": {
+        "list": [
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          },
+          {
+            "__sample__": "list",
+            "length": 1,
+            "element_types": [
+              "str"
+            ]
+          }
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": [
+        "str"
+      ]
+    },
+    "monster.vulnerable[]": {
+      "total_count": 2,
+      "type_examples": {
+        "str": [
+          "poison",
+          "bludgeoning"
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    },
+    "monster.wis": {
+      "total_count": 33,
+      "type_examples": {
+        "int": [
+          11,
+          14,
+          14
+        ]
+      },
+      "polymorphic": false,
+      "num_types": 1,
+      "array_element_types": null
+    }
+  }
+}

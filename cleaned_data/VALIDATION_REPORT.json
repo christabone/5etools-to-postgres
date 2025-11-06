@@ -1,0 +1,30 @@
+{
+  "summary": {
+    "all_valid": true,
+    "datasets_validated": 3
+  },
+  "type_consistency": {
+    "items": {
+      "dataset": "items",
+      "total_records": 2722,
+      "unique_fields": 198,
+      "polymorphic_fields": [],
+      "is_valid": true
+    },
+    "monsters": {
+      "dataset": "monsters",
+      "total_records": 4445,
+      "unique_fields": 176,
+      "polymorphic_fields": [],
+      "is_valid": true
+    },
+    "spells": {
+      "dataset": "spells",
+      "total_records": 937,
+      "unique_fields": 69,
+      "polymorphic_fields": [],
+      "is_valid": true
+    }
+  },
+  "required_fields": {}
+}

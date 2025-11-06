@@ -1,0 +1,2647 @@
+{
+  "potential_foreign_keys": {
+    "baseitem.source": {
+      "unique_values": [
+        "ERLW",
+        "XPHB",
+        "XDMG",
+        "ToA",
+        "SCAG",
+        "OotA",
+        "FRHoF",
+        "DMG",
+        "DSotDQ",
+        "PHB"
+      ],
+      "count": 10
+    },
+    "baseitem.type": {
+      "unique_values": [
+        "SCF|XPHB",
+        "HA|XPHB",
+        "R|XPHB",
+        "S|XPHB",
+        "MA|XPHB",
+        "HA",
+        "SCF",
+        "R",
+        "AF|XDMG",
+        "A|XPHB",
+        "S",
+        "LA|XPHB",
+        "INS|XPHB",
+        "T|XPHB",
+        "LA",
+        "M",
+        "INS",
+        "A",
+        "M|XPHB",
+        "MA",
+        "AF|DMG"
+      ],
+      "count": 21
+    },
+    "baseitem.rarity": {
+      "unique_values": [
+        "none",
+        "unknown"
+      ],
+      "count": 2
+    },
+    "baseitem.dmgType": {
+      "unique_values": [
+        "S",
+        "P",
+        "B",
+        "N",
+        "R"
+      ],
+      "count": 5
+    },
+    "baseitem.ammoType": {
+      "unique_values": [
+        "modern bullet",
+        "arrow|phb",
+        "energy cell|xdmg",
+        "energy cell",
+        "blowgun needle|phb",
+        "bolt|xphb",
+        "firearm bullet|xphb",
+        "renaissance bullet",
+        "needle|xphb",
+        "crossbow bolt|phb",
+        "arrow|xphb",
+        "sling bullet|phb",
+        "sling bullet|xphb"
+      ],
+      "count": 13
+    },
+    "baseitem.valueRarity": {
+      "unique_values": [
+        "very rare",
+        "rare"
+      ],
+      "count": 2
+    },
+    "baseitem.entries.type": {
+      "unique_values": [
+        "list",
+        "entries"
+      ],
+      "count": 2
+    },
+    "baseitem.entries.items.type": {
+      "unique_values": [
+        "item"
+      ],
+      "count": 1
+    },
+    "baseitem.scfType": {
+      "unique_values": [
+        "arcane",
+        "druid"
+      ],
+      "count": 2
+    },
+    "monster.source": {
+      "unique_values": [
+        "AitFR-DN",
+        "AitFR-FCD",
+        "AATM",
+        "AI",
+        "AitFR-ISF"
+      ],
+      "count": 5
+    },
+    "monster.type": {
+      "unique_values": [
+        "elemental",
+        "giant",
+        "humanoid",
+        "aberration",
+        "construct",
+        "undead",
+        "monstrosity"
+      ],
+      "count": 7
+    },
+    "monster.type.type": {
+      "unique_values": [
+        "humanoid",
+        "undead",
+        "monstrosity"
+      ],
+      "count": 3
+    },
+    "monster.spellcasting.type": {
+      "unique_values": [
+        "spellcasting"
+      ],
+      "count": 1
+    },
+    "monster.legendaryGroup.source": {
+      "unique_values": [
+        "AitFR-DN",
+        "AI"
+      ],
+      "count": 2
+    },
+    "fluff-spells-aag.spellFluff.source": {
+      "unique_values": [
+        "AAG"
+      ],
+      "count": 1
+    },
+    "fluff-spells-aag.spellFluff.images.type": {
+      "unique_values": [
+        "image"
+      ],
+      "count": 1
+    },
+    "fluff-spells-aag.spellFluff.images.href.type": {
+      "unique_values": [
+        "internal"
+      ],
+      "count": 1
+    },
+    "fluff-spells-egw.spellFluff.source": {
+      "unique_values": [
+        "EGW"
+      ],
+      "count": 1
+    },
+    "fluff-spells-egw.spellFluff.images.type": {
+      "unique_values": [
+        "image"
+      ],
+      "count": 1
+    },
+    "fluff-spells-egw.spellFluff.images.href.type": {
+      "unique_values": [
+        "internal"
+      ],
+      "count": 1
+    },
+    "fluff-spells-frhof.spellFluff.source": {
+      "unique_values": [
+        "FRHoF"
+      ],
+      "count": 1
+    },
+    "fluff-spells-frhof.spellFluff.images.type": {
+      "unique_values": [
+        "image"
+      ],
+      "count": 1
+    },
+    "fluff-spells-frhof.spellFluff.images.href.type": {
+      "unique_values": [
+        "internal"
+      ],
+      "count": 1
+    },
+    "fluff-spells-ftd.spellFluff.source": {
+      "unique_values": [
+        "FTD"
+      ],
+      "count": 1
+    },
+    "fluff-spells-ftd.spellFluff.images.type": {
+      "unique_values": [
+        "image"
+      ],
+      "count": 1
+    },
+    "fluff-spells-ftd.spellFluff.images.href.type": {
+      "unique_values": [
+        "internal"
+      ],
+      "count": 1
+    }
+  },
+  "array_relationships": {
+    "baseitem.reprintedAs": {
+      "element_types": [
+        "str",
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Antimatter Rifle|XDMG"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Arrow|XPHB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Arrows (20)|XPHB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Semiautomatic Pistol|XDMG"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Automatic Rifle|XDMG"
+          ]
+        }
+      ]
+    },
+    "baseitem.property": {
+      "element_types": [
+        "str",
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": [
+            "AF|DMG",
+            "RLD",
+            "2H"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "AF|XDMG",
+            "RLD|XDMG",
+            "2H|XPHB"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "AF|DMG",
+            "RLD"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "AF|DMG",
+            "BF|DMG",
+            "RLD"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "AF|XDMG",
+            "BF|XDMG",
+            "RLD|XDMG"
+          ]
+        }
+      ]
+    },
+    "baseitem.mastery": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Sap|XPHB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Slow|XPHB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Topple|XPHB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Vex|XPHB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Slow|XPHB"
+          ]
+        }
+      ]
+    },
+    "baseitem.entries": {
+      "element_types": [
+        "str",
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+            "Arrows are typically stored in a {@item Quiver|XPHB} (bought separately)."
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+            "Arrows are typically stored in a {@item Quiver|XPHB} (bought separately)."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Pan pipes or satyr pipes, also known as the shalm, these are sacred to {@deity Lliira|Faer\u00fbnian|scag} and popular with wood elf and wild elf bards."
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "Crossbow bolts are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+            "Bolts are typically stored in a {@item Crossbow Bolt Case|XPHB} (bought separately)."
+          ]
+        }
+      ]
+    },
+    "baseitem.packContents": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "baseitem.entries.items": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        }
+      ]
+    },
+    "baseitem.entries.items.entries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Charisma"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Charisma"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Play a known tune ({@dc 10}), or improvise a song ({@dc 15})"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Charisma"
+          ]
+        }
+      ]
+    },
+    "baseitem.group": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Arcane Focus"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Arcane Focus"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Arcane Focus"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Arcane Focus"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Arcane Focus"
+          ]
+        }
+      ]
+    },
+    "baseitem.entries.entries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "If you attack with a double-bladed scimitar as part of the {@action Attack} action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals {@damage 1d4} slashing damage on a hit, instead of {@damage 2d4}."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "When you make a melee attack with this weapon, you ignore its ammunition property. You can use the hoopak as a martial ranged weapon. If you do, it uses the ammunition property, uses sling bullets, and deals {@damage 1d4} bludgeoning damage on a hit."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a {@dc 10} Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+          ]
+        }
+      ]
+    },
+    "baseitem.miscTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "CNS"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "CNS"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "CNS"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "CNS"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "CNS"
+          ]
+        }
+      ]
+    },
+    "baseitem.alias": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Whistlecane"
+          ]
+        }
+      ]
+    },
+    "monster.size": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "L"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "M"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "S",
+            "M"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "H"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "M"
+          ]
+        }
+      ]
+    },
+    "monster.alignment": {
+      "element_types": [
+        "str",
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "U"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "N",
+            "E"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "A"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "U"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "N",
+            "G"
+          ]
+        }
+      ]
+    },
+    "monster.ac": {
+      "element_types": [
+        "int",
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.ac.from": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "natural armor"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "natural armor"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "natural armor"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@item chain shirt|phb}"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "natural armor"
+          ]
+        }
+      ]
+    },
+    "monster.senses": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "blindsight 60 ft. (can't see beyond this radius)"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "truesight 120 ft."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "truesight 60 ft."
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "blindsight 60 ft.",
+            "darkvision 120 ft."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "blindsight 120 ft. (blind beyond this radius)"
+          ]
+        }
+      ]
+    },
+    "monster.immune": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "poison",
+            "psychic"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "necrotic",
+            "poison"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "poison",
+            "psychic"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "poison",
+            "psychic"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "poison"
+          ]
+        }
+      ]
+    },
+    "monster.conditionImmune": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 8,
+          "sample": [
+            "blinded",
+            "charmed",
+            "deafened"
+          ]
+        },
+        {
+          "length": 6,
+          "sample": [
+            "charmed",
+            "exhaustion",
+            "frightened"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "charmed",
+            "frightened"
+          ]
+        },
+        {
+          "length": 8,
+          "sample": [
+            "blinded",
+            "charmed",
+            "deafened"
+          ]
+        },
+        {
+          "length": 6,
+          "sample": [
+            "charmed",
+            "exhaustion",
+            "frightened"
+          ]
+        }
+      ]
+    },
+    "monster.languages": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "understands the languages of its creator but can't speak"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "all"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Common plus three more languages"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Deep Crow"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "Common",
+            "Elvish"
+          ]
+        }
+      ]
+    },
+    "monster.trait": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 5,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 2,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.trait.entries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "If the animated coffin is motionless at the start of combat, it has advantage on its initiative roll. Moreover, if a creature hasn't observed the coffin move or act, that creature must succeed on a {@dc 18} Intelligence ({@skill Investigation}) check to discern that the coffin is animate."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "The animated coffin can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Creatures within 30 feet of Skall have disadvantage on death saving throws."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "A creature killed by Skall can be restored to life only by means of a true resurrection or {@spell wish} spell."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "If Skall fails a saving throw, he can choose to succeed instead."
+          ]
+        }
+      ]
+    },
+    "monster.action": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": "complex"
+        },
+        {
+          "length": 4,
+          "sample": "complex"
+        },
+        {
+          "length": 3,
+          "sample": "complex"
+        },
+        {
+          "length": 4,
+          "sample": "complex"
+        },
+        {
+          "length": 3,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.action.entries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "The animated coffin makes two Slam attacks."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d8 + 3}) bludgeoning damage."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@atk mw} {@hit 5} to hit, reach 5 ft., one Large or smaller creature. {@h}The target has the {@condition grappled} condition (escape {@dc 13}). Until this grapple ends, if the target is not an Undead, the target has the {@condition restrained} condition and takes 14 ({@damage 4d6}) piercing damage at the start of each of its turns. The animated coffin can grapple only one creature at a time."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Skall makes one Withering Touch attack or uses Spellcasting. He also uses Death Knell twice."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@atk ms} {@hit 11} to hit, reach 5 ft., one target. {@h}32 ({@damage 6d8 + 5}) cold damage plus 31 ({@damage 7d8}) necrotic damage, and if the target is a creature, it can't regain hit points until the start of Skall's next turn."
+          ]
+        }
+      ]
+    },
+    "monster.traitTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "False Appearance",
+            "Spider Climb"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "Legendary Resistances",
+            "Rejuvenation",
+            "Turn Resistance"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Magic Resistance"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Fey Ancestry"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Magic Resistance"
+          ]
+        }
+      ]
+    },
+    "monster.senseTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "B"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "U"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "U"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "B",
+            "SD"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "B"
+          ]
+        }
+      ]
+    },
+    "monster.actionTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Multiattack"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Multiattack"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Multiattack"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Multiattack"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Multiattack"
+          ]
+        }
+      ]
+    },
+    "monster.languageTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "CS"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "XX"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "C"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "OTH"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "C",
+            "E"
+          ]
+        }
+      ]
+    },
+    "monster.damageTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "B",
+            "P"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "C",
+            "I",
+            "N"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "N",
+            "R",
+            "Y"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "B",
+            "P",
+            "S"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "P",
+            "S"
+          ]
+        }
+      ]
+    },
+    "monster.miscTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "MW"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "AOE"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "MW",
+            "RCH"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "MLW",
+            "MW",
+            "RNG"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "MW"
+          ]
+        }
+      ]
+    },
+    "monster.type.tags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "wizard"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "half-elf"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "elf"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "dragonborn"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "human"
+          ]
+        }
+      ]
+    },
+    "monster.resist": {
+      "element_types": [
+        "str",
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": [
+            "necrotic"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": [
+            "acid"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.resist.resist": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": [
+            "bludgeoning",
+            "piercing",
+            "slashing"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "bludgeoning",
+            "piercing",
+            "slashing"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "bludgeoning",
+            "piercing",
+            "slashing"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "bludgeoning",
+            "piercing",
+            "slashing"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "bludgeoning",
+            "piercing",
+            "slashing"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.spellcasting.headerEntries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Skall casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 19}):"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "The exorcist casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 14}, {@hit 6} to hit with spell attacks):"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Auspicia's innate spellcasting ability is Intelligence. She can innately cast the following spells, requiring no components:"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Brahma is a 4th-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She has the following bard spells prepared:"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Donaar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He has the following paladin spells prepared:"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.will": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": [
+            "{@spell detect magic}",
+            "{@spell mage hand}",
+            "{@spell prestidigitation}"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "{@spell detect evil and good}",
+            "{@spell mage armor} (self only)",
+            "{@spell mage hand}"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@spell detect thoughts}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell dancing lights}",
+            "{@spell disguise self}"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@spell mage hand}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.daily.2e": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": [
+            "{@spell animate dead} (as an action)",
+            "{@spell dispel magic}",
+            "{@spell speak with dead}"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "{@spell protection from evil and good}",
+            "{@spell remove curse}",
+            "{@spell speak with dead}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.daily.1e": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": [
+            "{@spell finger of death}",
+            "{@spell plane shift} (self only)",
+            "{@spell project image}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell banishment}",
+            "{@spell dispel evil and good}"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@spell augury}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell darkness}",
+            "{@spell faerie fire}"
+          ]
+        },
+        {
+          "length": 5,
+          "sample": [
+            "{@spell command}",
+            "{@spell darkness}",
+            "{@spell darkvision}"
+          ]
+        }
+      ]
+    },
+    "monster.reactionHeader": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Skall can take up to three reactions per round but only one per turn."
+          ]
+        }
+      ]
+    },
+    "monster.reaction": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.reaction.entries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "Skall chatters his teeth to interrupt a creature he can see within 60 feet of himself that is casting a spell. If the spell is 4th level or lower, it fails and has no effect. If the spell is 5th level or higher, Skall makes an Intelligence check ({@dc 10} + the spell's level). On a successful check, the spell fails and has no effect. Whatever the spell's level, the caster takes 10 ({@damage 3d6}) necrotic damage if the spell fails."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "In response to being hit by an attack, Skall teleports, along with any equipment he is wearing or carrying, up to 30 feet to an unoccupied space he can see."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "When Oak takes damage from a melee weapon attack, he can make a hooked dagger attack."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "When a creature within 30 feet of Omin makes an attack roll, but before learning whether it hits or misses, Omin can grant the creature a +10 bonus to that roll."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "In response to being hit by a ranged weapon attack, Rosie deflects the missile. The damage she takes from the attack is reduced by {@damage 1d10 + 9}. If the damage is reduced to 0, she catches the missile if it's small enough to hold in one hand and she has a hand free."
+          ]
+        }
+      ]
+    },
+    "monster.damageTagsSpell": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "N"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "S",
+            "Y"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "R",
+            "Y"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "C",
+            "F",
+            "L"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "F",
+            "O"
+          ]
+        }
+      ]
+    },
+    "monster.spellcastingTags": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "O"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "O"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "I",
+            "P"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "CB"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "CP"
+          ]
+        }
+      ]
+    },
+    "monster.conditionInflict": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "frightened"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "incapacitated"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "grappled",
+            "prone",
+            "restrained"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "charmed"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "grappled",
+            "restrained",
+            "stunned"
+          ]
+        }
+      ]
+    },
+    "monster.conditionInflictSpell": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "blinded",
+            "deafened"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "incapacitated"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "charmed",
+            "invisible",
+            "unconscious"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "frightened",
+            "prone"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "charmed"
+          ]
+        }
+      ]
+    },
+    "monster.savingThrowForced": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "constitution",
+            "wisdom"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "charisma"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "constitution",
+            "dexterity"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "charisma",
+            "wisdom"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "charisma"
+          ]
+        }
+      ]
+    },
+    "monster.savingThrowForcedSpell": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "charisma",
+            "constitution"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "charisma"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "wisdom"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "wisdom"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "charisma",
+            "wisdom"
+          ]
+        }
+      ]
+    },
+    "monster.legendary": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": "complex"
+        },
+        {
+          "length": 3,
+          "sample": "complex"
+        },
+        {
+          "length": 3,
+          "sample": "complex"
+        }
+      ]
+    },
+    "monster.legendary.entries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "The deep crow makes a Wisdom ({@skill Perception}) check."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "The ancient deep crow uses Shadow Caw."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "The ancient deep crow beats its wings. Each creature within 10 feet of the deep crow must succeed on a {@dc 19} Dexterity saving throw or take 13 ({@damage 2d6 + 6}) bludgeoning damage and be knocked {@condition prone}. The ancient deep crow can then fly up to half its flying speed."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Kyrilla or a swarm of poisonous snakes makes a weapon attack."
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "Kyrilla makes a Wisdom ({@skill Perception}) check."
+          ]
+        }
+      ]
+    },
+    "monster.attachedItems": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "light crossbow|phb",
+            "longsword|phb"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "greatsword|phb",
+            "whip|phb"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "dagger|phb"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "dagger|phb"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "sickle|phb"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.0.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 3,
+          "sample": [
+            "{@spell mage hand}",
+            "{@spell message}",
+            "{@spell vicious mockery}"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "{@spell fire bolt}",
+            "{@spell light}",
+            "{@spell mage hand}"
+          ]
+        },
+        {
+          "length": 5,
+          "sample": [
+            "{@spell fire bolt}",
+            "{@spell friends}",
+            "{@spell mage hand}"
+          ]
+        },
+        {
+          "length": 6,
+          "sample": [
+            "{@spell chill touch}",
+            "{@spell eldritch blast}",
+            "{@spell mending}"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "{@spell guidance}",
+            "{@spell sacred flame}",
+            "{@spell spare the dying}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.1.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 5,
+          "sample": [
+            "{@spell charm person}",
+            "{@spell heroism}",
+            "{@spell illusory script}"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "{@spell command}",
+            "{@spell compelled duel}",
+            "{@spell cure wounds}"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "{@spell detect magic}",
+            "{@spell mage armor}",
+            "{@spell distort value|AI}*"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "{@spell disguise self}",
+            "{@spell Jim's magic missile|AI}*",
+            "{@spell mage armor}"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "{@spell alarm}",
+            "{@spell animal friendship}",
+            "{@spell hunter's mark}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.2.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "{@spell cloud of daggers}",
+            "{@spell invisibility}"
+          ]
+        },
+        {
+          "length": 5,
+          "sample": [
+            "{@spell aid}",
+            "{@spell branding smite}",
+            "{@spell lesser restoration}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell gift of gab|AI}*",
+            "{@spell suggestion}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell invisibility}",
+            "{@spell Jim's glowing coin|AI}*"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell pass without trace}",
+            "{@spell spike growth}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.3.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "{@spell fast friends|AI}*",
+            "{@spell lightning bolt}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell incite greed|AI}*",
+            "{@spell fireball}"
+          ]
+        },
+        {
+          "length": 6,
+          "sample": [
+            "{@spell dissonant whispers}",
+            "{@spell fly}",
+            "{@spell hex}"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@spell conjure animals}"
+          ]
+        },
+        {
+          "length": 5,
+          "sample": [
+            "{@spell beacon of hope}",
+            "{@spell crusader's mantle}",
+            "{@spell dispel magic}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.4.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "{@spell greater invisibility}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell conjure minor elementals}",
+            "{@spell polymorph}"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "{@spell death ward}",
+            "{@spell freedom of movement}",
+            "{@spell locate creature}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell blight}",
+            "{@spell freedom of movement}"
+          ]
+        },
+        {
+          "length": 4,
+          "sample": [
+            "{@spell banishment}",
+            "{@spell hallucinatory terrain}*",
+            "{@spell phantasmal killer}*"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.5.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "{@spell cone of cold}"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "{@spell mislead}"
+          ]
+        },
+        {
+          "length": 5,
+          "sample": [
+            "{@spell dispel evil and good}",
+            "{@spell flame strike}",
+            "{@spell hold monster}"
+          ]
+        },
+        {
+          "length": 3,
+          "sample": [
+            "{@spell conjure elemental}",
+            "{@spell mislead}*",
+            "{@spell telekinesis}"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "{@spell cone of cold}*",
+            "{@spell conjure elemental}*"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.footerEntries": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "*New spell introduced in chapter 3"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "*New spell introduced in chapter 3"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "*(Illusion spell of 1st level or higher)"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "*Conjuration spell of 1st level or higher"
+          ]
+        }
+      ]
+    },
+    "monster.alignment.alignment": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "N",
+            "G"
+          ]
+        },
+        {
+          "length": 2,
+          "sample": [
+            "N",
+            "E"
+          ]
+        }
+      ]
+    },
+    "monster.vulnerable": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "poison"
+          ]
+        },
+        {
+          "length": 1,
+          "sample": [
+            "bludgeoning"
+          ]
+        }
+      ]
+    },
+    "monster.damageTagsLegendary": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "R",
+            "S"
+          ]
+        }
+      ]
+    },
+    "monster.conditionInflictLegendary": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "poisoned"
+          ]
+        }
+      ]
+    },
+    "monster.savingThrowForcedLegendary": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "constitution",
+            "dexterity"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.6.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "{@spell disintegrate}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.7.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "{@spell plane shift}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.spells.8.spells": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": [
+            "{@spell maze}"
+          ]
+        }
+      ]
+    },
+    "monster.spellcasting.daily.3e": {
+      "element_types": [
+        "str"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": [
+            "{@spell comprehend languages}",
+            "{@spell tongues}"
+          ]
+        }
+      ]
+    },
+    "fluff-spells-aag.spellFluff": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-aag.spellFluff.images": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-egw.spellFluff": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-egw.spellFluff.images": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-frhof.spellFluff": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 4,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-frhof.spellFluff.images": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-ftd.spellFluff": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 2,
+          "sample": "complex"
+        }
+      ]
+    },
+    "fluff-spells-ftd.spellFluff.images": {
+      "element_types": [
+        "dict"
+      ],
+      "examples": [
+        {
+          "length": 1,
+          "sample": "complex"
+        },
+        {
+          "length": 1,
+          "sample": "complex"
+        }
+      ]
+    }
+  },
+  "named_entities": {
+    "baseitem": {
+      "count": 196,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Antimatter Rifle",
+          "source": "DMG"
+        },
+        {
+          "type": "named_entity",
+          "name": "Antimatter Rifle",
+          "source": "XDMG"
+        },
+        {
+          "type": "named_entity",
+          "name": "Arrow",
+          "source": "PHB"
+        },
+        {
+          "type": "named_entity",
+          "name": "Arrow",
+          "source": "XPHB"
+        },
+        {
+          "type": "named_entity",
+          "name": "Arrows (20)",
+          "source": "PHB"
+        }
+      ]
+    },
+    "monster": {
+      "count": 33,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Animated Coffin",
+          "source": "AATM"
+        },
+        {
+          "type": "named_entity",
+          "name": "Factol Skall",
+          "source": "AATM"
+        },
+        {
+          "type": "named_entity",
+          "name": "Heralds of Dust Exorcist",
+          "source": "AATM"
+        },
+        {
+          "type": "named_entity",
+          "name": "Ancient Deep Crow",
+          "source": "AI"
+        },
+        {
+          "type": "named_entity",
+          "name": "Auspicia Dran",
+          "source": "AI"
+        }
+      ]
+    },
+    "monster.legendaryGroup": {
+      "count": 2,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Ancient Deep Crow",
+          "source": "AI"
+        },
+        {
+          "type": "named_entity",
+          "name": "Kyrilla, Accursed Gorgon",
+          "source": "AitFR-DN"
+        }
+      ]
+    },
+    "fluff-spells-aag.spellFluff": {
+      "count": 1,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Air Bubble",
+          "source": "AAG"
+        }
+      ]
+    },
+    "fluff-spells-egw.spellFluff": {
+      "count": 2,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Dark Star",
+          "source": "EGW"
+        },
+        {
+          "type": "named_entity",
+          "name": "Reality Break",
+          "source": "EGW"
+        }
+      ]
+    },
+    "fluff-spells-frhof.spellFluff": {
+      "count": 4,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Alustriel's Mooncloak",
+          "source": "FRHoF"
+        },
+        {
+          "type": "named_entity",
+          "name": "Blade of Disaster",
+          "source": "FRHoF"
+        },
+        {
+          "type": "named_entity",
+          "name": "Elminster's Effulgent Spheres",
+          "source": "FRHoF"
+        },
+        {
+          "type": "named_entity",
+          "name": "Songal's Elemental Suffusion",
+          "source": "FRHoF"
+        }
+      ]
+    },
+    "fluff-spells-ftd.spellFluff": {
+      "count": 2,
+      "sample": [
+        {
+          "type": "named_entity",
+          "name": "Ashardalon's Stride",
+          "source": "FTD"
+        },
+        {
+          "type": "named_entity",
+          "name": "Rime's Binding Ice",
+          "source": "FTD"
+        }
+      ]
+    }
+  }
+}

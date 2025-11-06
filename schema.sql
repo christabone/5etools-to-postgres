@@ -1,551 +1,561 @@
--- 5etools to PostgreSQL Schema
--- Normalized database with controlled vocabulary for D&D 5e reference data
+-- =============================================================================
+-- 5etools PostgreSQL Schema
+-- =============================================================================
+-- Database: dnd5e_reference
+-- Purpose: Import D&D 5e data from 5etools JSON files
+-- Design: Hybrid normalization + JSONB for flexibility
+-- =============================================================================
 
--- ============================================================
--- CONTROLLED VOCABULARY / ONTOLOGY TABLES
--- ============================================================
+-- Clean start (development only - remove in production)
+DROP SCHEMA IF EXISTS public CASCADE;
+CREATE SCHEMA public;
 
--- Source books (PHB, MM, DMG, etc.)
+-- =============================================================================
+-- EXTENSIONS
+-- =============================================================================
+
+-- Enable trigram extension for fuzzy text search (must be created before use)
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+-- =============================================================================
+-- CONTROLLED VOCABULARY TABLES
+-- =============================================================================
+-- These enforce referential integrity and provide canonical lookup values
+
+-- Sources (PHB, MM, XGE, etc.)
 CREATE TABLE sources (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(20) UNIQUE NOT NULL,
-    full_name VARCHAR(255) NOT NULL,
-    url VARCHAR(500),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  code VARCHAR(20) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  type VARCHAR(20),
+  published_date DATE,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_sources_abbr ON sources(abbreviation);
+CREATE INDEX idx_sources_code ON sources(code);
 
--- Item types (M = Melee Weapon, R = Ranged Weapon, LA = Light Armor, etc.)
+-- Item Types (M=Melee, R=Ranged, A=Armor, etc.)
 CREATE TABLE item_types (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(10) UNIQUE NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    category VARCHAR(50), -- weapon, armor, gear, treasure, vehicle
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  code VARCHAR(10) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_item_types_abbr ON item_types(abbreviation);
-CREATE INDEX idx_item_types_category ON item_types(category);
-
--- Item properties (Light, Heavy, Finesse, Versatile, etc.)
-CREATE TABLE item_properties (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(10) UNIQUE NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Item Rarities
+CREATE TABLE item_rarities (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(20) UNIQUE NOT NULL,
+  sort_order INTEGER,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_item_properties_abbr ON item_properties(abbreviation);
-
--- Weapon mastery types (Nick, Push, Sap, Topple, etc.)
-CREATE TABLE weapon_masteries (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(20) UNIQUE NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Damage types (Slashing, Piercing, Bludgeoning, Fire, etc.)
+-- Damage Types (fire, cold, slashing, piercing, etc.)
 CREATE TABLE damage_types (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(10) UNIQUE NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    physical BOOLEAN DEFAULT FALSE, -- True for S, P, B
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(30) UNIQUE NOT NULL,
+  category VARCHAR(20),
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_damage_types_abbr ON damage_types(abbreviation);
-
--- Rarity levels
-CREATE TABLE rarity_levels (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL,
-    sort_order INTEGER NOT NULL, -- none=0, common=1, uncommon=2, etc.
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX idx_rarity_levels_name ON rarity_levels(name);
-
--- Magic schools (Evocation, Conjuration, Abjuration, etc.)
-CREATE TABLE magic_schools (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(10) UNIQUE NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX idx_magic_schools_abbr ON magic_schools(abbreviation);
-
--- Creature sizes (Tiny, Small, Medium, Large, Huge, Gargantuan)
-CREATE TABLE creature_sizes (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(10) UNIQUE NOT NULL,
-    name VARCHAR(20) NOT NULL,
-    space_feet NUMERIC(4,1), -- Space in feet (e.g., 5, 10, 15)
-    sort_order INTEGER NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX idx_creature_sizes_abbr ON creature_sizes(abbreviation);
-
--- Creature types (Humanoid, Beast, Dragon, etc.)
+-- Creature Types (humanoid, beast, dragon, etc.)
 CREATE TABLE creature_types (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(30) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_creature_types_name ON creature_types(name);
-
--- Alignments (LG, NG, CG, LN, N, CN, LE, NE, CE, U, A, etc.)
-CREATE TABLE alignments (
-    id SERIAL PRIMARY KEY,
-    abbreviation VARCHAR(20) UNIQUE NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Creature Sizes
+CREATE TABLE creature_sizes (
+  id SERIAL PRIMARY KEY,
+  code CHAR(1) UNIQUE NOT NULL,
+  name VARCHAR(20) NOT NULL,
+  space_feet INTEGER,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_alignments_abbr ON alignments(abbreviation);
-
--- Conditions (Blinded, Charmed, Deafened, etc.)
-CREATE TABLE conditions (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Alignment Values
+CREATE TABLE alignment_values (
+  id SERIAL PRIMARY KEY,
+  code VARCHAR(5) UNIQUE NOT NULL,
+  name VARCHAR(30) NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_conditions_name ON conditions(name);
-
--- Senses (darkvision, blindsight, tremorsense, truesight)
-CREATE TABLE sense_types (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Spell Schools
+CREATE TABLE spell_schools (
+  id SERIAL PRIMARY KEY,
+  code CHAR(1) UNIQUE NOT NULL,
+  name VARCHAR(30) NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Languages (Common, Elvish, Draconic, etc.)
-CREATE TABLE languages (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL,
-    script VARCHAR(50),
-    typical_speakers TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Condition Types
+CREATE TABLE condition_types (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(30) UNIQUE NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_languages_name ON languages(name);
-
--- Skills (Acrobatics, Animal Handling, etc.)
+-- Skills
 CREATE TABLE skills (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL,
-    ability_score VARCHAR(20) NOT NULL, -- STR, DEX, CON, INT, WIS, CHA
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(30) UNIQUE NOT NULL,
+  ability VARCHAR(10),
+  created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_skills_name ON skills(name);
+-- Item Properties (Finesse, Two-Handed, Versatile, etc.)
+CREATE TABLE item_properties (
+  id SERIAL PRIMARY KEY,
+  code VARCHAR(10) UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
 
+-- Classes (for spell relationships)
+CREATE TABLE classes (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
 
--- ============================================================
--- CORE DATA TABLES
--- ============================================================
+-- =============================================================================
+-- CORE ENTITY TABLES
+-- =============================================================================
 
--- Items (weapons, armor, gear, magic items)
+-- Items Table
 CREATE TABLE items (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    source_id INTEGER REFERENCES sources(id),
-    page INTEGER,
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  source_id INTEGER REFERENCES sources(id),
+  type_id INTEGER REFERENCES item_types(id),
+  rarity_id INTEGER REFERENCES item_rarities(id),
 
-    -- Classification
-    item_type_id INTEGER REFERENCES item_types(id),
-    rarity_id INTEGER REFERENCES rarity_levels(id),
+  -- Normalized fields (frequently queried)
+  value_cp INTEGER DEFAULT 0,
+  weight_lbs NUMERIC(10,2) DEFAULT 0,
+  requires_attunement BOOLEAN DEFAULT false,
+  attunement_description TEXT DEFAULT '',
 
-    -- Physical properties
-    weight NUMERIC(10, 2), -- in pounds
-    value INTEGER, -- in copper pieces
+  -- Weapon/armor specific
+  ac INTEGER,
+  strength_requirement INTEGER DEFAULT 0,
 
-    -- Weapon-specific
-    weapon_category VARCHAR(20), -- simple, martial
-    damage VARCHAR(20), -- e.g., "1d8"
-    damage2 VARCHAR(20), -- versatile damage
-    damage_type_id INTEGER REFERENCES damage_types(id),
-    range_normal INTEGER, -- in feet
-    range_long INTEGER, -- in feet
+  -- Normalized nested structures
+  range_normal INTEGER DEFAULT 0,
+  range_long INTEGER DEFAULT 0,
 
-    -- Armor-specific
-    armor_class INTEGER, -- base AC
-    strength_requirement INTEGER, -- minimum STR
-    stealth_disadvantage BOOLEAN DEFAULT FALSE,
+  -- SRD flags
+  is_srd BOOLEAN DEFAULT false,
+  is_srd52 BOOLEAN DEFAULT false,
 
-    -- Magic item specific
-    requires_attunement BOOLEAN DEFAULT FALSE,
-    charges INTEGER,
-    recharge VARCHAR(50),
+  -- Full original JSON (for complex fields like entries, damage, etc.)
+  data JSONB NOT NULL,
 
-    -- Metadata
-    srd BOOLEAN DEFAULT FALSE,
-    basic_rules BOOLEAN DEFAULT FALSE,
-    legacy BOOLEAN DEFAULT FALSE,
+  -- Metadata
+  source_file TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
 
-    -- Full JSON data for flexibility
-    data JSONB,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  -- Full-text search
+  search_vector tsvector
 );
 
-CREATE INDEX idx_items_name ON items(name);
-CREATE INDEX idx_items_source ON items(source_id);
-CREATE INDEX idx_items_type ON items(item_type_id);
+CREATE INDEX idx_items_name ON items USING gin(to_tsvector('english', name));
+CREATE INDEX idx_items_name_trgm ON items USING gin(name gin_trgm_ops);
+CREATE INDEX idx_items_data ON items USING gin(data);
+CREATE INDEX idx_items_search ON items USING gin(search_vector);
 CREATE INDEX idx_items_rarity ON items(rarity_id);
-CREATE INDEX idx_items_srd ON items(srd);
-CREATE INDEX idx_items_data ON items USING GIN(data);
+CREATE INDEX idx_items_type ON items(type_id);
+CREATE INDEX idx_items_source ON items(source_id);
+CREATE INDEX idx_items_value ON items(value_cp);
 
--- Item properties (many-to-many)
-CREATE TABLE item_property_map (
-    id SERIAL PRIMARY KEY,
-    item_id INTEGER REFERENCES items(id) ON DELETE CASCADE,
-    property_id INTEGER REFERENCES item_properties(id),
-    UNIQUE(item_id, property_id)
-);
-
-CREATE INDEX idx_item_property_map_item ON item_property_map(item_id);
-CREATE INDEX idx_item_property_map_property ON item_property_map(property_id);
-
--- Item masteries (many-to-many)
-CREATE TABLE item_mastery_map (
-    id SERIAL PRIMARY KEY,
-    item_id INTEGER REFERENCES items(id) ON DELETE CASCADE,
-    mastery_id INTEGER REFERENCES weapon_masteries(id),
-    UNIQUE(item_id, mastery_id)
-);
-
-CREATE INDEX idx_item_mastery_map_item ON item_mastery_map(item_id);
-CREATE INDEX idx_item_mastery_map_mastery ON item_mastery_map(mastery_id);
-
-
--- Monsters/Creatures
+-- Monsters Table
 CREATE TABLE monsters (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    source_id INTEGER REFERENCES sources(id),
-    page INTEGER,
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  source_id INTEGER REFERENCES sources(id),
+  type_id INTEGER REFERENCES creature_types(id),
+  size_id INTEGER REFERENCES creature_sizes(id),
 
-    -- Basic info
-    size_id INTEGER REFERENCES creature_sizes(id),
-    type_id INTEGER REFERENCES creature_types(id),
-    cr VARCHAR(10) NOT NULL, -- Challenge Rating (can be fraction like "1/2")
+  -- Normalized stats
+  cr NUMERIC(5,2) NOT NULL,
+  hp_average INTEGER NOT NULL,
+  hp_formula TEXT,
+  ac_primary INTEGER NOT NULL,
 
-    -- Combat stats
-    ac INTEGER,
-    ac_special VARCHAR(255), -- e.g., "13 (natural armor)"
-    hp_avg INTEGER,
-    hp_formula VARCHAR(50),
+  -- Speeds (in feet)
+  speed_walk INTEGER DEFAULT 30,
+  speed_fly INTEGER DEFAULT 0,
+  speed_swim INTEGER DEFAULT 0,
+  speed_climb INTEGER DEFAULT 0,
+  speed_burrow INTEGER DEFAULT 0,
 
-    -- Ability scores
-    str INTEGER NOT NULL,
-    dex INTEGER NOT NULL,
-    con INTEGER NOT NULL,
-    int INTEGER NOT NULL,
-    wis INTEGER NOT NULL,
-    cha INTEGER NOT NULL,
+  -- Ability scores
+  str INTEGER NOT NULL,
+  dex INTEGER NOT NULL,
+  con INTEGER NOT NULL,
+  int INTEGER NOT NULL,
+  wis INTEGER NOT NULL,
+  cha INTEGER NOT NULL,
 
-    -- Movement
-    speed_walk INTEGER,
-    speed_fly INTEGER,
-    speed_swim INTEGER,
-    speed_burrow INTEGER,
-    speed_climb INTEGER,
-    speed_special JSONB, -- hover, etc.
+  -- Senses
+  passive_perception INTEGER DEFAULT 10,
 
-    -- Senses
-    passive_perception INTEGER,
+  -- SRD flags
+  is_srd BOOLEAN DEFAULT false,
+  is_srd52 BOOLEAN DEFAULT false,
 
-    -- Metadata
-    srd BOOLEAN DEFAULT FALSE,
-    basic_rules BOOLEAN DEFAULT FALSE,
-    legendary BOOLEAN DEFAULT FALSE,
-    unique_creature BOOLEAN DEFAULT FALSE, -- Named NPCs
+  -- Full original JSON (for traits, actions, spellcasting, etc.)
+  data JSONB NOT NULL,
 
-    -- Full JSON data
-    data JSONB,
+  -- Metadata
+  source_file TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
 
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  -- Full-text search
+  search_vector tsvector
 );
 
-CREATE INDEX idx_monsters_name ON monsters(name);
-CREATE INDEX idx_monsters_source ON monsters(source_id);
+CREATE INDEX idx_monsters_name ON monsters USING gin(to_tsvector('english', name));
+CREATE INDEX idx_monsters_name_trgm ON monsters USING gin(name gin_trgm_ops);
 CREATE INDEX idx_monsters_cr ON monsters(cr);
+CREATE INDEX idx_monsters_data ON monsters USING gin(data);
+CREATE INDEX idx_monsters_search ON monsters USING gin(search_vector);
 CREATE INDEX idx_monsters_type ON monsters(type_id);
 CREATE INDEX idx_monsters_size ON monsters(size_id);
-CREATE INDEX idx_monsters_srd ON monsters(srd);
-CREATE INDEX idx_monsters_data ON monsters USING GIN(data);
+CREATE INDEX idx_monsters_source ON monsters(source_id);
 
--- Monster alignments (many-to-many, as some monsters can be "any alignment")
-CREATE TABLE monster_alignments (
-    id SERIAL PRIMARY KEY,
-    monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
-    alignment_id INTEGER REFERENCES alignments(id),
-    UNIQUE(monster_id, alignment_id)
-);
-
-CREATE INDEX idx_monster_alignments_monster ON monster_alignments(monster_id);
-CREATE INDEX idx_monster_alignments_alignment ON monster_alignments(alignment_id);
-
--- Monster languages (many-to-many)
-CREATE TABLE monster_languages (
-    id SERIAL PRIMARY KEY,
-    monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
-    language_id INTEGER REFERENCES languages(id),
-    notes VARCHAR(255), -- e.g., "can't speak"
-    UNIQUE(monster_id, language_id)
-);
-
-CREATE INDEX idx_monster_languages_monster ON monster_languages(monster_id);
-CREATE INDEX idx_monster_languages_language ON monster_languages(language_id);
-
--- Monster senses (many-to-many with range)
-CREATE TABLE monster_senses (
-    id SERIAL PRIMARY KEY,
-    monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
-    sense_type_id INTEGER REFERENCES sense_types(id),
-    range_feet INTEGER,
-    UNIQUE(monster_id, sense_type_id)
-);
-
-CREATE INDEX idx_monster_senses_monster ON monster_senses(monster_id);
-
--- Monster skills (with proficiency bonus included)
-CREATE TABLE monster_skills (
-    id SERIAL PRIMARY KEY,
-    monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
-    skill_id INTEGER REFERENCES skills(id),
-    bonus INTEGER NOT NULL, -- Total bonus including proficiency
-    UNIQUE(monster_id, skill_id)
-);
-
-CREATE INDEX idx_monster_skills_monster ON monster_skills(monster_id);
-CREATE INDEX idx_monster_skills_skill ON monster_skills(skill_id);
-
--- Monster damage resistances/immunities/vulnerabilities
-CREATE TABLE monster_damage_modifiers (
-    id SERIAL PRIMARY KEY,
-    monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
-    damage_type_id INTEGER REFERENCES damage_types(id),
-    modifier_type VARCHAR(20) NOT NULL, -- resistance, immunity, vulnerability
-    condition TEXT, -- e.g., "from nonmagical attacks"
-    UNIQUE(monster_id, damage_type_id, modifier_type)
-);
-
-CREATE INDEX idx_monster_damage_mods_monster ON monster_damage_modifiers(monster_id);
-CREATE INDEX idx_monster_damage_mods_type ON monster_damage_modifiers(damage_type_id);
-
--- Monster condition immunities (many-to-many)
-CREATE TABLE monster_condition_immunities (
-    id SERIAL PRIMARY KEY,
-    monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
-    condition_id INTEGER REFERENCES conditions(id),
-    UNIQUE(monster_id, condition_id)
-);
-
-CREATE INDEX idx_monster_condition_immunities_monster ON monster_condition_immunities(monster_id);
-
-
--- Spells
+-- Spells Table
 CREATE TABLE spells (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    source_id INTEGER REFERENCES sources(id),
-    page INTEGER,
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  source_id INTEGER REFERENCES sources(id),
+  school_id INTEGER REFERENCES spell_schools(id),
 
-    -- Basic info
-    level INTEGER NOT NULL CHECK (level >= 0 AND level <= 9),
-    school_id INTEGER REFERENCES magic_schools(id),
+  -- Core properties
+  level INTEGER NOT NULL CHECK (level >= 0 AND level <= 9),
+  is_ritual BOOLEAN DEFAULT false,
 
-    -- Casting
-    casting_time VARCHAR(100),
-    ritual BOOLEAN DEFAULT FALSE,
+  -- Casting time
+  casting_time_number INTEGER,
+  casting_time_unit TEXT,
 
-    -- Components
-    component_verbal BOOLEAN DEFAULT FALSE,
-    component_somatic BOOLEAN DEFAULT FALSE,
-    component_material BOOLEAN DEFAULT FALSE,
-    material_components TEXT,
-    material_consumed BOOLEAN DEFAULT FALSE,
-    material_cost INTEGER, -- in cp
+  -- Range
+  range_type TEXT,
+  range_value INTEGER DEFAULT 0,
+  range_unit TEXT DEFAULT '',
 
-    -- Range & Duration
-    range_type VARCHAR(50), -- self, touch, point, special
-    range_distance INTEGER, -- in feet
-    duration_type VARCHAR(50), -- instant, time, concentration, special
-    duration_amount INTEGER,
-    duration_unit VARCHAR(20), -- round, minute, hour, day
-    concentration BOOLEAN DEFAULT FALSE,
+  -- Duration
+  duration_type TEXT,
+  duration_value INTEGER DEFAULT 0,
+  duration_unit TEXT DEFAULT '',
+  requires_concentration BOOLEAN DEFAULT false,
 
-    -- Effects
-    description TEXT NOT NULL,
-    higher_levels TEXT,
+  -- Components
+  component_v BOOLEAN DEFAULT false,
+  component_s BOOLEAN DEFAULT false,
+  component_m BOOLEAN DEFAULT false,
+  component_m_text TEXT DEFAULT '',
 
-    -- Metadata
-    srd BOOLEAN DEFAULT FALSE,
-    basic_rules BOOLEAN DEFAULT FALSE,
+  -- SRD flags
+  is_srd BOOLEAN DEFAULT false,
+  is_srd52 BOOLEAN DEFAULT false,
 
-    -- Full JSON data
-    data JSONB,
+  -- Full original JSON (for entries, damage, scaling, etc.)
+  data JSONB NOT NULL,
 
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  -- Metadata
+  source_file TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
+
+  -- Full-text search
+  search_vector tsvector
 );
 
-CREATE INDEX idx_spells_name ON spells(name);
-CREATE INDEX idx_spells_source ON spells(source_id);
+CREATE INDEX idx_spells_name ON spells USING gin(to_tsvector('english', name));
+CREATE INDEX idx_spells_name_trgm ON spells USING gin(name gin_trgm_ops);
 CREATE INDEX idx_spells_level ON spells(level);
 CREATE INDEX idx_spells_school ON spells(school_id);
-CREATE INDEX idx_spells_srd ON spells(srd);
-CREATE INDEX idx_spells_data ON spells USING GIN(data);
+CREATE INDEX idx_spells_data ON spells USING gin(data);
+CREATE INDEX idx_spells_search ON spells USING gin(search_vector);
+CREATE INDEX idx_spells_source ON spells(source_id);
+CREATE INDEX idx_spells_concentration ON spells(requires_concentration);
+CREATE INDEX idx_spells_ritual ON spells(is_ritual);
 
--- Spell damage types (many-to-many)
-CREATE TABLE spell_damage_types (
-    id SERIAL PRIMARY KEY,
-    spell_id INTEGER REFERENCES spells(id) ON DELETE CASCADE,
-    damage_type_id INTEGER REFERENCES damage_types(id),
-    UNIQUE(spell_id, damage_type_id)
+-- =============================================================================
+-- JUNCTION TABLES (Many-to-Many Relationships)
+-- =============================================================================
+
+-- Item Properties (junction)
+CREATE TABLE item_item_properties (
+  item_id INTEGER REFERENCES items(id) ON DELETE CASCADE,
+  property_id INTEGER REFERENCES item_properties(id),
+  note TEXT DEFAULT '',
+  PRIMARY KEY (item_id, property_id)
 );
 
-CREATE INDEX idx_spell_damage_types_spell ON spell_damage_types(spell_id);
-CREATE INDEX idx_spell_damage_types_damage ON spell_damage_types(damage_type_id);
+CREATE INDEX idx_item_props_item ON item_item_properties(item_id);
+CREATE INDEX idx_item_props_property ON item_item_properties(property_id);
 
+-- Monster Alignments (junction)
+CREATE TABLE monster_alignments (
+  monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
+  alignment_id INTEGER REFERENCES alignment_values(id),
+  PRIMARY KEY (monster_id, alignment_id)
+);
 
--- ============================================================
--- TRIGGERS FOR UPDATED_AT
--- ============================================================
+CREATE INDEX idx_monster_align_monster ON monster_alignments(monster_id);
+CREATE INDEX idx_monster_align_alignment ON monster_alignments(alignment_id);
 
-CREATE OR REPLACE FUNCTION update_updated_at()
-RETURNS TRIGGER AS $$
+-- Monster Damage Resistances (junction)
+CREATE TABLE monster_resistances (
+  monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
+  damage_type_id INTEGER REFERENCES damage_types(id),
+  PRIMARY KEY (monster_id, damage_type_id)
+);
+
+CREATE INDEX idx_monster_resist_monster ON monster_resistances(monster_id);
+CREATE INDEX idx_monster_resist_damage ON monster_resistances(damage_type_id);
+
+-- Monster Damage Immunities (junction)
+CREATE TABLE monster_immunities (
+  monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
+  damage_type_id INTEGER REFERENCES damage_types(id),
+  PRIMARY KEY (monster_id, damage_type_id)
+);
+
+CREATE INDEX idx_monster_immune_monster ON monster_immunities(monster_id);
+CREATE INDEX idx_monster_immune_damage ON monster_immunities(damage_type_id);
+
+-- Monster Damage Vulnerabilities (junction)
+CREATE TABLE monster_vulnerabilities (
+  monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
+  damage_type_id INTEGER REFERENCES damage_types(id),
+  PRIMARY KEY (monster_id, damage_type_id)
+);
+
+CREATE INDEX idx_monster_vuln_monster ON monster_vulnerabilities(monster_id);
+CREATE INDEX idx_monster_vuln_damage ON monster_vulnerabilities(damage_type_id);
+
+-- Monster Condition Immunities (junction)
+CREATE TABLE monster_condition_immunities (
+  monster_id INTEGER REFERENCES monsters(id) ON DELETE CASCADE,
+  condition_id INTEGER REFERENCES condition_types(id),
+  PRIMARY KEY (monster_id, condition_id)
+);
+
+CREATE INDEX idx_monster_cond_monster ON monster_condition_immunities(monster_id);
+CREATE INDEX idx_monster_cond_condition ON monster_condition_immunities(condition_id);
+
+-- Spell Classes (junction)
+CREATE TABLE spell_classes (
+  spell_id INTEGER REFERENCES spells(id) ON DELETE CASCADE,
+  class_id INTEGER REFERENCES classes(id),
+  PRIMARY KEY (spell_id, class_id)
+);
+
+CREATE INDEX idx_spell_class_spell ON spell_classes(spell_id);
+CREATE INDEX idx_spell_class_class ON spell_classes(class_id);
+
+-- =============================================================================
+-- VIEWS FOR COMMON QUERIES
+-- =============================================================================
+
+-- Complete Items View
+CREATE VIEW v_items_complete AS
+SELECT
+  i.id,
+  i.name,
+  s.code as source,
+  it.name as item_type,
+  r.name as rarity,
+  i.value_cp,
+  i.weight_lbs,
+  i.requires_attunement,
+  i.attunement_description,
+  i.ac,
+  i.strength_requirement,
+  i.range_normal,
+  i.range_long,
+  i.is_srd,
+  COALESCE(array_agg(DISTINCT ip.code) FILTER (WHERE ip.code IS NOT NULL), ARRAY[]::VARCHAR[]) as properties,
+  i.data
+FROM items i
+LEFT JOIN sources s ON i.source_id = s.id
+LEFT JOIN item_types it ON i.type_id = it.id
+LEFT JOIN item_rarities r ON i.rarity_id = r.id
+LEFT JOIN item_item_properties iip ON i.id = iip.item_id
+LEFT JOIN item_properties ip ON iip.property_id = ip.id
+GROUP BY i.id, s.code, it.name, r.name;
+
+-- Complete Monsters View
+CREATE VIEW v_monsters_complete AS
+SELECT
+  m.id,
+  m.name,
+  s.code as source,
+  ct.name as creature_type,
+  cs.name as size,
+  m.cr,
+  m.hp_average,
+  m.hp_formula,
+  m.ac_primary,
+  m.speed_walk,
+  m.speed_fly,
+  m.speed_swim,
+  m.speed_climb,
+  m.speed_burrow,
+  m.str, m.dex, m.con, m.int, m.wis, m.cha,
+  m.passive_perception,
+  m.is_srd,
+  COALESCE(array_agg(DISTINCT av.code) FILTER (WHERE av.code IS NOT NULL), ARRAY[]::VARCHAR[]) as alignments,
+  COALESCE(array_agg(DISTINCT dt_r.name) FILTER (WHERE dt_r.name IS NOT NULL), ARRAY[]::VARCHAR[]) as resistances,
+  COALESCE(array_agg(DISTINCT dt_i.name) FILTER (WHERE dt_i.name IS NOT NULL), ARRAY[]::VARCHAR[]) as immunities,
+  COALESCE(array_agg(DISTINCT dt_v.name) FILTER (WHERE dt_v.name IS NOT NULL), ARRAY[]::VARCHAR[]) as vulnerabilities,
+  COALESCE(array_agg(DISTINCT cond.name) FILTER (WHERE cond.name IS NOT NULL), ARRAY[]::VARCHAR[]) as condition_immunities,
+  m.data
+FROM monsters m
+LEFT JOIN sources s ON m.source_id = s.id
+LEFT JOIN creature_types ct ON m.type_id = ct.id
+LEFT JOIN creature_sizes cs ON m.size_id = cs.id
+LEFT JOIN monster_alignments ma ON m.id = ma.monster_id
+LEFT JOIN alignment_values av ON ma.alignment_id = av.id
+LEFT JOIN monster_resistances mr ON m.id = mr.monster_id
+LEFT JOIN damage_types dt_r ON mr.damage_type_id = dt_r.id
+LEFT JOIN monster_immunities mi ON m.id = mi.monster_id
+LEFT JOIN damage_types dt_i ON mi.damage_type_id = dt_i.id
+LEFT JOIN monster_vulnerabilities mv ON m.id = mv.monster_id
+LEFT JOIN damage_types dt_v ON mv.damage_type_id = dt_v.id
+LEFT JOIN monster_condition_immunities mci ON m.id = mci.monster_id
+LEFT JOIN condition_types cond ON mci.condition_id = cond.id
+GROUP BY m.id, s.code, ct.name, cs.name;
+
+-- Complete Spells View
+CREATE VIEW v_spells_complete AS
+SELECT
+  sp.id,
+  sp.name,
+  s.code as source,
+  sch.name as school,
+  sp.level,
+  sp.is_ritual,
+  sp.casting_time_number,
+  sp.casting_time_unit,
+  sp.range_type,
+  sp.range_value,
+  sp.range_unit,
+  sp.duration_type,
+  sp.duration_value,
+  sp.duration_unit,
+  sp.requires_concentration,
+  sp.component_v,
+  sp.component_s,
+  sp.component_m,
+  sp.component_m_text,
+  sp.is_srd,
+  COALESCE(array_agg(DISTINCT c.name) FILTER (WHERE c.name IS NOT NULL), ARRAY[]::VARCHAR[]) as classes,
+  sp.data
+FROM spells sp
+LEFT JOIN sources s ON sp.source_id = s.id
+LEFT JOIN spell_schools sch ON sp.school_id = sch.id
+LEFT JOIN spell_classes sc ON sp.id = sc.spell_id
+LEFT JOIN classes c ON sc.class_id = c.id
+GROUP BY sp.id, s.code, sch.name;
+
+-- =============================================================================
+-- USEFUL QUERY FUNCTIONS
+-- =============================================================================
+
+-- Function to search items by name (fuzzy)
+CREATE OR REPLACE FUNCTION search_items(search_term TEXT)
+RETURNS TABLE (
+  id INTEGER,
+  name TEXT,
+  similarity REAL
+) AS $$
 BEGIN
-    NEW.updated_at = CURRENT_TIMESTAMP;
-    RETURN NEW;
+  RETURN QUERY
+  SELECT
+    i.id,
+    i.name,
+    similarity(i.name, search_term) as sim
+  FROM items i
+  WHERE i.name % search_term
+  ORDER BY sim DESC, i.name
+  LIMIT 20;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER update_items_updated_at BEFORE UPDATE ON items
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at();
-
-CREATE TRIGGER update_monsters_updated_at BEFORE UPDATE ON monsters
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at();
-
-CREATE TRIGGER update_spells_updated_at BEFORE UPDATE ON spells
-    FOR EACH ROW EXECUTE FUNCTION update_updated_at();
-
-
--- ============================================================
--- VIEWS FOR COMMON QUERIES
--- ============================================================
-
--- Full item details with lookups resolved
-CREATE VIEW items_detailed AS
-SELECT
-    i.id,
-    i.name,
-    s.abbreviation as source,
-    s.full_name as source_name,
-    i.page,
-    it.name as item_type,
-    it.category as item_category,
-    r.name as rarity,
-    i.weight,
-    i.value,
-    i.weapon_category,
-    i.damage,
-    i.damage2,
-    dt.name as damage_type,
-    i.range_normal,
-    i.range_long,
-    i.armor_class,
-    i.strength_requirement,
-    i.stealth_disadvantage,
-    i.requires_attunement,
-    i.srd,
-    i.basic_rules,
-    -- Aggregate properties as array
-    ARRAY_AGG(DISTINCT ip.name) FILTER (WHERE ip.name IS NOT NULL) as properties,
-    -- Aggregate masteries as array
-    ARRAY_AGG(DISTINCT wm.name) FILTER (WHERE wm.name IS NOT NULL) as masteries
-FROM items i
-LEFT JOIN sources s ON i.source_id = s.id
-LEFT JOIN item_types it ON i.item_type_id = it.id
-LEFT JOIN rarity_levels r ON i.rarity_id = r.id
-LEFT JOIN damage_types dt ON i.damage_type_id = dt.id
-LEFT JOIN item_property_map ipm ON i.id = ipm.item_id
-LEFT JOIN item_properties ip ON ipm.property_id = ip.id
-LEFT JOIN item_mastery_map imm ON i.id = imm.item_id
-LEFT JOIN weapon_masteries wm ON imm.mastery_id = wm.id
-GROUP BY i.id, s.abbreviation, s.full_name, it.name, it.category, r.name, dt.name;
-
--- Full monster details with lookups resolved
-CREATE VIEW monsters_detailed AS
-SELECT
+-- Function to search monsters by name (fuzzy)
+CREATE OR REPLACE FUNCTION search_monsters(search_term TEXT)
+RETURNS TABLE (
+  id INTEGER,
+  name TEXT,
+  similarity REAL
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT
     m.id,
     m.name,
-    s.abbreviation as source,
-    cs.name as size,
-    ct.name as type,
-    m.cr,
-    m.ac,
-    m.hp_avg,
-    m.hp_formula,
-    m.str, m.dex, m.con, m.int, m.wis, m.cha,
-    m.speed_walk, m.speed_fly, m.speed_swim,
-    m.passive_perception,
-    m.srd,
-    m.legendary,
-    -- Aggregate alignments
-    ARRAY_AGG(DISTINCT a.name) FILTER (WHERE a.name IS NOT NULL) as alignments,
-    -- Aggregate languages
-    ARRAY_AGG(DISTINCT l.name) FILTER (WHERE l.name IS NOT NULL) as languages
-FROM monsters m
-LEFT JOIN sources s ON m.source_id = s.id
-LEFT JOIN creature_sizes cs ON m.size_id = cs.id
-LEFT JOIN creature_types ct ON m.type_id = ct.id
-LEFT JOIN monster_alignments ma ON m.id = ma.monster_id
-LEFT JOIN alignments a ON ma.alignment_id = a.id
-LEFT JOIN monster_languages ml ON m.id = ml.monster_id
-LEFT JOIN languages l ON ml.language_id = l.id
-GROUP BY m.id, s.abbreviation, cs.name, ct.name;
+    similarity(m.name, search_term) as sim
+  FROM monsters m
+  WHERE m.name % search_term
+  ORDER BY sim DESC, m.name
+  LIMIT 20;
+END;
+$$ LANGUAGE plpgsql;
 
--- Full spell details with lookups resolved
-CREATE VIEW spells_detailed AS
-SELECT
-    sp.id,
-    sp.name,
-    s.abbreviation as source,
-    sp.level,
-    ms.name as school,
-    sp.casting_time,
-    sp.ritual,
-    sp.component_verbal,
-    sp.component_somatic,
-    sp.component_material,
-    sp.material_components,
-    sp.range_type,
-    sp.range_distance,
-    sp.duration_type,
-    sp.concentration,
-    sp.description,
-    sp.higher_levels,
-    sp.srd,
-    -- Aggregate damage types
-    ARRAY_AGG(DISTINCT dt.name) FILTER (WHERE dt.name IS NOT NULL) as damage_types
-FROM spells sp
-LEFT JOIN sources s ON sp.source_id = s.id
-LEFT JOIN magic_schools ms ON sp.school_id = ms.id
-LEFT JOIN spell_damage_types sdt ON sp.id = sdt.spell_id
-LEFT JOIN damage_types dt ON sdt.damage_type_id = dt.id
-GROUP BY sp.id, s.abbreviation, ms.name;
+-- Function to search spells by name (fuzzy)
+CREATE OR REPLACE FUNCTION search_spells(search_term TEXT)
+RETURNS TABLE (
+  id INTEGER,
+  name TEXT,
+  similarity REAL
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT
+    s.id,
+    s.name,
+    similarity(s.name, search_term) as sim
+  FROM spells s
+  WHERE s.name % search_term
+  ORDER BY sim DESC, s.name
+  LIMIT 20;
+END;
+$$ LANGUAGE plpgsql;
+
+-- =============================================================================
+-- GRANTS
+-- =============================================================================
+
+-- Grant SELECT to dndbot user (for cross-project queries)
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO dndbot;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO dndbot;
+
+-- =============================================================================
+-- COMMENTS
+-- =============================================================================
+
+COMMENT ON TABLE items IS 'All D&D 5e items (base items + magic items)';
+COMMENT ON TABLE monsters IS 'All D&D 5e monster stat blocks';
+COMMENT ON TABLE spells IS 'All D&D 5e spell definitions';
+
+COMMENT ON COLUMN items.data IS 'Full original JSON from 5etools (entries, damage, special properties)';
+COMMENT ON COLUMN monsters.data IS 'Full original JSON from 5etools (traits, actions, legendary actions, spellcasting)';
+COMMENT ON COLUMN spells.data IS 'Full original JSON from 5etools (entries, damage, scaling, higher levels)';
+
+COMMENT ON COLUMN items.value_cp IS 'Item value in copper pieces (gp * 100)';
+COMMENT ON COLUMN items.weight_lbs IS 'Item weight in pounds';
+
+COMMENT ON COLUMN monsters.cr IS 'Challenge Rating (0.125 to 30+)';
+COMMENT ON COLUMN monsters.hp_average IS 'Average hit points';
+COMMENT ON COLUMN monsters.hp_formula IS 'HP dice formula (e.g., "2d8+6")';
+
+COMMENT ON COLUMN spells.level IS 'Spell level: 0 (cantrip) through 9';

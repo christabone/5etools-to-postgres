@@ -1,0 +1,294 @@
+[
+  {
+    "name": "Light Crossbow",
+    "source": "XPHB",
+    "page": 215,
+    "srd52": true,
+    "basicRules2024": true,
+    "edition": "one",
+    "type": "R|XPHB",
+    "rarity": "none",
+    "weight": 5,
+    "value": 2500,
+    "weaponCategory": "simple",
+    "property": [
+      "A|XPHB",
+      "LD|XPHB",
+      "2H|XPHB"
+    ],
+    "mastery": [
+      "Slow|XPHB"
+    ],
+    "range": "80/320",
+    "dmg1": "1d8",
+    "dmgType": "P",
+    "crossbow": true,
+    "weapon": true,
+    "ammoType": "bolt|xphb",
+    "hasFluffImages": true
+  },
+  {
+    "name": "Longbow",
+    "source": "XPHB",
+    "page": 215,
+    "srd52": true,
+    "basicRules2024": true,
+    "edition": "one",
+    "type": "R|XPHB",
+    "rarity": "none",
+    "weight": 2,
+    "value": 5000,
+    "weaponCategory": "martial",
+    "property": [
+      "A|XPHB",
+      "H|XPHB",
+      "2H|XPHB"
+    ],
+    "mastery": [
+      "Slow|XPHB"
+    ],
+    "range": "150/600",
+    "dmg1": "1d8",
+    "dmgType": "P",
+    "bow": true,
+    "weapon": true,
+    "ammoType": "arrow|xphb",
+    "hasFluffImages": true
+  },
+  {
+    "name": "Musket",
+    "source": "XPHB",
+    "page": 215,
+    "srd52": true,
+    "basicRules2024": true,
+    "edition": "one",
+    "type": "R|XPHB",
+    "rarity": "none",
+    "weight": 10,
+    "value": 50000,
+    "weaponCategory": "martial",
+    "property": [
+      "A|XPHB",
+      "LD|XPHB",
+      "2H|XPHB"
+    ],
+    "mastery": [
+      "Slow|XPHB"
+    ],
+    "range": "40/120",
+    "dmg1": "1d12",
+    "dmgType": "P",
+    "firearm": true,
+    "weapon": true,
+    "ammoType": "firearm bullet|xphb",
+    "hasFluffImages": true
+  },
+  {
+    "name": "Net",
+    "source": "PHB",
+    "page": 149,
+    "srd": true,
+    "basicRules": true,
+    "reprintedAs": [
+      {
+        "uid": "Net|XPHB",
+        "tag": "item"
+      }
+    ],
+    "edition": "classic",
+    "type": "R",
+    "rarity": "none",
+    "weight": 3,
+    "value": 100,
+    "weaponCategory": "martial",
+    "property": [
+      "S",
+      "T"
+    ],
+    "range": "5/15",
+    "net": true,
+    "weapon": true,
+    "entries": [
+      {
+        "type": "entries",
+        "name": "Special",
+        "entries": [
+          "A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a {@dc 10} Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Heavy Crossbow",
+    "source": "XPHB",
+    "page": 215,
+    "srd52": true,
+    "basicRules2024": true,
+    "edition": "one",
+    "type": "R|XPHB",
+    "rarity": "none",
+    "weight": 18,
+    "value": 5000,
+    "weaponCategory": "martial",
+    "property": [
+      "A|XPHB",
+      "H|XPHB",
+      "LD|XPHB",
+      "2H|XPHB"
+    ],
+    "mastery": [
+      "Push|XPHB"
+    ],
+    "range": "100/400",
+    "dmg1": "1d10",
+    "dmgType": "P",
+    "crossbow": true,
+    "weapon": true,
+    "ammoType": "bolt|xphb",
+    "hasFluffImages": true
+  },
+  {
+    "name": "Staff",
+    "group": [
+      "Arcane Focus"
+    ],
+    "source": "XPHB",
+    "page": 224,
+    "srd52": true,
+    "edition": "one",
+    "type": "SCF|XPHB",
+    "scfType": "arcane",
+    "rarity": "none",
+    "weight": 4,
+    "value": 500,
+    "weaponCategory": "simple",
+    "property": [
+      "V"
+    ],
+    "mastery": [
+      "Topple|XPHB"
+    ],
+    "dmg1": "1d6",
+    "dmgType": "B",
+    "dmg2": "1d8",
+    "staff": true
+  },
+  {
+    "name": "Wooden Staff",
+    "group": [
+      "Druidic Focus"
+    ],
+    "source": "PHB",
+    "page": 151,
+    "srd": true,
+    "basicRules": true,
+    "reprintedAs": [
+      "Wooden Staff|XPHB"
+    ],
+    "edition": "classic",
+    "type": "SCF",
+    "scfType": "druid",
+    "rarity": "none",
+    "weight": 4,
+    "value": 500,
+    "weaponCategory": "simple",
+    "property": [
+      "V"
+    ],
+    "dmg1": "1d6",
+    "dmgType": "B",
+    "dmg2": "1d8"
+  },
+  {
+    "name": "Lance",
+    "source": "PHB",
+    "page": 149,
+    "srd": true,
+    "basicRules": true,
+    "reprintedAs": [
+      "Lance|XPHB"
+    ],
+    "edition": "classic",
+    "type": "M",
+    "rarity": "none",
+    "weight": 6,
+    "value": 1000,
+    "weaponCategory": "martial",
+    "property": [
+      "R",
+      "S"
+    ],
+    "dmg1": "1d12",
+    "dmgType": "P",
+    "lance": true,
+    "weapon": true,
+    "entries": [
+      {
+        "type": "entries",
+        "name": "Special",
+        "entries": [
+          "You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Staff",
+    "group": [
+      "Arcane Focus"
+    ],
+    "source": "PHB",
+    "page": 151,
+    "srd": true,
+    "basicRules": true,
+    "reprintedAs": [
+      "Staff|XPHB"
+    ],
+    "edition": "classic",
+    "type": "SCF",
+    "scfType": "arcane",
+    "rarity": "none",
+    "weight": 4,
+    "value": 500,
+    "weaponCategory": "simple",
+    "property": [
+      "V"
+    ],
+    "dmg1": "1d6",
+    "dmgType": "B",
+    "dmg2": "1d8",
+    "staff": true
+  },
+  {
+    "name": "Lance",
+    "source": "XPHB",
+    "page": 215,
+    "srd52": true,
+    "basicRules2024": true,
+    "edition": "one",
+    "type": "M|XPHB",
+    "rarity": "none",
+    "weight": 6,
+    "value": 1000,
+    "weaponCategory": "martial",
+    "property": [
+      "H|XPHB",
+      "R|XPHB",
+      {
+        "uid": "2H|XPHB",
+        "note": "unless mounted"
+      }
+    ],
+    "mastery": [
+      "Topple|XPHB"
+    ],
+    "dmg1": "1d10",
+    "dmgType": "P",
+    "lance": true,
+    "weapon": true,
+    "entries": [
+      "A Lance requires two hands to wield when you aren't mounted."
+    ],
+    "hasFluffImages": true
+  }
+]
