@@ -194,6 +194,21 @@ def lookup_skill(conn, skill_name: str) -> Optional[int]:
     return cache.get(skill_name.lower())
 
 
+def lookup_attack_type(conn, attack_type_code: str) -> Optional[int]:
+    """
+    Lookup attack type ID by code.
+
+    Args:
+        conn: Database connection
+        attack_type_code: Attack type code (e.g., "melee weapon", "ranged spell")
+
+    Returns:
+        Attack type ID or None if not found
+    """
+    cache = _load_lookup_cache(conn, 'attack_types', 'code')
+    return cache.get(attack_type_code.lower())
+
+
 def lookup_or_create_item_type(conn, type_code: str, type_name: str = None) -> int:
     """
     Lookup or create item type by code.

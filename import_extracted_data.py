@@ -27,6 +27,7 @@ from db_helpers import (
     get_connection,
     lookup_damage_type,
     lookup_condition_type,
+    lookup_attack_type,
     log_progress,
     log_warning,
     log_error,
@@ -234,6 +235,156 @@ def import_spell_conditions(conn, conditions: List[Dict], stats: ImportStats) ->
             log_progress(i, len(conditions), "spell conditions")
 
 
+def import_item_damage(conn, damage_list: List[Dict], stats: ImportStats) -> None:
+    """Import item damage relationships."""
+    print(f"\n📥 Importing {len(damage_list)} item damage relationships...")
+
+    for i, dmg in enumerate(damage_list, 1):
+        try:
+            item_id = lookup_item_by_name_source(conn, dmg['item_name'], dmg['source'])
+            if not item_id:
+                stats.record_skip(f"{dmg['item_name']}: Item not found")
+                continue
+
+            damage_type_id = None
+            if dmg.get('damage_type'):
+                damage_type_id = lookup_damage_type(conn, dmg['damage_type'])
+                if not damage_type_id:
+                    stats.record_warning(f"{dmg['item_name']}: Unknown damage type '{dmg['damage_type']}'")
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO item_damage (
+                        item_id, damage_dice, damage_bonus, damage_type_id,
+                        versatile_dice, versatile_bonus
+                    )
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (
+                    item_id, dmg.get('damage_dice'), dmg.get('damage_bonus', 0), damage_type_id,
+                    dmg.get('versatile_dice'), dmg.get('versatile_bonus', 0)
+                ))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{dmg.get('item_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(damage_list), "item damage")
+
+
+def import_monster_attacks(conn, attacks: List[Dict], stats: ImportStats) -> None:
+    """Import monster attack damage relationships."""
+    print(f"\n📥 Importing {len(attacks)} monster attack relationships...")
+
+    for i, atk in enumerate(attacks, 1):
+        try:
+            monster_id = lookup_monster_by_name_source(conn, atk['monster_name'], atk['source'])
+            if not monster_id:
+                stats.record_skip(f"{atk['monster_name']}: Monster not found")
+                continue
+
+            # Lookup attack type
+            attack_type_id = None
+            if atk.get('attack_type'):
+                attack_type_id = lookup_attack_type(conn, atk['attack_type'])
+                if not attack_type_id:
+                    stats.record_warning(f"{atk['monster_name']}: Unknown attack type '{atk['attack_type']}'")
+
+            # Lookup damage type
+            damage_type_id = None
+            if atk.get('damage_type'):
+                damage_type_id = lookup_damage_type(conn, atk['damage_type'])
+                if not damage_type_id:
+                    stats.record_warning(f"{atk['monster_name']}: Unknown damage type '{atk['damage_type']}'")
+
+            # Handle additional damage (first one only)
+            # LIMITATION: monster_attacks schema only supports one extra damage entry.
+            # 147 monsters (3.4%) have 2+ additional_damage entries in source data.
+            # Only the first is imported; subsequent entries are lost.
+            # Full data is preserved in monsters.data JSONB column.
+            extra_damage_type_id = None
+            extra_damage_dice = None
+            extra_damage_bonus = 0
+            if atk.get('additional_damage') and len(atk['additional_damage']) > 0:
+                extra_dmg = atk['additional_damage'][0]
+                extra_damage_dice = extra_dmg.get('damage_dice')
+                extra_damage_bonus = extra_dmg.get('damage_bonus', 0)
+                if extra_dmg.get('damage_type'):
+                    extra_damage_type_id = lookup_damage_type(conn, extra_dmg['damage_type'])
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO monster_attacks (
+                        monster_id, action_name, attack_type_id,
+                        to_hit_bonus, reach_ft, range_normal_ft, range_long_ft,
+                        damage_dice, damage_bonus, damage_type_id,
+                        extra_damage_dice, extra_damage_bonus, extra_damage_type_id
+                    )
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT (monster_id, action_name) DO NOTHING
+                """, (
+                    monster_id, atk['action_name'], attack_type_id,
+                    atk.get('to_hit'), atk.get('reach'), atk.get('range_normal'), atk.get('range_long'),
+                    atk.get('damage_dice'), atk.get('damage_bonus', 0), damage_type_id,
+                    extra_damage_dice, extra_damage_bonus, extra_damage_type_id
+                ))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{atk.get('monster_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(attacks), "monster attacks")
+
+
+def import_spell_damage(conn, damage_list: List[Dict], stats: ImportStats) -> None:
+    """Import spell damage relationships."""
+    print(f"\n📥 Importing {len(damage_list)} spell damage relationships...")
+
+    for i, dmg in enumerate(damage_list, 1):
+        try:
+            spell_id = lookup_spell_by_name_source(conn, dmg['spell_name'], dmg['source'])
+            if not spell_id:
+                stats.record_skip(f"{dmg['spell_name']}: Spell not found")
+                continue
+
+            damage_type_id = None
+            if dmg.get('damage_type'):
+                damage_type_id = lookup_damage_type(conn, dmg['damage_type'])
+                if not damage_type_id:
+                    stats.record_warning(f"{dmg['spell_name']}: Unknown damage type '{dmg['damage_type']}'")
+
+            spell_level = dmg.get('spell_level', 0)
+
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO spell_damage (
+                        spell_id, spell_level, damage_dice, damage_bonus, damage_type_id
+                    )
+                    VALUES (%s, %s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
+                """, (
+                    spell_id, spell_level, dmg.get('damage_dice'), dmg.get('damage_bonus', 0), damage_type_id
+                ))
+
+            conn.commit()
+            stats.record_success()
+
+        except Exception as e:
+            conn.rollback()
+            stats.record_failure(f"{dmg.get('spell_name', 'UNKNOWN')}: {str(e)}")
+
+        if i % 100 == 0:
+            log_progress(i, len(damage_list), "spell damage")
+
+
 def main():
     """Main import function."""
     print("=" * 80)
@@ -262,7 +413,7 @@ def main():
     stats_spells_cond = ImportStats()
     import_spell_conditions(conn, conditions['spells'], stats_spells_cond)
 
-    # Print summaries
+    # Print condition summaries
     print("\n" + "=" * 80)
     print("CONDITION IMPORT SUMMARY")
     print("=" * 80)
@@ -273,20 +424,45 @@ def main():
     print("\nSpell Conditions:")
     stats_spells_cond.print_summary()
 
+    # Import damage
+    print("\n" + "=" * 80)
+    print("PHASE 2: DAMAGE RELATIONSHIPS")
+    print("=" * 80)
+
+    stats_items_dmg = ImportStats()
+    import_item_damage(conn, damage['items'], stats_items_dmg)
+
+    stats_monsters_dmg = ImportStats()
+    import_monster_attacks(conn, damage['monster_attacks'], stats_monsters_dmg)
+
+    stats_spells_dmg = ImportStats()
+    import_spell_damage(conn, damage['spells'], stats_spells_dmg)
+
+    # Print damage summaries
+    print("\n" + "=" * 80)
+    print("DAMAGE IMPORT SUMMARY")
+    print("=" * 80)
+    print("\nItem Damage:")
+    stats_items_dmg.print_summary()
+    print("\nMonster Attacks:")
+    stats_monsters_dmg.print_summary()
+    print("\nSpell Damage:")
+    stats_spells_dmg.print_summary()
+
     # Close connection
     conn.close()
     print("\n🔌 Database connection closed")
 
     # Exit with appropriate code
-    total_failed = (stats_items_cond.failed + stats_monsters_cond.failed +
-                    stats_spells_cond.failed)
+    total_failed = (stats_items_cond.failed + stats_monsters_cond.failed + stats_spells_cond.failed +
+                    stats_items_dmg.failed + stats_monsters_dmg.failed + stats_spells_dmg.failed)
     if total_failed > 0:
         log_error(f"Import completed with {total_failed} failures")
         sys.exit(1)
     else:
-        total_success = (stats_items_cond.succeeded + stats_monsters_cond.succeeded +
-                        stats_spells_cond.succeeded)
-        log_success(f"Successfully imported {total_success} condition relationships")
+        total_success = (stats_items_cond.succeeded + stats_monsters_cond.succeeded + stats_spells_cond.succeeded +
+                        stats_items_dmg.succeeded + stats_monsters_dmg.succeeded + stats_spells_dmg.succeeded)
+        log_success(f"Successfully imported {total_success} relationships (conditions + damage)")
         sys.exit(0)
 
 
