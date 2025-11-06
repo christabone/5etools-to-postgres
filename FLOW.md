@@ -192,16 +192,23 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
    - Example: "must succeed on a DC 15 Constitution save or be {@condition poisoned|XPHB}"
      → Extract: condition=poisoned, save_dc=15, save_ability=Constitution, inflicts=true
 
-#### 5. **`extract_damage.py`** (TODO)
+#### 5. **`extract_damage.py`** ✅
    - Input: `cleaned_data/*_extracted.json`
    - Output: `extraction_data/damage_extracted.json`
    - Purpose:
      - Parse `{@damage dice+bonus}` expressions
-     - Extract damage type from surrounding text
-     - Parse monster attack blocks
-     - Parse spell damage scaling
-   - Example: "{@damage 2d6 + 4} fire damage"
-     → Extract: dice=2d6, bonus=4, type=fire
+     - Extract damage type from surrounding text (13 types supported)
+     - Parse monster attack blocks with {@atk}, {@hit}, reach/range
+     - Extract structured weapon damage from items (dmg1, dmgType)
+     - Handle versatile weapons (dmg2)
+     - Extract additional damage (e.g., "plus 2d6 fire damage")
+   - Results:
+     - 5,618 total damage records (734 items, 4,364 monster attacks, 520 spells)
+     - 3,324 melee weapon attacks, 408 ranged weapon attacks
+     - 1,412 attacks with additional damage
+     - Top damage types: piercing (1,909), bludgeoning (1,153), slashing (1,044)
+   - Example: "{@atk mw} {@hit 5} to hit, reach 5 ft. {@damage 2d6 + 4} fire damage"
+     → Extract: attack_type="melee weapon", to_hit=5, reach=5, dice="2d6", bonus=4, type="fire"
 
 #### 6. **`extract_cross_refs.py`** (TODO)
    - Input: `cleaned_data/*_extracted.json`
@@ -235,9 +242,9 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
 - ✅ normalize_bonuses.py (438 bonus fields normalized)
 - ✅ normalize_type_codes.py (271 type codes normalized)
 - ✅ extract_conditions.py (6,113 condition references extracted)
+- ✅ extract_damage.py (5,618 damage records extracted)
 
 **Pending:**
-- ⏭️ extract_damage.py
 - ⏭️ extract_cross_refs.py
 - ⏭️ validate_extraction.py
 - ⏭️ extract_all.py

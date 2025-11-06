@@ -1220,12 +1220,12 @@ Before moving to Phase 2 (Import Implementation):
 - ✅ All bonus fields are integers (438 fields normalized)
 - ✅ All type codes normalized (271 codes processed)
 - ✅ Condition extraction complete (6,113 references extracted)
-- ⏭️ Damage extraction complete (15,000+ expressions expected)
+- ✅ Damage extraction complete (5,618 damage records extracted)
 - ⏭️ Cross-reference extraction complete
 - ⏭️ Validation shows 100% pass rate
 - ⏭️ Sample queries work: "find items that inflict poisoned"
 
-**Status**: 🔄 IN PROGRESS - Basic extraction complete, advanced extraction pending
+**Status**: 🔄 IN PROGRESS - Nearing completion, cross-refs and validation pending
 
 ### Benefits After Phase 0.6
 
