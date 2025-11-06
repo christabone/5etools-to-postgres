@@ -282,39 +282,53 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
 
 **Goal:** Load cleaned and extracted data into PostgreSQL.
 
-### Scripts (TODO)
+### Scripts
 
-1. **`import_controlled_vocab.py`**
-   - Input: `analysis/controlled_vocab.json`
-   - Output: Populates lookup tables in database
-   - Tables: sources, item_types, rarities, damage_types, creature_types, etc.
+1. **`import_controlled_vocab.sql`** ✅ COMPLETE
+   - Input: Hardcoded D&D rules + `analysis/controlled_vocab.json`
+   - Output: Populates 10 lookup tables
+   - Tables: sources (126), item_rarities (10), damage_types (13), condition_types (15),
+            creature_types (14), creature_sizes (6), spell_schools (8), alignment_values (7),
+            skills (18), attack_types (6)
+   - Status: 223 records imported
+   - Run: `sudo -u postgres psql -d dnd5e_reference -f import_controlled_vocab.sql`
 
-2. **`import_items.py`**
+2. **`import_items.py`** 🔲 TODO
    - Input: `cleaned_data/items_extracted.json`
    - Output: Populates items table and related junction tables
+   - Expected: 2,722 items
 
-3. **`import_monsters.py`**
+3. **`import_monsters.py`** 🔲 TODO
    - Input: `cleaned_data/monsters_extracted.json`
    - Output: Populates monsters table and related junction tables
+   - Expected: 4,445 monsters
 
-4. **`import_spells.py`**
+4. **`import_spells.py`** 🔲 TODO
    - Input: `cleaned_data/spells_extracted.json`
    - Output: Populates spells table and related junction tables
+   - Expected: 937 spells
 
-5. **`import_extracted_data.py`**
+5. **`import_extracted_data.py`** 🔲 TODO
    - Input: `extraction_data/*.json`
    - Output: Populates relationship tables (conditions, damage, cross-refs)
+   - Expected: 26,619 relationships
 
-6. **`import_all.py`** (Master Script)
+6. **`import_all.sh`** 🔲 TODO (Master Script)
    - Runs all import scripts in correct order
-   - Handles transactions and rollback on error
+   - Handles validation and index optimization
+
+7. **`validate_import.py`** 🔲 TODO
+   - Validates data integrity after import
+   - Generates validation report
 
 ### Status
-✅ **READY TO START** - All prerequisites complete:
-- ✅ Phase 0.6 extraction complete (6,113 conditions, 5,618 damage, 14,769 cross-refs)
-- ✅ Phase 1 schema updated with all required tables (869 lines, 38 tables)
-- ✅ Independent review verified schema 100% ready for import
-- ✅ All extraction data validated and aligned with schema
+🔄 **IN PROGRESS** - Phase 2.1 Complete:
+- ✅ Database schema created (38 tables, 77+ indexes)
+- ✅ Controlled vocabulary imported (223 records)
+- ✅ INDEX_PLAN.md and IMPORT_PLAN.md created
+- 🔲 Core entities import (items, monsters, spells) - NEXT
+- 🔲 Relationship import
+- 🔲 Validation
 
 ---
 
