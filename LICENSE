@@ -19,3 +19,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Data Attribution
+
+The D&D 5th Edition data processed by this software is sourced from 5etools
+(https://5e.tools/), which aggregates official D&D content and community
+resources under various licenses.
+
+This software is a data processing pipeline and does not distribute the
+source data. Users must download 5etools data separately and ensure compliance
+with applicable licenses for D&D content, including:
+
+- Wizards of the Coast's Systems Reference Document (SRD) - OGL 1.0a
+- Wizards of the Coast's Fan Content Policy
+- Third-party content licenses (as applicable)
+
+The pipeline software itself (Python scripts, SQL schema, documentation) is
+licensed under MIT as stated above.

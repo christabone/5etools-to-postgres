@@ -366,59 +366,160 @@ The pipeline is designed to be **repeatable** and **idempotent** so that when 5e
 ### First-Time Setup
 
 ```bash
-# 1. Create Python virtual environment
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+# 1. Install system dependencies
+sudo apt-get install postgresql python3 python3-psycopg2 python3-pytest python3-pytest-benchmark
 
-# 2. Set up environment variables
-cp .env.example .env
-# Edit .env with your database credentials
+# 2. Create database
+sudo -u postgres createdb dnd5e_reference
 
-# 3. Create database and schema
-psql -U postgres -c "CREATE DATABASE dnd5e_reference;"
-psql -U dnd5e_user -d dnd5e_reference -f schema.sql
+# 3. Make scripts executable
+chmod +x run_pipeline.py run_tests.sh
 ```
 
-### Running the Pipeline (Current State)
+### Recommended: Drop-and-Replace Strategy
+
+**When to use**: When importing fresh data from a new 5etools release
+
+**Why**: Cleanest approach - no orphaned data, no migration scripts, guaranteed consistency
+
+**Process**:
 
 ```bash
-# Phase 0: Analysis (only needed when source data changes significantly)
+# RECOMMENDED: Full pipeline with drop-and-replace
+python3 run_pipeline.py --mode full --drop --skip-analysis
+
+# This will:
+# 1. Skip analysis (use existing - only needed for major 5etools changes)
+# 2. Run data cleaning (Phase 0.5)
+# 3. Run markup extraction (Phase 0.6)
+# 4. DROP and recreate database (Phase 1)
+# 5. Import all data (Phase 2)
+# 6. Validate and test (Phase 3)
+```
+
+**Pipeline Execution Flow**:
+
+```
+Phase 0.5: Cleaning
+  ✅ clean_all.py
+  📋 Checkpoint: Verify cleaned data files
+
+Phase 0.6: Extraction
+  ✅ extract_all.py
+  📋 Checkpoint: Verify extracted data files (JSON validation)
+
+Phase 1: Schema
+  🗑️  DROP DATABASE dnd5e_reference
+  📐 CREATE DATABASE dnd5e_reference
+  📐 Create schema (schema.sql)
+  📊 Import controlled vocabulary
+  📋 Checkpoint: Verify schema (38 tables, 141 indexes)
+
+Phase 2: Import
+  ✅ import_items.py (2,722 items)
+  ✅ import_monsters.py (4,445 monsters)
+  ✅ import_spells.py (937 spells)
+  ✅ import_extracted_data.py (19,740 relationships)
+  📋 Checkpoint: Run validate_import.py
+
+Phase 3: Validation & Testing
+  ✅ validate_import.py (8 validation categories)
+  ✅ run_tests.sh (46 tests)
+  📋 Checkpoint: All tests pass
+```
+
+### Pipeline Modes
+
+#### 1. Full Pipeline (Recommended for Updates)
+
+```bash
+# Drop and replace everything (RECOMMENDED)
+python3 run_pipeline.py --mode full --drop --skip-analysis
+
+# Include analysis phase (for major 5etools changes)
+python3 run_pipeline.py --mode full --drop
+
+# Verbose output
+python3 run_pipeline.py --mode full --drop --skip-analysis --verbose
+```
+
+#### 2. Resume from Specific Phase
+
+```bash
+# Resume from Phase 2 (if import failed)
+python3 run_pipeline.py --mode resume --from-phase 2
+
+# Resume from Phase 3 (re-run tests only)
+python3 run_pipeline.py --mode resume --from-phase 3
+```
+
+#### 3. Dry Run (Validation Only)
+
+```bash
+# Check everything without making changes
+python3 run_pipeline.py --mode dry-run
+
+# Validates:
+# - Source data files exist
+# - Cleaned/extracted data is valid JSON
+# - Schema file exists
+# - Database connection works
+# - All import/test scripts exist
+```
+
+#### 4. Selective Skipping
+
+```bash
+# Skip cleaning and extraction (use existing)
+python3 run_pipeline.py --mode full --drop --skip-cleaning --skip-extraction
+
+# Skip only extraction
+python3 run_pipeline.py --mode full --drop --skip-analysis --skip-extraction
+```
+
+### Manual Pipeline Execution (Advanced)
+
+If you need fine-grained control, run phases individually:
+
+```bash
+# Phase 0: Analysis (only for new 5etools versions)
 python3 analyze_json_structure.py
 python3 analyze_field_types.py
 python3 analyze_controlled_vocab.py
 python3 analyze_relationships.py
-python3 sample_records.py
 
 # Phase 0.5: Cleaning
 python3 clean_all.py
-# Creates: cleaned_data/items.json, monsters.json, spells.json
 
-# Phase 0.6: Extraction (current progress)
-python3 extract_names.py
-python3 normalize_bonuses.py
-python3 normalize_type_codes.py
-# Creates: cleaned_data/items_extracted.json, monsters_extracted.json, spells_extracted.json
+# Phase 0.6: Extraction
+python3 extract_all.py
 
-# Phase 0.6: Advanced Extraction (TODO)
-python3 extract_conditions.py
-python3 extract_damage.py
-python3 extract_cross_refs.py
-python3 validate_extraction.py
-# Creates: extraction_data/*.json
+# Phase 1: Schema (with drop)
+sudo -u postgres psql -c "DROP DATABASE IF EXISTS dnd5e_reference; CREATE DATABASE dnd5e_reference;"
+sudo -u postgres psql -d dnd5e_reference -f schema.sql
+sudo -u postgres psql -d dnd5e_reference -f import_controlled_vocab.sql
 
-# Phase 2: Import (TODO)
-python3 import_all.py
+# Phase 2: Import
+python3 import_items.py
+python3 import_monsters.py
+python3 import_spells.py
+python3 import_extracted_data.py
+
+# Phase 3: Validation & Testing
+python3 validate_import.py -v
+./run_tests.sh -v
 ```
 
-### Running the Pipeline (Future - Fully Automated)
+### Validation Checkpoints
 
-Once complete, the entire pipeline will be:
+The pipeline includes automatic validation checkpoints between phases:
 
-```bash
-# One command to rule them all
-python3 run_pipeline.py --source /path/to/5etools-src --target dnd5e_reference
-```
+1. **After Extraction**: Verifies all JSON files are valid and contain expected records
+2. **After Schema Creation**: Checks table count (38) and index count (141+)
+3. **After Import**: Runs full validation script (8 categories)
+4. **After Testing**: Ensures all 46 tests pass
+
+If any checkpoint fails, the pipeline stops immediately.
 
 ---
 
@@ -480,26 +581,111 @@ python3 run_pipeline.py --source /path/to/5etools-src --target dnd5e_reference
 
 ## Version Management
 
-### When 5etools Updates
+### When 5etools Updates Their Data
 
-1. **Download new 5etools-src version** to new directory
-2. **Update .env** to point to new source directory
-3. **Run analysis** to detect new fields or structures
-4. **Review differences** in structure reports
-5. **Update cleaning scripts** if new patterns found
-6. **Run full pipeline** to regenerate cleaned and extracted data
-7. **Backup database** before import
-8. **Run import** to refresh database
-9. **Validate** results
+**Recommended Process**: Drop-and-replace with the master orchestrator script
+
+#### Step 1: Download New 5etools Data
+
+```bash
+# Download new version
+cd /home/ctabone/dnd_bot
+wget https://github.com/5etools-mirror-1/5etools-src/archive/refs/tags/v2.XX.X.tar.gz
+tar -xzf v2.XX.X.tar.gz
+```
+
+#### Step 2: Quick Check for Major Changes
+
+```bash
+# Compare file structure (optional)
+diff -qr 5etools-src-2.15.0/data/ 5etools-src-2.XX.X/data/ | head -20
+
+# If major changes, run analysis phase
+python3 run_pipeline.py --mode full --drop
+# This includes Phase 0 (analysis)
+```
+
+#### Step 3: Run the Pipeline (RECOMMENDED)
+
+```bash
+# For normal updates (same structure, just more/updated data):
+python3 run_pipeline.py --mode full --drop --skip-analysis --verbose
+
+# This takes ~5-10 minutes and includes:
+# ✅ Data cleaning
+# ✅ Markup extraction
+# ✅ Database drop & recreate
+# ✅ Full import (entities + relationships)
+# ✅ Validation (8 categories)
+# ✅ Testing (46 tests)
+```
+
+#### Step 4: Review Results
+
+The pipeline will output a summary:
+
+```
+================================================================================
+PIPELINE SUMMARY
+================================================================================
+Total duration: 347.2s (5.8 minutes)
+
+Phase                                    Status       Duration
+--------------------------------------------------------------------------------
+Phase 0.5: Cleaning                      ✅ success      23.1s
+Phase 0.6: Extraction                    ✅ success      18.4s
+Phase 1: Schema                          ✅ success       2.8s
+Phase 2: Import Items                    ✅ success      45.2s
+Phase 2: Import Monsters                 ✅ success      89.7s
+Phase 2: Import Spells                   ✅ success      21.3s
+Phase 2: Import Relationships            ✅ success     112.5s
+Phase 3: Validation                      ✅ success       8.1s
+Phase 3: Testing                         ✅ success      26.1s
+--------------------------------------------------------------------------------
+Total: 9 phases | Success: 9 | Warning: 0 | Failed: 0 | Skipped: 0
+================================================================================
+```
+
+### Handling Pipeline Failures
+
+If the pipeline fails at any phase:
+
+```bash
+# 1. Review the error output
+# 2. Fix the issue (update script, fix data, etc.)
+# 3. Resume from the failed phase
+python3 run_pipeline.py --mode resume --from-phase 2
+
+# Or start over with verbose output
+python3 run_pipeline.py --mode full --drop --skip-analysis --verbose
+```
+
+### Backup Strategy (Optional)
+
+If you want to keep the old database before updating:
+
+```bash
+# Backup current database
+sudo -u postgres pg_dump dnd5e_reference > dnd5e_reference_backup_$(date +%Y%m%d).sql
+
+# Or rename it
+sudo -u postgres psql -c "ALTER DATABASE dnd5e_reference RENAME TO dnd5e_reference_v2_15_0;"
+sudo -u postgres psql -c "CREATE DATABASE dnd5e_reference;"
+
+# Then run pipeline
+python3 run_pipeline.py --mode full --skip-analysis --verbose
+```
 
 ### Tracking Changes
 
 - `PLAN.md` - Project roadmap and phases
 - `FLOW.md` - This file - pipeline documentation
 - `README.md` - Project overview and quick start
+- `TESTING.md` - Testing and validation documentation
 - `analysis/SUMMARY.md` - Analysis findings
 - `cleaned_data/CLEANING_REPORT.md` - Cleaning statistics
 - `cleaned_data/EXTRACTION_REPORT.md` - Extraction statistics
+- `PHASE_2_PROGRESS.md` - Import results and bug tracking
 
 ---
 

@@ -42,5 +42,17 @@ extraction_data/
 *.log
 logs/
 
+# Test cache
+.pytest_cache/
+.cache/
+
+# Backup files
+*_backup*.sql
+*.bak
+
+# Temporary files
+*.tmp
+.temp/
+
 # Claude notes
 claude.md
