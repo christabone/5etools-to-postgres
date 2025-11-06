@@ -95,7 +95,7 @@ def import_item(conn, item: Dict[str, Any], stats: ImportStats) -> bool:
                 rarity_id = lookup_rarity(conn, 'none')
 
         # Extract normalized fields
-        value_cp = item.get('value_cp', 0)
+        value_cp = item.get('value', 0)  # Fixed: was 'value_cp', should be 'value'
         weight_lbs = item.get('weight', 0)
 
         # Handle requires_attunement (can be bool, string, or dict)
@@ -111,13 +111,17 @@ def import_item(conn, item: Dict[str, Any], stats: ImportStats) -> bool:
         ac = item.get('ac')
         strength_requirement = item.get('strength')
 
-        # Range fields
+        # Range fields - Fixed: handle dict format, not string
         range_normal = None
         range_long = None
         if 'range' in item:
-            range_str = item['range']
-            if '/' in range_str:
-                parts = range_str.split('/')
+            range_data = item['range']
+            if isinstance(range_data, dict):
+                range_normal = range_data.get('normal')
+                range_long = range_data.get('long')
+            elif isinstance(range_data, str) and '/' in range_data:
+                # Fallback for string format
+                parts = range_data.split('/')
                 range_normal = int(parts[0]) if parts[0].isdigit() else None
                 range_long = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else None
 
@@ -180,7 +184,9 @@ def import_item(conn, item: Dict[str, Any], stats: ImportStats) -> bool:
                 properties = [properties]
 
             for prop_code in properties:
-                prop_id = lookup_or_create_item_property(conn, prop_code)
+                # Fixed: Clean property code to remove source suffixes (e.g., "V|XPHB" -> "V")
+                prop_code_cleaned = clean_type_code(prop_code)
+                prop_id = lookup_or_create_item_property(conn, prop_code_cleaned)
                 with conn.cursor() as cur:
                     cur.execute("""
                         INSERT INTO item_item_properties (item_id, property_id)
